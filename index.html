@@ -87,8 +87,6 @@
     }
     .hero-bg-img {
       object-position: center 30%;
-      transform: scale(1.08);
-      transition: transform 1.2s cubic-bezier(0.2, 0, 0, 1);
     }
 
     .grad-text {
@@ -118,6 +116,24 @@
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
     .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-right.visible {
       opacity: 1;
       transform: none;
     }
@@ -313,6 +329,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
+        <img src="beedportal-logo.png" alt="CSAV" class="w-8 h-8 rounded-lg object-cover" style="background:rgba(13,148,136,.08);" />
         <div>
           <span class="font-bold text-sm leading-none tracking-tight display-heading" style="color:#0f172a;">CSAV</span>
           <span class="text-xs leading-none block mt-0.5" style="color:#64748b;">Future Educators Hub</span>
@@ -387,10 +404,10 @@
 <!-- ═══════ WELCOME ═══════ -->
 <section class="py-24" style="background:#f8fafc;">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div class="reveal">
-      <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#0d9488;">Welcome</p>
-      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-slate-900 mb-6">Shaping the Next Generation of Educators</h2>
-      <p class="text-lg leading-relaxed max-w-3xl mx-auto" style="color:#64748b;">
+    <div>
+      <p class="reveal-left d1 text-xs font-bold tracking-widest uppercase mb-3" style="color:#0d9488;">Welcome</p>
+      <h2 class="reveal d2 display-heading text-3xl sm:text-4xl font-bold text-slate-900 mb-6">Shaping the Next Generation of Educators</h2>
+      <p class="reveal-right d3 text-lg leading-relaxed max-w-3xl mx-auto" style="color:#64748b;">
         The <strong style="color:#0f172a;">CSAV Future Educators Hub</strong> is dedicated to forming compassionate, competent, and creative teachers who will shape the minds of tomorrow. Through a rigorous BEED program grounded in DepEd standards, we prepare our students not just to teach — but to inspire.
       </p>
     </div>
@@ -478,7 +495,7 @@
       }
     });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal, .reveal-scale').forEach(function(el) {
+  document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right').forEach(function(el) {
     revealObserver.observe(el);
   });
 
@@ -509,6 +526,15 @@
     if (window.scrollY > 40) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   }, { passive: true });
+
+  /* ── Hero parallax ── */
+  var heroBg = document.querySelector('.hero-bg-img');
+  if (heroBg) {
+    window.addEventListener('scroll', function() {
+      var scrolled = window.scrollY;
+      heroBg.style.transform = 'translateY(' + (scrolled * 0.15) + 'px)';
+    }, { passive: true });
+  }
 
 })();
 </script>
