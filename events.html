@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -127,8 +127,6 @@
     }
   </style>
 
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
 
@@ -191,91 +189,169 @@
         View Upcoming
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
       </a>
-      <a href="#facebook-feed" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200"
-         style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#cbd5e1;backdrop-filter:blur(4px);"
-         onmouseover="this.style.background='rgba(255,255,255,.15)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
-        Past Moments
+<a href="#gallery" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200"
+          style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#cbd5e1;backdrop-filter:blur(4px);"
+          onmouseover="this.style.background='rgba(255,255,255,.15)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+        View Gallery
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ═══════ FACEBOOK FEED ═══════ -->
-<section id="facebook-feed" class="py-20 lg:py-28" style="background:#f8fafc;">
+<!-- ═══════ PHOTO GALLERY — TWO ALBUMS SIDE BY SIDE ═══════ -->
+<section id="gallery" class="py-20 lg:py-28" style="background:#f8fafc;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14 reveal">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[.625rem] font-bold tracking-widest uppercase mb-3"
            style="background:rgba(13,148,136,.08);border:1px solid rgba(13,148,136,.12);color:#0d9488;">
         <span class="w-1.5 h-1.5 rounded-full" style="background:#0d9488;"></span>
-        Live Feed
+        Event Gallery
       </div>
-      <h2 class="display-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">Follow Our Journey</h2>
+      <h2 class="display-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">Moments That Matter</h2>
       <p class="text-sm mt-3 max-w-xl mx-auto" style="color:#64748b;">
-        Stay up to date with the latest announcements, event photos, and department moments — automatically pulled from our official Facebook page.
+        From practicum workshops to department celebrations — a glimpse into the journey of our future educators.
       </p>
     </div>
 
-    <div class="max-w-3xl mx-auto flex flex-col items-center reveal d1">
-      <div class="w-full rounded-2xl overflow-hidden border" style="border-color:#e2e8f0;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.03);">
-        <div class="fb-page"
-             data-href="https://www.facebook.com/educationdepartmentcsav"
-             data-tabs="timeline"
-             data-width=""
-             data-height="800"
-             data-small-header="false"
-             data-adapt-container-width="true"
-             data-hide-cover="false"
-             data-show-facepile="true"
-             data-lazy="false">
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+      <!-- Album 1 -->
+      <div class="flex-1 w-full reveal d1">
+        <div class="text-center mb-6">
+          <p class="text-xs font-bold tracking-widest uppercase" style="color:#0d9488;">CareToLoveAndShare: Outreach Program</p>
+        </div>
+        <div class="relative max-w-lg mx-auto" id="album-carousel">
+          <div class="relative overflow-hidden rounded-xl aspect-[16/9] bg-slate-200"
+               style="box-shadow:0 4px 24px rgba(15,23,42,.06);">
+            <div class="flex transition-transform duration-500 ease-out h-full" id="album-track">
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfke191-image.png" alt="Demonstration Teaching Finals" class="w-full h-full object-cover">
+              </div>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfke560-image.png" alt="Curriculum Planning Session" class="w-full h-full object-cover">
+              </div>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfke9b0-image.png" alt="EDUC Days 2026" class="w-full h-full object-cover">
+              </div>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfkecve-image.png" alt="Teaching Strategies Forum" class="w-full h-full object-cover">
+              </div>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfkeka6-image.png" alt="Future Educators Fellowship" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <button onclick="prevAlbum()" aria-label="Previous photo"
+              class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-all z-10"
+              style="background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.1);"
+              onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button onclick="nextAlbum()" aria-label="Next photo"
+              class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-all z-10"
+              style="background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.1);"
+              onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div class="flex items-center justify-center gap-2 mt-4" id="album-dots"></div>
+          <p class="text-center text-xs mt-1" style="color:#94a3b8;" id="album-counter"></p>
         </div>
       </div>
 
-      <div class="mt-6 flex items-center gap-3 text-sm reveal d2">
-        <span style="color:#64748b;">Not loading?</span>
-        <a href="https://www.facebook.com/educationdepartmentcsav" target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all"
-           style="background:#1877f2;"
-           onmouseover="this.style.opacity='.9'" onmouseout="this.style.opacity='1'">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          Visit Facebook Page
-        </a>
+      <!-- Album 3 -->
+      <div class="flex-1 w-full reveal d2">
+        <div class="text-center mb-6">
+          <p class="text-xs font-bold tracking-widest uppercase" style="color:#0d9488;">BEED PROGRAM LAUNCHES READING INTERVENTION PROJECT AT VILLA MIRANDA ES</p>
+        </div>
+        <div class="relative max-w-lg mx-auto" id="album3-carousel">
+          <div class="relative overflow-hidden rounded-xl aspect-[16/9] bg-slate-200"
+               style="box-shadow:0 4px 24px rgba(15,23,42,.06);">
+            <div class="flex transition-transform duration-500 ease-out h-full" id="album3-track">
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfl8gwt-image.png" alt="Reading Intervention Project" class="w-full h-full object-cover">
+              </div>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfl8k57-image.png" alt="Villa Miranda ES Activity" class="w-full h-full object-cover">
+              </div>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfl8p5g-image.png" alt="BEED Volunteers" class="w-full h-full object-cover">
+              </div>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfl8s1w-image.png" alt="Group Photo" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <button onclick="prevAlbum3()" aria-label="Previous photo"
+              class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-all z-10"
+              style="background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.1);"
+              onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button onclick="nextAlbum3()" aria-label="Next photo"
+              class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-all z-10"
+              style="background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.1);"
+              onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div class="flex items-center justify-center gap-2 mt-4" id="album3-dots"></div>
+          <p class="text-center text-xs mt-1" style="color:#94a3b8;" id="album3-counter"></p>
+        </div>
       </div>
+
+      <!-- Album 2 -->
+      <div class="flex-1 w-full reveal d3">
+        <div class="text-center mb-6">
+          <p class="text-xs font-bold tracking-widest uppercase" style="color:#0d9488;">Educ Days 2026</p>
+        </div>
+        <div class="relative max-w-lg mx-auto" id="album2-carousel">
+          <div class="relative overflow-hidden rounded-xl aspect-[16/9] bg-slate-200"
+               style="box-shadow:0 4px 24px rgba(15,23,42,.06);">
+            <div class="flex transition-transform duration-500 ease-out h-full" id="album2-track">
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfkyz29-image.png" alt="Classroom Teaching Demo" class="w-full h-full object-cover">
+              </div>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfkz1r3-image.png" alt="Student Workshop Activity" class="w-full h-full object-cover">
+              </div>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfkz4mw-image.png" alt="Group Photo Session" class="w-full h-full object-cover">
+              </div>
+              <div class="w-full h-full flex-shrink-0 relative">
+                <img src="mpfkz7ti-image.png" alt="Department Fellowship" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <button onclick="prevAlbum2()" aria-label="Previous photo"
+              class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-all z-10"
+              style="background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.1);"
+              onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button onclick="nextAlbum2()" aria-label="Next photo"
+              class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-all z-10"
+              style="background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.1);"
+              onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div class="flex items-center justify-center gap-2 mt-4" id="album2-dots"></div>
+          <p class="text-center text-xs mt-1" style="color:#94a3b8;" id="album2-counter"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center gap-2 mt-10 text-xs reveal d3" style="color:#64748b;">
+      <a href="https://www.facebook.com/educationdepartmentcsav" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all"
+         style="background:#1877f2;"
+         onmouseover="this.style.opacity='.9'" onmouseout="this.style.opacity='1'">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        View All on Facebook
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ═══════ STAY CONNECTED ═══════ -->
-<section class="py-20" style="background:#f1f5f9;">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-    <div class="p-10 lg:p-14 rounded-2xl relative overflow-hidden"
-         style="background:linear-gradient(135deg,#0f172a,#1e293b);border:1px solid rgba(13,148,136,.12);">
-      <div class="absolute inset-0 opacity-[.03]"
-           style="background-image: radial-gradient(circle at 20% 50%, #5eead4 1px, transparent 1px); background-size: 32px 32px;"></div>
-      <div class="relative">
-        <span class="text-xs font-bold tracking-widest uppercase" style="color:#5eead4;">Follow Us</span>
-        <h2 class="display-heading text-2xl sm:text-3xl font-bold text-white mt-3 leading-tight">Join Us on Facebook</h2>
-        <p class="text-sm mt-3 max-w-md mx-auto" style="color:#94a3b8;">
-          All events, announcements, and department moments are posted on our official Facebook page. Follow us so you never miss a thing.
-        </p>
-        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-sm mx-auto">
-          <a href="https://www.facebook.com/educationdepartmentcsav" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white transition-all w-full sm:w-auto justify-center"
-             style="background:#1877f2;"
-             onmouseover="this.style.opacity='.9'" onmouseout="this.style.opacity='1'">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            Follow on Facebook
-          </a>
-          <a href="about.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all w-full sm:w-auto justify-center"
-             style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#cbd5e1;"
-             onmouseover="this.style.background='rgba(255,255,255,.1)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">
-            About the Department
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ═══════ FOOTER ═══════ -->
 <footer style="background:#0f172a;">
@@ -341,6 +417,136 @@
   window.addEventListener('scroll', function() {
     if (window.scrollY > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
   }, { passive: true });
+
+  var albumTrack = document.getElementById('album-track');
+  var albumDots = document.getElementById('album-dots');
+  var albumCounter = document.getElementById('album-counter');
+  var albumIndex = 0;
+  var albumTotal = albumTrack ? albumTrack.children.length : 0;
+
+  function updateAlbum() {
+    if (!albumTrack) return;
+    albumTrack.style.transform = 'translateX(-' + (albumIndex * 100) + '%)';
+    if (albumDots) {
+      var dots = albumDots.querySelectorAll('button');
+      dots.forEach(function(d, i) {
+        d.style.background = i === albumIndex ? '#0d9488' : 'rgba(148,163,184,.3)';
+      });
+    }
+    if (albumCounter) albumCounter.textContent = (albumIndex + 1) + ' / ' + albumTotal;
+  }
+  window.prevAlbum = function() {
+    albumIndex = (albumIndex - 1 + albumTotal) % albumTotal;
+    updateAlbum();
+  };
+  window.nextAlbum = function() {
+    albumIndex = (albumIndex + 1) % albumTotal;
+    updateAlbum();
+  };
+
+  if (albumDots && albumTotal > 0) {
+    for (var i = 0; i < albumTotal; i++) {
+      (function(idx) {
+        var dot = document.createElement('button');
+        dot.className = 'w-2 h-2 rounded-full transition-all duration-300';
+        dot.setAttribute('aria-label', 'Go to photo ' + (idx + 1));
+        dot.addEventListener('click', function() { albumIndex = idx; updateAlbum(); });
+        albumDots.appendChild(dot);
+      })(i);
+    }
+    updateAlbum();
+  }
+
+  setInterval(function() {
+    if (albumTotal > 0) { albumIndex = (albumIndex + 1) % albumTotal; updateAlbum(); }
+  }, 4500);
+
+  var album2Track = document.getElementById('album2-track');
+  var album2Dots = document.getElementById('album2-dots');
+  var album2Counter = document.getElementById('album2-counter');
+  var album2Index = 0;
+  var album2Total = album2Track ? album2Track.children.length : 0;
+
+  function updateAlbum2() {
+    if (!album2Track) return;
+    album2Track.style.transform = 'translateX(-' + (album2Index * 100) + '%)';
+    if (album2Dots) {
+      var dots = album2Dots.querySelectorAll('button');
+      dots.forEach(function(d, i) {
+        d.style.background = i === album2Index ? '#0d9488' : 'rgba(148,163,184,.3)';
+      });
+    }
+    if (album2Counter) album2Counter.textContent = (album2Index + 1) + ' / ' + album2Total;
+  }
+  window.prevAlbum2 = function() {
+    album2Index = (album2Index - 1 + album2Total) % album2Total;
+    updateAlbum2();
+  };
+  window.nextAlbum2 = function() {
+    album2Index = (album2Index + 1) % album2Total;
+    updateAlbum2();
+  };
+
+  if (album2Dots && album2Total > 0) {
+    for (var i = 0; i < album2Total; i++) {
+      (function(idx) {
+        var dot = document.createElement('button');
+        dot.className = 'w-2 h-2 rounded-full transition-all duration-300';
+        dot.setAttribute('aria-label', 'Go to photo ' + (idx + 1));
+        dot.addEventListener('click', function() { album2Index = idx; updateAlbum2(); });
+        album2Dots.appendChild(dot);
+      })(i);
+    }
+    updateAlbum2();
+  }
+
+  setInterval(function() {
+    if (album2Total > 0) { album2Index = (album2Index + 1) % album2Total; updateAlbum2(); }
+  }, 5000);
+
+  var album3Track = document.getElementById('album3-track');
+  var album3Dots = document.getElementById('album3-dots');
+  var album3Counter = document.getElementById('album3-counter');
+  var album3Index = 0;
+  var album3Total = album3Track ? album3Track.children.length : 0;
+
+  function updateAlbum3() {
+    if (!album3Track) return;
+    album3Track.style.transform = 'translateX(-' + (album3Index * 100) + '%)';
+    if (album3Dots) {
+      var dots = album3Dots.querySelectorAll('button');
+      dots.forEach(function(d, i) {
+        d.style.background = i === album3Index ? '#0d9488' : 'rgba(148,163,184,.3)';
+      });
+    }
+    if (album3Counter) album3Counter.textContent = (album3Index + 1) + ' / ' + album3Total;
+  }
+  window.prevAlbum3 = function() {
+    album3Index = (album3Index - 1 + album3Total) % album3Total;
+    updateAlbum3();
+  };
+  window.nextAlbum3 = function() {
+    album3Index = (album3Index + 1) % album3Total;
+    updateAlbum3();
+  };
+
+  if (album3Dots && album3Total > 0) {
+    for (var i = 0; i < album3Total; i++) {
+      (function(idx) {
+        var dot = document.createElement('button');
+        dot.className = 'w-2 h-2 rounded-full transition-all duration-300';
+        dot.setAttribute('aria-label', 'Go to photo ' + (idx + 1));
+        dot.addEventListener('click', function() { album3Index = idx; updateAlbum3(); });
+        album3Dots.appendChild(dot);
+      })(i);
+    }
+    updateAlbum3();
+  }
+
+  setInterval(function() {
+    if (album3Total > 0) { album3Index = (album3Index + 1) % album3Total; updateAlbum3(); }
+  }, 4800);
+
 })();
 </script>
 </body>
