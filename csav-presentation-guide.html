@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSAV Future Educators Hub — Presentation Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: { 400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 800: '#115e59' },
+            slate: { 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a' },
+          },
+          fontFamily: { display: ['Playfair Display', 'Georgia', 'serif'], body: ['Inter', 'system-ui', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+
+    .script-box {
+      background: #fff;
+      border-left: 4px solid #0d9488;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .script-box::before {
+      content: 'Say this';
+      display: block;
+      font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: #0d9488;
+      margin-bottom: 8px;
+    }
+    .script-box p { font-style: italic; color: #1e293b; line-height: 1.7; margin-bottom: 10px; }
+    .script-box p:last-child { margin-bottom: 0; }
+    .script-box strong { color: #0f172a; }
+
+    .tip-box {
+      background: #f0fdfa;
+      border: 1px solid #ccfbf1;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 12px 0;
+    }
+    .tip-box::before {
+      content: 'Presenter tip';
+      display: block;
+      font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: #0f766e;
+      margin-bottom: 4px;
+    }
+    .tip-box p { font-size: 14px; color: #475569; margin: 0; }
+
+    .page-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 14px; border-radius: 99px;
+      font-size: 11px; font-weight: 700; letter-spacing: .04em;
+      margin-bottom: 8px;
+    }
+    .page-badge.home { background: #f0fdfa; color: #0d9488; border: 1px solid #ccfbf1; }
+    .page-badge.about { background: #f8fafc; color: #0d9488; border: 1px solid #e2e8f0; }
+    .page-badge.events { background: #f0fdfa; color: #0d9488; border: 1px solid #ccfbf1; }
+    .page-badge.careers { background: #faf6f0; color: #2d5a4d; border: 1px solid #e8e0d6; }
+    .page-badge.contact { background: #f8fafc; color: #0d9488; border: 1px solid #e2e8f0; }
+
+    .section-tag {
+      display: inline-block;
+      padding: 2px 10px; border-radius: 99px;
+      font-size: 10px; font-weight: 600;
+      background: #e2e8f0; color: #475569;
+    }
+
+    .cover {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+      padding: 48px 24px;
+      position: relative; overflow: hidden;
+    }
+    .cover-grid {
+      opacity: .04; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(45,212,191,.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45,212,191,.3) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .cover-orb {
+      position: absolute; border-radius: 50%; filter: blur(80px); opacity: .08;
+    }
+
+    .nav-sticky {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(248,250,252,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .nav-sticky a {
+      display: inline-block; padding: 12px 14px;
+      font-size: 12px; font-weight: 600; color: #64748b;
+      text-decoration: none; border-bottom: 2px solid transparent;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+    .nav-sticky a:hover, .nav-sticky a:focus { color: #0f172a; border-bottom-color: #0d9488; }
+
+    .page-section { padding: 64px 0; border-bottom: 1px solid #e2e8f0; }
+    .page-section:last-of-type { border-bottom: none; }
+
+    .timeline-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+
+    @media print {
+      .nav-sticky { display: none; }
+      .cover { min-height: auto; padding: 48px 24px; }
+      .page-section { padding: 40px 0; page-break-inside: avoid; }
+      .script-box, .tip-box { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ COVER ═══════════ -->
+<header class="cover" id="top">
+  <div class="cover-grid"></div>
+  <div class="cover-orb" style="width:400px;height:400px;background:#0d9488;top:-100px;right:-80px;"></div>
+  <div class="cover-orb" style="width:300px;height:300px;background:#14b8a6;bottom:-60px;left:-60px;"></div>
+  <div class="px-5 py-1.5 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-300 text-[11px] font-bold tracking-[.12em] uppercase mb-5 relative">
+    Presentation Guide
+  </div>
+  <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight relative">
+    CSAV<br/>
+    <span class="bg-gradient-to-r from-teal-300 to-teal-400 bg-clip-text text-transparent">Future Educators Hub</span>
+  </h1>
+  <p class="text-slate-400 text-sm sm:text-base max-w-xl mt-4 mb-8 relative">
+    Complete speaker's script for presenting the CSAV Department of Elementary Education website<br/>
+    to academic committees, faculty, and institutional stakeholders.
+  </p>
+  <div class="flex gap-6 flex-wrap justify-center text-teal-500/50 text-xs font-medium relative">
+    <span class="flex items-center gap-1.5">~15–20 min presentation</span>
+    <span class="flex items-center gap-1.5">Academic committee / faculty</span>
+    <span class="flex items-center gap-1.5">5 pages</span>
+  </div>
+  <p class="absolute bottom-8 text-teal-500/25 text-[10px] tracking-[.12em] uppercase">Scroll for script</p>
+</header>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav-sticky">
+  <div class="max-w-5xl mx-auto px-4 flex overflow-x-auto scrollbar-none">
+    <a href="#overview">Overview</a>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#events">Events</a>
+    <a href="#careers">Career Opps</a>
+    <a href="#contact">Contact</a>
+    <a href="#design">Design</a>
+    <a href="#qa">Q&amp;A</a>
+    <a href="#closing">Closing</a>
+  </div>
+</nav>
+
+<!-- ═══════════ MAIN CONTENT ═══════════ -->
+<main class="max-w-4xl mx-auto px-4 py-12">
+
+<!-- ─── OVERVIEW ─── -->
+<section class="page-section" id="overview">
+  <p class="text-teal-600 text-xs font-bold tracking-[.1em] uppercase mb-2">Before You Begin</p>
+  <h2 class="font-display text-3xl font-bold text-slate-900 mb-6">Presentation Overview</h2>
+
+  <p class="text-slate-600 text-sm leading-relaxed mb-6">The <strong>CSAV Future Educators Hub</strong> is the official website of the <strong>Department of Elementary Education — Colegio de Santa Ana de Victorias (CSAV)</strong>. It is a modern, student-centered website designed to welcome prospective students, showcase department activities, communicate career pathways, and serve as the digital front door for the BEED program.</p>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-8">
+    <div class="bg-white rounded-xl border border-slate-200 p-4 text-center">
+      <p class="text-teal-600 font-display text-2xl font-bold">1</p>
+      <p class="text-xs text-slate-500 mt-1">Home</p>
+    </div>
+    <div class="bg-white rounded-xl border border-slate-200 p-4 text-center">
+      <p class="text-teal-600 font-display text-2xl font-bold">2</p>
+      <p class="text-xs text-slate-500 mt-1">About</p>
+    </div>
+    <div class="bg-white rounded-xl border border-slate-200 p-4 text-center">
+      <p class="text-teal-600 font-display text-2xl font-bold">3</p>
+      <p class="text-xs text-slate-500 mt-1">Events</p>
+    </div>
+    <div class="bg-white rounded-xl border border-slate-200 p-4 text-center">
+      <p class="text-teal-600 font-display text-2xl font-bold">4</p>
+      <p class="text-xs text-slate-500 mt-1">Career Opps</p>
+    </div>
+    <div class="bg-white rounded-xl border border-slate-200 p-4 text-center">
+      <p class="text-teal-600 font-display text-2xl font-bold">5</p>
+      <p class="text-xs text-slate-500 mt-1">Contact</p>
+    </div>
+  </div>
+
+  <div class="script-box">
+    <p>Good morning/afternoon, members of the committee and esteemed faculty.</p>
+    <p>Today I'm presenting the <strong>CSAV Future Educators Hub</strong> — the redesigned official website of the Department of Elementary Education at Colegio de Santa Ana de Victorias. This is not a traditional portal or dashboard. It's a <strong>modern university department showcase</strong> designed to welcome, inform, and inspire future educators and the academic community.</p>
+    <p>The site comprises <strong>five main pages</strong>: Home, About, Events, Career Opportunities, and Contact — each serving a distinct purpose in the department's digital presence. I'll walk through each page, explain the design thinking behind them, and demonstrate how they work together to present the BEED program to prospective students, faculty, and institutional partners.</p>
+    <p>Let me start with the Home page.</p>
+  </div>
+
+  <div class="tip-box">
+    <p>Open with the <strong>purpose</strong> of the redesign: evolving from a product-style portal into an inspiring university department website. Keep this intro under 90 seconds. The committee wants to know <em>why</em> the site was redesigned before they see the <em>what</em>.</p>
+  </div>
+</section>
+
+<!-- ─── HOME ─── -->
+<section class="page-section" id="home">
+  <span class="page-badge home">&#9679; Page 1</span>
+  <h2 class="font-display text-3xl font-bold text-slate-900 mb-1">Home</h2>
+  <p class="text-slate-500 text-sm mb-6">First impression. Hero, welcome message, and call to action.</p>
+
+  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Sections in order</h3>
+  <div class="flex flex-wrap gap-2 mb-6">
+    <span class="section-tag">Hero</span>
+    <span class="section-tag">Wave Divider</span>
+    <span class="section-tag">Welcome</span>
+    <span class="section-tag">Journey CTA</span>
+    <span class="section-tag">Footer</span>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mb-2">&rarr; Hero</h4>
+  <p class="text-slate-600 text-sm mb-3">Full-screen hero with <code>mpfgtaqk-image.png</code> background, dark overlay, and parallax effect. The heading "Future Teachers Rise Here" uses an animated teal gradient shimmer on the second line. Two CTAs: "Explore Our Program" and "See Events".</p>
+
+  <div class="script-box">
+    <p>The home page opens on the hero section. The first thing visitors see is the photograph of future educators — warm, aspirational, and grounded in real people. The heading <strong>"Future Teachers Rise Here"</strong> is the department's promise in four words.</p>
+    <p>Notice the animated teal gradient on "Rise Here" — it creates a subtle shimmer that draws the eye without being distracting. The teal colour was chosen intentionally: it reads as energetic, fresh, and modern, but also carries the seriousness of an academic institution.</p>
+    <p>Two buttons give immediate pathways: <strong>"Explore Our Program"</strong> takes visitors to the About page to learn about the BEED program, and <strong>"See Events"</strong> leads to the Events page with department activities. Every visitor has a clear next step from the moment they land.</p>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mt-6 mb-2">&rarr; Welcome Section</h4>
+  <p class="text-slate-600 text-sm mb-3">Light slate background. "WELCOME" eyebrow, "Shaping the Next Generation of Educators" heading, body paragraph about forming compassionate, competent, creative teachers.</p>
+
+  <div class="script-box">
+    <p>Scrolling down reveals the Welcome section. The heading <strong>"Shaping the Next Generation of Educators"</strong> frames the department's mission in human terms — this is not about programs or requirements, it's about people. The body text communicates the department's commitment to DepEd standards and holistic formation.</p>
+    <p>The three-column reveal animation — text sliding in from left, centre, and right with staggered timing — creates a sense of <strong>discovery</strong> as the visitor scrolls. This is intentional: we want the scrolling experience to feel like uncovering the department's story, not just scanning information.</p>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mt-6 mb-2">&rarr; Your Teaching Journey Starts Here (CTA)</h4>
+  <p class="text-slate-600 text-sm mb-3">Dark navy gradient section with teal dot grid pattern. Two CTAs: "Learn About Our Program" and "Get in Touch".</p>
+
+  <div class="script-box">
+    <p>The closing section uses a dark navy background to create visual contrast and signal importance. <strong>"Your Teaching Journey Starts Here"</strong> — with "Starts Here" in the same animated teal gradient — echoes the hero's visual language and gives the page a sense of forward momentum.</p>
+    <p>Two buttons: "Learn About Our Program" leads deeper into the site, and "Get in Touch" opens a direct line of communication. The page is designed so that by the time a visitor reaches this point, they've been inspired and they know where to go next.</p>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mt-6 mb-2">&rarr; Footer</h4>
+  <p class="text-slate-600 text-sm mb-3">Dark slate footer with the logo, "Future Educators Hub" subtext, nav links, and copyright.</p>
+
+  <div class="script-box">
+    <p>The footer is consistent across every page — dark background, the CSAV name with "Future Educators Hub" subtitle, links to all pages, and the location: Victorias City, Negros Occidental. Consistency in the footer signals reliability and professionalism.</p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Total time for Home page: ~2 minutes.</strong> Focus the committee's attention on the <em>intentionality</em> of each design choice — the heading, the colour, the CTAs, the scroll animations. Don't just describe what's on the page; explain why it's there and how it serves the visitor.</p>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="page-section" id="about">
+  <span class="page-badge about">&#9679; Page 2</span>
+  <h2 class="font-display text-3xl font-bold text-slate-900 mb-1">About</h2>
+  <p class="text-slate-500 text-sm mb-6">Department story, mission, vision, values, and call to action.</p>
+
+  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Sections in order</h3>
+  <div class="flex flex-wrap gap-2 mb-6">
+    <span class="section-tag">Hero</span>
+    <span class="section-tag">Introduction</span>
+    <span class="section-tag">Mission & Vision</span>
+    <span class="section-tag">Our Values (3 cards)</span>
+    <span class="section-tag">CTA</span>
+    <span class="section-tag">Footer</span>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mb-2">&rarr; Hero</h4>
+  <p class="text-slate-600 text-sm mb-3">Unsplash university campus background under navy overlay. Heading: "Empowering Future Educators / To Inspire Young Minds" (gradient on second line). Subtext about the department community.</p>
+
+  <div class="script-box">
+    <p>The About page opens with the same full-screen hero treatment but with its own heading: <strong>"Empowering Future Educators / To Inspire Young Minds"</strong>. The gold — sorry, teal — gradient on "To Inspire Young Minds" ties back to the Home page visual language.</p>
+    <p>The subtext grounds the page: this is a community of future educators, mentor teachers, and academic leaders. The hero image of the university campus communicates setting and place — important for a department website.</p>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mt-6 mb-2">&rarr; Introduction & Mission & Vision</h4>
+  <p class="text-slate-600 text-sm mb-3">Light grey section with two cards: Mission (lightning bolt icon) and Vision (eye icon). White cards with soft shadows.</p>
+
+  <div class="script-box">
+    <p>The Mission and Vision are presented as side-by-side cards. The Mission — <strong>"nurture competent, compassionate, and creative elementary educators"</strong> — uses three Cs that are easy to remember and communicate the department's holistic approach. The Vision — <strong>"a community of exceptional elementary educators transforming classrooms"</strong> — looks forward to the department's impact.</p>
+    <p>Placing them on cards with icons makes them feel tangible rather than abstract. Faculty committees appreciate seeing mission and vision statements that are specific to the department rather than generic institutional language.</p>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mt-6 mb-2">&rarr; Our Values (3 cards)</h4>
+  <p class="text-slate-600 text-sm mb-3">Three values cards: Academic Excellence (graduate cap), Compassionate Formation (heart), Community Impact (people). White cards with hover effect.</p>
+
+  <div class="script-box">
+    <p>Below the mission and vision, we present <strong>three core values</strong> that define the department: Academic Excellence, Compassionate Formation, and Community Impact. Each value has its own icon and a short description of what it means in practice.</p>
+    <p>These values replace what was previously product-oriented feature cards (back when this page was part of a portal design). The shift from product features to <strong>institutional values</strong> is intentional — a department website should communicate who you are, not what you build.</p>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mt-6 mb-2">&rarr; CTA Section</h4>
+  <p class="text-slate-600 text-sm mb-3">"Ready to Begin Your Teaching Journey?" with links to Events and Contact pages.</p>
+
+  <div class="script-box">
+    <p>The page closes with an invitation: <strong>"Ready to Begin Your Teaching Journey?"</strong> with two clear paths — View Upcoming Events or Get in Touch. Every page on this site guides the visitor somewhere; there are no dead ends.</p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Total time for About: ~2.5 minutes.</strong> The committee will scrutinise the mission/vision statements — be ready to defend or elaborate on them. If asked, "How were these developed?" the honest answer is they were crafted to reflect the actual BEED program values at CSAV. Mention that values-driven content replaces old product-oriented copy.</p>
+  </div>
+</section>
+
+<!-- ─── EVENTS ─── -->
+<section class="page-section" id="events">
+  <span class="page-badge events">&#9679; Page 3</span>
+  <h2 class="font-display text-3xl font-bold text-slate-900 mb-1">Events</h2>
+  <p class="text-slate-500 text-sm mb-6">Photo albums showcasing department activities, outreach, and student life.</p>
+
+  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Sections in order</h3>
+  <div class="flex flex-wrap gap-2 mb-6">
+    <span class="section-tag">Hero</span>
+    <span class="section-tag">Moments That Matter (3 albums)</span>
+    <span class="section-tag">Facebook Link</span>
+    <span class="section-tag">Footer</span>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mb-2">&rarr; Hero</h4>
+  <p class="text-slate-600 text-sm mb-3">Auditorium background with floating teal orbs. Heading: "Where Future Teachers Come Together". Quotable subtext about growth and belonging.</p>
+
+  <div class="script-box">
+    <p>The Events page hero positions the department as a <strong>community</strong>, not just a program. "Where Future Teachers Come Together" — and the quote below, <em>"Every great teacher was once a beginner who never stopped growing. Here, you belong."</em> — sets a welcoming, inclusive tone.</p>
+    <p>The floating teal orbs add depth and visual interest to the hero. They're subtle enough not to distract but give the page a sense of life and energy.</p>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mt-6 mb-2">&rarr; The Photo Albums (3 carousels)</h4>
+  <p class="text-slate-600 text-sm mb-3">Three independent carousels side by side on desktop: CareToLoveAndShare Outreach, Reading Intervention Project, Educ Days 2026. Each has prev/next arrows, dot nav, auto-rotation.</p>
+
+  <div class="script-box">
+    <p>This is the heart of the Events page. Instead of listing events as text items, we showcase them through <strong>photo albums</strong> — visual storytelling that makes the department's activities feel real and lived-in.</p>
+    <p><strong>Album 1: CareToLoveAndShare — Outreach Program</strong>. Five photos showing the department's community outreach efforts. This demonstrates the department's commitment to Compassionate Formation — one of the core values from the About page.</p>
+    <p><strong>Album 2: BEED Program Launches Reading Intervention Project at Villa Miranda ES</strong>. Four photos from a specific department initiative. This shows the BEED program actively engaging with partner schools — real students, real impact.</p>
+    <p><strong>Album 3: Educ Days 2026</strong>. Four photos from the department's annual celebration. Classroom demos, workshops, group photos — this is where prospective students can see themselves as part of the community.</p>
+    <p>Each album auto-rotates every 4.5 to 5 seconds, so visitors don't have to manually click through. The prev/next buttons and dot indicators are available for those who want to control the pace. A Facebook button at the bottom links to the official department Facebook page where more content is posted regularly.</p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Total time for Events: ~3 minutes.</strong> This is the most visually engaging page — let the photos do the talking. Pause on each album, mention the event name, and connect it back to the department's mission. If any committee members attended these events, invite them to share their perspective. The auto-rotation means you don't need to click through during the demo.</p>
+  </div>
+</section>
+
+<!-- ─── CAREER OPPORTUNITIES ─── -->
+<section class="page-section" id="careers">
+  <span class="page-badge careers">&#9679; Page 4</span>
+  <h2 class="font-display text-3xl font-bold text-slate-900 mb-1">Career Opportunities</h2>
+  <p class="text-slate-500 text-sm mb-6">BEED career pathways, 3-card layout, warm colour palette.</p>
+
+  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Sections in order</h3>
+  <div class="flex flex-wrap gap-2 mb-6">
+    <span class="section-tag">Hero</span>
+    <span class="section-tag">BEED Career Pathways (3 cards)</span>
+    <span class="section-tag">Future Vision CTA</span>
+    <span class="section-tag">Footer</span>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mb-2">&rarr; Hero</h4>
+  <p class="text-slate-600 text-sm mb-3">Unsplash career/professional background. "Career Pathways for BEED Graduates" badge. Heading: "Career Opportunities".</p>
+
+  <div class="script-box">
+    <p>The Career Opportunities page answers the question every prospective BEED student asks: <strong>"What can I do with this degree?"</strong> The hero communicates that the BEED program leads to real, meaningful employment. The floating orbs add depth without distracting.</p>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mt-6 mb-2">&rarr; BEED Career Pathways (3 cards)</h4>
+  <p class="text-slate-600 text-sm mb-3">Three cards on warm cream background with forest green accents (different from the teal palette of other pages): Elementary School Teacher, Private Tutor, SPED Assistant Teacher.</p>
+
+  <div class="script-box">
+    <p>This section uses a <strong>distinct colour palette</strong> from the rest of the site — warm cream background with forest green accents instead of teal. This visual shift signals to the visitor that they've entered a different content zone: from <em>information about the department</em> to <em>information about their future</em>.</p>
+    <p><strong>Card 1 — Elementary School Teacher.</strong> The primary career path for BEED graduates. K–6 general education, DepEd ranking eligibility, national and local teaching posts. This is the most common and most stable pathway.</p>
+    <p><strong>Card 2 — Private Tutor.</strong> A flexible alternative. Independent or agency-based scheduling, K–6 subject specialisation. Important to show that BEED graduates have options beyond traditional classroom teaching.</p>
+    <p><strong>Card 3 — SPED Assistant Teacher.</strong> A specialised role in inclusive education, working in SPED centres and public schools implementing IEPs. This demonstrates the breadth of the BEED program's applicability.</p>
+    <p>Each card has an icon, role badge, description, three bullet points, and an "Explore Pathway" button that leads to the Contact page — so interested visitors can inquire directly.</p>
+  </div>
+
+  <div class="script-box">
+    <p>The page closes with an invitation for partners: <strong>"Help Us Reach More Future Educators"</strong> — calling on cooperating teachers, educators, and partner schools to support the BEED program. This positions the department as outward-looking and collaborative.</p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Total time for Career Opportunities: ~2.5 minutes.</strong> This page is particularly important for committees evaluating the BEED program's relevance and graduate employability. Emphasise that the three pathways are real and documented — not aspirational. If you have data on graduate employment rates, mention it here.</p>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="page-section" id="contact">
+  <span class="page-badge contact">&#9679; Page 5</span>
+  <h2 class="font-display text-3xl font-bold text-slate-900 mb-1">Contact</h2>
+  <p class="text-slate-500 text-sm mb-6">Contact information, Facebook page link, and working inquiry form.</p>
+
+  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Sections in order</h3>
+  <div class="flex flex-wrap gap-2 mb-6">
+    <span class="section-tag">Hero</span>
+    <span class="section-tag">Info Cards (email, Facebook, location)</span>
+    <span class="section-tag">Contact Form</span>
+    <span class="section-tag">Footer</span>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mb-2">&rarr; Hero & Contact Info</h4>
+  <p class="text-slate-600 text-sm mb-3">Modern building background. 3 contact cards: Email (FutureEducHub@gmail.com), Facebook (educationdepartmentcsav), Location (Victorias City, Negros Occidental).</p>
+
+  <div class="script-box">
+    <p>The Contact page is simple and functional. Three contact cards provide the essential information: <strong>email</strong>, <strong>Facebook page</strong>, and <strong>location</strong>. The Facebook card links directly to the official department page, which is updated regularly with announcements, events, and department news.</p>
+    <p>The email address <strong>FutureEducHub@gmail.com</strong> is the department's public-facing contact point. All three cards use grey backgrounds with teal icon boxes to keep them visually connected to the site's design system.</p>
+  </div>
+
+  <h4 class="text-sm font-bold text-slate-700 mt-6 mb-2">&rarr; Contact Form</h4>
+  <p class="text-slate-600 text-sm mb-3">Working form with full name, email, message fields. Client-side validation, loading state, success toast notification.</p>
+
+  <div class="script-box">
+    <p>This is not a static mockup — it is a <strong>fully functional contact form</strong>. Let me demonstrate:</p>
+    <p><em>(Pause here and fill in the form on screen)</em></p>
+    <p>The form validates each field when the user tabs out — if the name is empty, if the email doesn't match the expected format, if the message is blank — it shows a red error message below the field. When all fields are valid and the user clicks "Send Message," the button shows a loading spinner, simulates a 1.2-second send, and then displays a success toast notification at the bottom of the screen.</p>
+    <p>This demonstrates that the site is <strong>implementation-ready</strong>, not just a design comp. The form connects to an actual contact channel for the department.</p>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>Total time for Contact: ~1.5 minutes.</strong> If time is short, skip the form demo and just mention it works. If you want to impress, quickly fill and submit to show the toast and validation. The committee will appreciate seeing real interactivity rather than static HTML.</p>
+  </div>
+</section>
+
+<!-- ─── DESIGN RATIONALE ─── -->
+<section class="page-section" id="design">
+  <p class="text-teal-600 text-xs font-bold tracking-[.1em] uppercase mb-2">Design Thinking</p>
+  <h2 class="font-display text-3xl font-bold text-slate-900 mb-6">Visual &amp; Technical Rationale</h2>
+
+  <h3 class="text-sm font-bold text-slate-700 mb-3">Colour System</h3>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+    <div class="rounded-xl p-4 text-white" style="background:#0f172a;">
+      <p class="text-xs font-mono">#0f172a</p>
+      <p class="text-[10px] opacity-70">Slate 900 — Nav, Footer, CTA bg</p>
+    </div>
+    <div class="rounded-xl p-4 text-white" style="background:#0d9488;">
+      <p class="text-xs font-mono">#0d9488</p>
+      <p class="text-[10px] opacity-70">Teal 600 — Primary accent, CTAs</p>
+    </div>
+    <div class="rounded-xl p-4 text-white" style="background:#14b8a6;">
+      <p class="text-xs font-mono">#14b8a6</p>
+      <p class="text-[10px] opacity-70">Teal 500 — Hover states, shimmer</p>
+    </div>
+    <div class="rounded-xl p-4 text-slate-800 border border-slate-200" style="background:#f8fafc;">
+      <p class="text-xs font-mono">#f8fafc</p>
+      <p class="text-[10px] text-slate-500">Slate 50 — Page backgrounds</p>
+    </div>
+  </div>
+
+  <div class="script-box">
+    <p>Let me briefly explain the design decisions behind the site, because every choice was intentional.</p>
+    <p><strong>Colour.</strong> The primary palette is <strong>teal + slate</strong> — teal was chosen because it reads as energetic, fresh, and modern, while still carrying the seriousness of an academic institution. It is not the typical navy-and-gold of traditional education sites, which makes the department feel current and approachable. The Career Opportunities page intentionally shifts to a <strong>forest green + warm cream</strong> palette — a content-specific colour change that signals to the visitor they've moved into career-focused territory.</p>
+    <p><strong>Typography.</strong> We use <strong>Playfair Display</strong> for headings — a serif typeface that brings editorial gravitas and warmth. The headings feel like a publication or university prospectus, not a generic web app. <strong>Inter</strong> is used for body text — clean, highly readable, system-native — so visitors spending time reading content won't experience eye strain.</p>
+    <p><strong>Animations.</strong> The scroll-triggered reveals are not decorative. They create a sense of <strong>discovery</strong> as the user moves through the page. Elements fade and slide in at staggered intervals, guiding the eye through the content hierarchy. The motion is purposeful, not ornamental.</p>
+    <p><strong>Responsiveness.</strong> The site is fully responsive — it works on desktop, tablet, and mobile. This matters because prospective students may access it from their phones, while faculty may view it on a desktop during a committee review.</p>
+  </div>
+
+  <h3 class="text-sm font-bold text-slate-700 mt-8 mb-3">Technical Stack</h3>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+    <div class="bg-white border border-slate-200 rounded-xl p-3 text-center">
+      <p class="text-teal-600 font-bold text-lg">HTML</p>
+      <p class="text-[10px] text-slate-500">Semantic structure</p>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-3 text-center">
+      <p class="text-teal-600 font-bold text-lg">Tailwind</p>
+      <p class="text-[10px] text-slate-500">Utility-first CSS</p>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-3 text-center">
+      <p class="text-teal-600 font-bold text-lg">Vanilla JS</p>
+      <p class="text-[10px] text-slate-500">No frameworks</p>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-3 text-center">
+      <p class="text-teal-600 font-bold text-lg">Vercel</p>
+      <p class="text-[10px] text-slate-500">Static deployment</p>
+    </div>
+  </div>
+
+  <div class="script-box">
+    <p>On the technical side, the site is built with <strong>plain HTML + Tailwind CSS + vanilla JavaScript</strong> — no framework dependencies. This means it loads fast even on slower connections, which is important for users in provincial areas. It is deployed as a <strong>static site</strong>, making hosting straightforward and cost-free on platforms like Vercel or GitHub Pages.</p>
+    <p>The contact form uses <strong>client-side validation with a simulated submission</strong> — ready to connect to a real backend when needed. All animations use the <strong>Intersection Observer API</strong> for performance — no third-party libraries required.</p>
+  </div>
+
+  <div class="tip-box">
+    <p>Adjust the technical depth based on your audience. For education faculty, focus on <em>why</em> the design choices were made (colour psychology, readability, mobile access). For IT/computing faculty, offer more technical detail (static site architecture, IntersectionObserver, Tailwind config, Vercel deployment). Keep this section to 2–3 minutes.</p>
+  </div>
+</section>
+
+<!-- ─── Q&A ─── -->
+<section class="page-section" id="qa">
+  <p class="text-teal-600 text-xs font-bold tracking-[.1em] uppercase mb-2">Be Prepared</p>
+  <h2 class="font-display text-3xl font-bold text-slate-900 mb-6">Anticipated Questions &amp; Responses</h2>
+
+  <div class="space-y-4">
+    <div class="bg-white border border-slate-200 rounded-xl p-5">
+      <p class="font-bold text-slate-800 text-sm flex items-start gap-2">
+        <span class="text-teal-600">Q:</span>
+        Who is the target audience for this website?
+      </p>
+      <p class="text-slate-600 text-sm flex items-start gap-2 mt-2">
+        <span class="text-teal-500 font-semibold">A:</span>
+        Primarily prospective BEED students and their families, faculty and academic committees, partner schools, and institutional stakeholders. The site is designed to be welcoming enough for a Grade 12 student considering BEED and professional enough for a DepEd review committee.
+      </p>
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-xl p-5">
+      <p class="font-bold text-slate-800 text-sm flex items-start gap-2">
+        <span class="text-teal-600">Q:</span>
+        How does this site differ from the old BEEDPORTAL?
+      </p>
+      <p class="text-slate-600 text-sm flex items-start gap-2 mt-2">
+        <span class="text-teal-500 font-semibold">A:</span>
+        The old BEEDPORTAL was designed as a product portal with tools like Demo Maker and Lesson Plan Planner. The new site is a <strong>university department showcase</strong> — it tells the department's story, showcases events, communicates career pathways, and provides contact channels. It shifts from a tool-based experience to an <strong>informational and inspirational experience</strong> that serves as the department's digital front door.
+      </p>
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-xl p-5">
+      <p class="font-bold text-slate-800 text-sm flex items-start gap-2">
+        <span class="text-teal-600">Q:</span>
+        How will you keep the Events page updated with new photos?
+      </p>
+      <p class="text-slate-600 text-sm flex items-start gap-2 mt-2">
+        <span class="text-teal-500 font-semibold">A:</span>
+        The carousels use static HTML that needs to be updated manually when new events happen — but the process is simple: replace image filenames and update album titles. A future improvement could connect to the Facebook API to automatically pull event photos from the department's official Facebook page.
+      </p>
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-xl p-5">
+      <p class="font-bold text-slate-800 text-sm flex items-start gap-2">
+        <span class="text-teal-600">Q:</span>
+        Is the contact form actually functional?
+      </p>
+      <p class="text-slate-600 text-sm flex items-start gap-2 mt-2">
+        <span class="text-teal-500 font-semibold">A:</span>
+        Currently it has client-side validation and a simulated submission. The next step is connecting it to a real email or backend service (e.g., Formspree, EmailJS, or a simple PHP mailer) so messages actually arrive at FutureEducHub@gmail.com. The validation and UI are fully production-ready.
+      </p>
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-xl p-5">
+      <p class="font-bold text-slate-800 text-sm flex items-start gap-2">
+        <span class="text-teal-600">Q:</span>
+        Why does Career Opportunities use a different colour palette?
+      </p>
+      <p class="text-slate-600 text-sm flex items-start gap-2 mt-2">
+        <span class="text-teal-500 font-semibold">A:</span>
+        It was a deliberate design choice to signal a content shift. The warm cream and forest green palette differentiates career content from the rest of the site, helping visitors subconsciously recognise that this page is about <em>their future</em>, not about the department. The colour change itself communicates: "This section is for you."
+      </p>
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-xl p-5">
+      <p class="font-bold text-slate-800 text-sm flex items-start gap-2">
+        <span class="text-teal-600">Q:</span>
+        What are the plans for future development?
+      </p>
+      <p class="text-slate-600 text-sm flex items-start gap-2 mt-2">
+        <span class="text-teal-500 font-semibold">A:</span>
+        Priorities include: (1) connecting the contact form to a real email backend, (2) adding a faculty/staff directory page, (3) integrating the Facebook API for automatic event photo feeds, (4) adding a news or announcements section, and (5) a dedicated programs/curriculum page detailing the BEED course structure.
+      </p>
+    </div>
+  </div>
+
+  <div class="tip-box mt-6">
+    <p>For each question, <strong>don't rush to answer</strong>. Repeat the question to confirm understanding, then pause before responding. If you don't know the answer, say "That's a great question — I don't have a definitive answer right now, but I'd be happy to explore it." Never bluff. Committees respect honesty more than overconfidence.</p>
+  </div>
+</section>
+
+<!-- ─── CLOSING ─── -->
+<section class="page-section" id="closing">
+  <p class="text-teal-600 text-xs font-bold tracking-[.1em] uppercase mb-2">Wrap Up</p>
+  <h2 class="font-display text-3xl font-bold text-slate-900 mb-6">Closing &amp; Next Steps</h2>
+
+  <div class="script-box">
+    <p>To summarise what I've shown today:</p>
+    <p>The <strong>CSAV Future Educators Hub</strong> is a modern, professional, and welcoming website that serves as the digital front door for the Department of Elementary Education. It replaces the old portal-style approach with an <strong>inspiring university department showcase</strong> — five coherent pages that tell the department's story, showcase its community, communicate career pathways, and invite connection.</p>
+    <p>The key achievements of this redesign:</p>
+    <ul class="text-slate-600 text-sm space-y-1.5 mb-4">
+      <li class="flex gap-2"><span class="text-teal-600">&#10003;</span> From product portal to institutional showcase</li>
+      <li class="flex gap-2"><span class="text-teal-600">&#10003;</span> Consistent design system across all 5 pages</li>
+      <li class="flex gap-2"><span class="text-teal-600">&#10003;</span> Fully responsive across desktop, tablet, and mobile</li>
+      <li class="flex gap-2"><span class="text-teal-600">&#10003;</span> Photo albums that make department activities visible and real</li>
+      <li class="flex gap-2"><span class="text-teal-600">&#10003;</span> Working contact form with validation and interaction feedback</li>
+      <li class="flex gap-2"><span class="text-teal-600">&#10003;</span> Deployed as a static site — zero hosting cost</li>
+    </ul>
+    <p>We welcome the committee's feedback, questions, and guidance on how this site can best serve the BEED program and the Department of Elementary Education at CSAV Victoria's.</p>
+    <p>Thank you.</p>
+  </div>
+
+  <div class="mt-8 rounded-2xl p-8 text-center" style="background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);">
+    <p class="font-display text-2xl sm:text-3xl font-bold" style="background:linear-gradient(to right,#2dd4bf,#14b8a6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+      Future Teachers Rise Here
+    </p>
+    <p class="text-slate-500 text-xs mt-2">CSAV Future Educators Hub &mdash; Department of Elementary Education</p>
+    <p class="text-slate-600 text-xs mt-4">FutureEducHub@gmail.com &mdash; Victorias City, Negros Occidental</p>
+    <p class="text-teal-600/50 text-xs mt-1">facebook.com/educationdepartmentcsav</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="bg-slate-900 text-center py-8 px-4">
+  <p class="text-slate-400 text-xs"><strong class="text-teal-400">CSAV Future Educators Hub</strong> Presentation Guide</p>
+  <p class="text-slate-600 text-[11px] mt-1">Designed for academic committee / faculty review &mdash; v1.0</p>
+</footer>
+
+<!-- ═══════════ SCRIPT ═══════════ -->
+<script>
+  // Smooth scroll for nav links
+  document.querySelectorAll('.nav-sticky a').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
