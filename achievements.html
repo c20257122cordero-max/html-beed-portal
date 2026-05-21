@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BEEDPORTAL — Achievements</title>
-  <meta name="description" content="BEEDPORTAL milestones and achievements — see how many students we've helped, templates created, and workshops delivered." />
+  <title>Achievements — CSAV Department of Elementary Education</title>
+  <meta name="description" content="Discover the milestones and achievements of the CSAV Department of Elementary Education — students reached, lesson plans created, and workshops delivered." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +20,8 @@
             sans: ['Inter', 'ui-sans-serif', 'system-ui'],
           },
           colors: {
-            navy: { 50:'#f0f3f9',100:'#dce3f0',200:'#b9c8e1',300:'#8fa6cc',400:'#6382b3',500:'#4a6b9e',600:'#3a5585',700:'#2f456d',800:'#0f1b2d',900:'#0a1322' },
-            gold:  { 50:'#fdf8ed',100:'#f9edcc',200:'#f2d98f',300:'#e8c45a',400:'#d9b14a',500:'#c9a84c',600:'#a8843a',700:'#8a682f',800:'#6f5228',900:'#5a4322' },
-            cream: '#faf6f0',
+            teal: { 50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',300:'#5eead4',400:'#2dd4bf',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a' },
+            slate: { 50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1',400:'#94a3b8',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a' },
           },
         },
       },
@@ -33,107 +32,100 @@
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
-    ::selection { background: rgba(201,168,76,.3); color: #0f1b2d; }
+    ::selection { background: rgba(13,148,136,.2); color: #0f172a; }
     .display-heading { font-family: 'Playfair Display', Georgia, serif; }
 
-    #main-nav { background: rgba(10,19,34,.75); backdrop-filter: blur(14px); }
-    #main-nav.scrolled { background: rgba(10,19,34,.95) !important; box-shadow: 0 2px 24px rgba(0,0,0,.3); }
-    .nav-link { position: relative; font-weight: 500; transition: color .2s ease; }
-    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#c9a84c; transition: width .25s ease; }
+    #main-nav { background: rgba(255,255,255,.88); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: background .3s ease, border-color .3s ease, box-shadow .3s ease; }
+    #main-nav.scrolled { background: rgba(255,255,255,.98) !important; border-bottom-color: #e2e8f0; box-shadow: 0 1px 12px rgba(0,0,0,.04); }
+    .nav-link { position: relative; font-weight: 500; color: #475569; transition: color .2s ease; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#0d9488; transition: width .25s ease; }
+    .nav-link:hover { color:#0f172a; }
     .nav-link:hover::after { width:100%; }
-    .nav-link.nav-active { color:#c9a84c; }
+    .nav-link.nav-active { color:#0d9488; }
     .nav-link.nav-active::after { width:100%; }
 
     .page-header {
       padding-top: 96px;
-      background: linear-gradient(135deg, rgba(15,27,45,.82), rgba(26,45,74,.75), rgba(15,27,45,.85)), url('mpfgtaqk-image.png') center/cover fixed;
+      background: linear-gradient(135deg, rgba(15,23,42,.78), rgba(30,41,59,.68), rgba(15,23,42,.82)), url('mpfgtaqk-image.png') center/cover fixed;
     }
     .page-grid-bg {
       position:absolute; inset:0; opacity:.06;
-      background-image: linear-gradient(rgba(201,168,76,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.3) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(13,148,136,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(13,148,136,.3) 1px, transparent 1px);
       background-size: 48px 48px;
     }
-    .stats-bg { background: linear-gradient(135deg,#0f1b2d,#1a2d4a,#0f1b2d); }
-    .stats-grid-bg { position:absolute; inset:0; opacity:.06; background-image: linear-gradient(rgba(201,168,76,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.3) 1px, transparent 1px); background-size: 48px 48px; }
 
     .reveal { opacity:0; transform:translateY(28px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity:1; transform:none; }
     .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; } .d4 { transition-delay:.4s; }
 
-    .grad-text {
-      background: linear-gradient(135deg,#c9a84c,#e8c45a,#f2d98f,#c9a84c);
-      background-size: 200% auto;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: shimmer 4s linear infinite;
-    }
-    @keyframes shimmer { to { background-position: 200% center; } }
-
     .stat-number {
       font-size: clamp(2.5rem, 4vw, 3.5rem);
       font-weight: 800;
-      color: #f2d98f;
+      color: #5eead4;
       line-height: 1.1;
       font-family: 'Playfair Display', Georgia, serif;
     }
-    .tag { display:inline-block; padding:.25rem .75rem; border-radius:999px; font-size:.75rem; font-weight:600; letter-spacing:.02em; }
-    .tag-gold { background:rgba(201,168,76,.12); color:#8a682f; }
-    .tag-gold-light { background:rgba(201,168,76,.15); color:#f2d98f; }
 
     .achievement-card {
-      background:#fff; border:1px solid rgba(201,168,76,.12); border-radius:1.5rem;
+      background:#fff; border:1px solid #e2e8f0; border-radius:1.25rem;
       overflow:hidden; display:flex; flex-direction:column;
-      transition: transform .3s ease, box-shadow .3s ease;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
     }
-    .achievement-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(15,27,45,.06); }
+    .achievement-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(15,23,42,.05); border-color: #99f6e4; }
     .achievement-icon-box {
       width:3rem; height:3rem; border-radius:.875rem;
       display:flex; align-items:center; justify-content:center; flex-shrink:0;
     }
-    .achievement-icon-box.gold { background: linear-gradient(135deg,#c9a84c,#8a682f); }
-    .achievement-icon-box.navy { background: linear-gradient(135deg,#3a5585,#0f1b2d); }
+    .achievement-icon-box.teal { background: linear-gradient(135deg,#0d9488,#0f766e); }
+    .achievement-icon-box.navy { background: linear-gradient(135deg,#1e293b,#0f172a); }
 
-    .footer-link { color:#6b6760; transition: color .2s ease; }
-    .footer-link:hover { color:#c9a84c; }
+    .tag { display:inline-block; padding:.25rem .75rem; border-radius:999px; font-size:.75rem; font-weight:600; letter-spacing:.02em; }
+    .tag-teal { background:rgba(13,148,136,.1); color:#0f766e; }
+
+    .footer-link { color:#94a3b8; transition: color .2s ease; }
+    .footer-link:hover { color:#5eead4; }
 
     ::-webkit-scrollbar { width:5px; }
     ::-webkit-scrollbar-track { background:transparent; }
-    ::-webkit-scrollbar-thumb { background:#c9a84c; border-radius:99px; }
+    ::-webkit-scrollbar-thumb { background:#0d9488; border-radius:99px; }
 
-    #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(10,19,34,.98); }
+    #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(255,255,255,.98); }
     #mobile-menu.open { max-height:320px; }
   </style>
 </head>
-<body class="bg-cream text-navy-900 antialiased">
+<body class="bg-slate-50 text-slate-900 antialiased">
 
-<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
-        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-9 h-9 rounded-xl object-cover" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
-        <span class="text-white font-bold text-lg tracking-tight display-heading">BEEDPORTAL</span>
+        <img src="beedportal-logo.png" alt="CSAV" class="w-9 h-9 rounded-xl object-cover" style="box-shadow:0 2px 8px rgba(13,148,136,.25);">
+        <div>
+          <span class="font-bold text-sm leading-none tracking-tight display-heading" style="color:#0f172a;">CSAV</span>
+          <span class="text-xs leading-none block mt-0.5" style="color:#64748b;">Elementary Education</span>
+        </div>
       </a>
-      <div class="hidden md:flex items-center gap-6 text-sm text-gold-200">
-        <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
-        <a href="about.html" class="nav-link hover:text-white transition-colors">About</a>
-        <a href="events.html" class="nav-link hover:text-white transition-colors">Events</a>
+      <div class="hidden md:flex items-center gap-6 text-sm">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="events.html" class="nav-link">Events</a>
         <a href="achievements.html" class="nav-link nav-active">Achievements</a>
-        <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
+        <a href="contact.html" class="nav-link">Contact</a>
       </div>
       <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
-        class="md:hidden p-2 rounded-lg text-gold-200 hover:text-white hover:bg-white/10 transition-colors">
+        class="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">
         <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
-  <div id="mobile-menu" class="md:hidden border-t border-white/10">
-    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-gold-200">
-      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Home</a>
-      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">About</a>
-      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Events</a>
-      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10" style="color:#c9a84c;">Achievements</a>
-      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Contact</a>
+  <div id="mobile-menu" class="md:hidden border-t border-slate-200">
+    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-slate-600">
+      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Home</a>
+      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">About</a>
+      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Events</a>
+      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50" style="color:#0d9488;">Achievements</a>
+      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Contact</a>
     </div>
   </div>
 </nav>
@@ -143,84 +135,84 @@
   <div class="page-grid-bg"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
-         style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:#f2d98f;">
+         style="background:rgba(13,148,136,.15);border:1px solid rgba(13,148,136,.25);color:#5eead4;">
       Milestones
     </div>
     <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mt-4">Our Achievements</h1>
-    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:rgba(242,217,143,.6);">Every milestone represents real impact for BEED students and future educators.</p>
+    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:#94a3b8;">Every milestone represents real impact for BEED students and future educators at CSAV.</p>
   </div>
 </section>
 
 <!-- ═══════ BIG STATS ═══════ -->
-<section class="stats-bg relative py-20 overflow-hidden">
-  <div class="stats-grid-bg"></div>
+<section class="relative py-20 overflow-hidden" style="background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);">
+  <div class="absolute inset-0" style="opacity:.05;background-image:linear-gradient(rgba(13,148,136,.3) 1px, transparent 1px),linear-gradient(90deg, rgba(13,148,136,.3) 1px, transparent 1px);background-size:48px 48px;"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
       <div class="reveal text-center">
         <p class="stat-number"><span data-target="120" class="count-up">0</span>+</p>
-        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.55);">Students Reached</p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:#64748b;">Students Reached</p>
       </div>
       <div class="reveal d2 text-center">
         <p class="stat-number"><span data-target="350" class="count-up">0</span>+</p>
-        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.55);">Lesson Plans Created</p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:#64748b;">Lesson Plans Created</p>
       </div>
       <div class="reveal d3 text-center">
         <p class="stat-number"><span data-target="8" class="count-up">0</span></p>
-        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.55);">Workshops Held</p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:#64748b;">Workshops Held</p>
       </div>
       <div class="reveal d4 text-center">
         <p class="stat-number"><span data-target="7" class="count-up">0</span></p>
-        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.55);">Subjects Supported</p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:#64748b;">Subjects Supported</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════ ACHIEVEMENTS GRID ═══════ -->
-<section class="py-24" style="background:#faf6f0;">
+<section class="py-24" style="background:#f1f5f9;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#c9a84c;">Key Milestones</p>
-      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-navy-800">What We've Accomplished</h2>
+      <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#0d9488;">Key Milestones</p>
+      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-slate-900">What We've Accomplished</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 
       <div class="reveal achievement-card">
         <div class="p-8">
-          <div class="achievement-icon-box gold mb-5">
+          <div class="achievement-icon-box teal mb-5">
             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-navy-800 mb-2">Pilot Program Launch</h3>
-          <p class="text-sm leading-relaxed" style="color:#8b8580;">Successfully launched BEEDPORTAL with the CSAV Victoria's BEED program. Students created DepEd-aligned lesson plans within the first week of deployment.</p>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Pilot Program Launch</h3>
+          <p class="text-sm leading-relaxed" style="color:#64748b;">Successfully launched the BEED digital toolkit with the CSAV Victoria's program. Students created DepEd-aligned lesson plans within the first week of deployment.</p>
         </div>
         <div class="px-8 pb-6 mt-auto">
-          <span class="tag tag-gold">Q1 2026</span>
+          <span class="tag tag-teal">Q1 2026</span>
         </div>
       </div>
 
       <div class="reveal d2 achievement-card">
         <div class="p-8">
           <div class="achievement-icon-box navy mb-5">
-            <svg class="w-5 h-5 text-gold-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+            <svg class="w-5 h-5 text-teal-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-navy-800 mb-2">All 7 Core Subjects Covered</h3>
-          <p class="text-sm leading-relaxed" style="color:#8b8580;">Completed DepEd-aligned templates for all seven BEED core subjects — English, Filipino, Mathematics, Science, Social Studies, MAPEH, and EPP.</p>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">All 7 Core Subjects Covered</h3>
+          <p class="text-sm leading-relaxed" style="color:#64748b;">Completed DepEd-aligned templates for all seven BEED core subjects — English, Filipino, Mathematics, Science, Social Studies, MAPEH, and EPP.</p>
         </div>
         <div class="px-8 pb-6 mt-auto">
-          <span class="tag tag-gold">Q1 2026</span>
+          <span class="tag tag-teal">Q1 2026</span>
         </div>
       </div>
 
       <div class="reveal d3 achievement-card">
         <div class="p-8">
-          <div class="achievement-icon-box gold mb-5">
+          <div class="achievement-icon-box teal mb-5">
             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-navy-800 mb-2">Demo Teaching Workshops</h3>
-          <p class="text-sm leading-relaxed" style="color:#8b8580;">Conducted hands-on workshops teaching BEED students how to create effective demonstration plans and deliver engaging lessons during practicum.</p>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Demo Teaching Workshops</h3>
+          <p class="text-sm leading-relaxed" style="color:#64748b;">Conducted hands-on workshops teaching BEED students how to create effective demonstration plans and deliver engaging lessons during practicum.</p>
         </div>
         <div class="px-8 pb-6 mt-auto">
-          <span class="tag tag-gold">Ongoing</span>
+          <span class="tag tag-teal">Ongoing</span>
         </div>
       </div>
 
@@ -229,49 +221,48 @@
 </section>
 
 <!-- ═══════ CSAV BANNER ═══════ -->
-<section class="stats-bg relative py-20 overflow-hidden border-t" style="border-color:rgba(201,168,76,.06);">
-  <div class="stats-grid-bg"></div>
-  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<section class="relative py-20 overflow-hidden" style="background:#f1f5f9;border-top:1px solid #e2e8f0;">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <div class="reveal-scale" style="opacity:0; transform:scale(.94); transition: opacity .7s ease, transform .7s ease;">
-      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-white mb-4">
-        <span class="grad-text">BEEDPORTAL</span> — Your Teaching Toolkit
+      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+        CSAV — Department of Elementary Education
       </h2>
-      <p class="mb-8 text-lg max-w-2xl mx-auto leading-relaxed" style="color:rgba(242,217,143,.6);">
+      <p class="mb-8 text-lg max-w-2xl mx-auto leading-relaxed" style="color:#64748b;">
         Every field study template, lesson plan builder, and teaching tool — designed around the real needs of BEED students preparing for their practicum.
       </p>
       <div class="flex flex-wrap justify-center gap-3">
-        <span class="tag tag-gold-light">CSAV Victoria's</span>
-        <span class="tag tag-gold-light">DepEd K-12 Aligned</span>
-        <span class="tag tag-gold-light">All 7 Core Subjects</span>
-        <span class="tag tag-gold-light">Grades K–6</span>
-        <span class="tag tag-gold-light">Print-Ready Format</span>
-        <span class="tag tag-gold-light">4A's &amp; 5E's Templates</span>
+        <span class="tag tag-teal">CSAV Victoria's</span>
+        <span class="tag tag-teal">DepEd K-12 Aligned</span>
+        <span class="tag tag-teal">All 7 Core Subjects</span>
+        <span class="tag tag-teal">Grades K–6</span>
+        <span class="tag tag-teal">BEED Program</span>
+        <span class="tag tag-teal">4-Year Curriculum</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════ FOOTER ═══════ -->
-<footer style="background:#070e1a;">
+<footer style="background:#0f172a;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="reveal flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
       <div class="flex items-center gap-3">
-        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-10 h-10 rounded-xl object-cover" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
+        <img src="beedportal-logo.png" alt="CSAV" class="w-10 h-10 rounded-xl object-cover" style="box-shadow:0 2px 8px rgba(13,148,136,.25);">
         <div>
-          <p class="text-white font-bold text-lg leading-none display-heading">BEEDPORTAL</p>
-          <p class="text-xs mt-0.5" style="color:#6b6760;">Plan Smart. Teach Better.</p>
+          <p class="text-white font-bold text-lg leading-none display-heading">CSAV</p>
+          <p class="text-xs mt-0.5" style="color:#64748b;">Department of Elementary Education</p>
         </div>
       </div>
       <nav class="flex flex-wrap gap-x-7 gap-y-2 text-sm">
         <a href="index.html" class="footer-link">Home</a>
         <a href="about.html" class="footer-link">About</a>
         <a href="events.html" class="footer-link">Events</a>
-        <a href="achievements.html" class="footer-link" style="color:#c9a84c;">Achievements</a>
+        <a href="achievements.html" class="footer-link" style="color:#5eead4;">Achievements</a>
         <a href="contact.html" class="footer-link">Contact</a>
       </nav>
     </div>
-    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(201,168,76,.06);">
-      <p class="text-xs" style="color:#4a4540;">BEEDPORTAL &copy; 2026 — Built for BEED Students at CSAV Victoria's</p>
+    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(13,148,136,.08);">
+      <p class="text-xs" style="color:#475569;">CSAV Department of Elementary Education &copy; 2026 — Victorias City, Negros Occidental</p>
     </div>
   </div>
 </footer>
@@ -322,9 +313,7 @@
       countObserver.unobserve(el);
     });
   }, { threshold: 0.5 });
-  document.querySelectorAll('[data-target]').forEach(function(el) {
-    countObserver.observe(el);
-  });
+  document.querySelectorAll('[data-target]').forEach(function(el) { countObserver.observe(el); });
 
   var nav = document.getElementById('main-nav');
   window.addEventListener('scroll', function() {

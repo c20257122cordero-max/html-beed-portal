@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BEEDPORTAL — Events</title>
-  <meta name="description" content="Stay updated with BEEDPORTAL's upcoming events — practicum orientations, demo teaching workshops, and lesson plan writing seminars." />
+  <title>Events — CSAV Department of Elementary Education</title>
+  <meta name="description" content="Stay updated with the latest events from the CSAV Department of Elementary Education — orientations, workshops, and seminars for BEED students." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +20,8 @@
             sans: ['Inter', 'ui-sans-serif', 'system-ui'],
           },
           colors: {
-            navy: { 50:'#f0f3f9',100:'#dce3f0',200:'#b9c8e1',300:'#8fa6cc',400:'#6382b3',500:'#4a6b9e',600:'#3a5585',700:'#2f456d',800:'#0f1b2d',900:'#0a1322' },
-            gold:  { 50:'#fdf8ed',100:'#f9edcc',200:'#f2d98f',300:'#e8c45a',400:'#d9b14a',500:'#c9a84c',600:'#a8843a',700:'#8a682f',800:'#6f5228',900:'#5a4322' },
-            cream: '#faf6f0',
+            teal: { 50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',300:'#5eead4',400:'#2dd4bf',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a' },
+            slate: { 50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1',400:'#94a3b8',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a' },
           },
         },
       },
@@ -33,24 +32,25 @@
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
-    ::selection { background: rgba(201,168,76,.3); color: #0f1b2d; }
+    ::selection { background: rgba(13,148,136,.2); color: #0f172a; }
     .display-heading { font-family: 'Playfair Display', Georgia, serif; }
 
-    #main-nav { background: rgba(10,19,34,.75); backdrop-filter: blur(14px); }
-    #main-nav.scrolled { background: rgba(10,19,34,.95) !important; box-shadow: 0 2px 24px rgba(0,0,0,.3); }
-    .nav-link { position: relative; font-weight: 500; transition: color .2s ease; }
-    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#c9a84c; transition: width .25s ease; }
+    #main-nav { background: rgba(255,255,255,.88); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: background .3s ease, border-color .3s ease, box-shadow .3s ease; }
+    #main-nav.scrolled { background: rgba(255,255,255,.98) !important; border-bottom-color: #e2e8f0; box-shadow: 0 1px 12px rgba(0,0,0,.04); }
+    .nav-link { position: relative; font-weight: 500; color: #475569; transition: color .2s ease; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#0d9488; transition: width .25s ease; }
+    .nav-link:hover { color:#0f172a; }
     .nav-link:hover::after { width:100%; }
-    .nav-link.nav-active { color:#c9a84c; }
+    .nav-link.nav-active { color:#0d9488; }
     .nav-link.nav-active::after { width:100%; }
 
     .page-header {
       padding-top: 96px;
-      background: linear-gradient(135deg, rgba(15,27,45,.82), rgba(26,45,74,.75), rgba(15,27,45,.85)), url('mpfgtaqk-image.png') center/cover fixed;
+      background: linear-gradient(135deg, rgba(15,23,42,.78), rgba(30,41,59,.68), rgba(15,23,42,.82)), url('mpfgtaqk-image.png') center/cover fixed;
     }
     .page-grid-bg {
       position:absolute; inset:0; opacity:.06;
-      background-image: linear-gradient(rgba(201,168,76,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.3) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(13,148,136,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(13,148,136,.3) 1px, transparent 1px);
       background-size: 48px 48px;
     }
 
@@ -59,70 +59,73 @@
     .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
 
     .event-card {
-      background:#fff; border:1px solid rgba(201,168,76,.10); border-radius:1.5rem;
+      background:#fff; border:1px solid #e2e8f0; border-radius:1.25rem;
       overflow:hidden; display:flex; flex-direction:column;
-      transition: transform .3s ease, box-shadow .3s ease;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
     }
-    .event-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(15,27,45,.06); }
+    .event-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(15,23,42,.05); border-color: #99f6e4; }
     .event-header { padding:1.25rem 1.5rem; display:flex; align-items:center; gap:1rem; }
-    .event-header.navy { background: linear-gradient(135deg,#0f1b2d,#1a2d4a); }
-    .event-header.mid-navy { background: linear-gradient(135deg,#1a2d4a,#2f456d); }
-    .event-date-box { text-align:center; padding:.75rem 1rem; border-radius:1rem; min-width:64px; background:rgba(201,168,76,.12); border:1px solid rgba(201,168,76,.2); }
+    .event-header.dark { background: linear-gradient(135deg,#0f172a,#1e293b); }
+    .event-header.mid { background: linear-gradient(135deg,#1e293b,#334155); }
+    .event-date-box { text-align:center; padding:.75rem 1rem; border-radius:1rem; min-width:64px; background:rgba(13,148,136,.12); border:1px solid rgba(13,148,136,.2); }
     .event-date-num { display:block; font-size:1.75rem; font-weight:800; color:#fff; line-height:1.1; }
-    .event-date-month { display:block; font-size:.6875rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#f2d98f; margin-top:.125rem; }
+    .event-date-month { display:block; font-size:.6875rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#5eead4; margin-top:.125rem; }
     .event-status { display:flex; align-items:center; gap:.375rem; }
-    .event-status-dot { width:.5rem; height:.5rem; border-radius:50%; background:#c9a84c; }
+    .event-status-dot { width:.5rem; height:.5rem; border-radius:50%; background:#5eead4; }
 
     .learn-link {
       display:inline-flex; align-items:center; gap:.375rem;
-      font-size:.875rem; font-weight:600; color:#c9a84c;
+      font-size:.875rem; font-weight:600; color:#0d9488;
       transition: color .2s ease;
     }
-    .learn-link:hover { color:#8a682f; }
+    .learn-link:hover { color:#0f766e; }
     .learn-link svg { transition: transform .2s ease; }
     .learn-link:hover svg { transform: translateX(3px); }
 
-    .footer-link { color:#6b6760; transition: color .2s ease; }
-    .footer-link:hover { color:#c9a84c; }
+    .footer-link { color:#94a3b8; transition: color .2s ease; }
+    .footer-link:hover { color:#5eead4; }
 
     ::-webkit-scrollbar { width:5px; }
     ::-webkit-scrollbar-track { background:transparent; }
-    ::-webkit-scrollbar-thumb { background:#c9a84c; border-radius:99px; }
+    ::-webkit-scrollbar-thumb { background:#0d9488; border-radius:99px; }
 
-    #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(10,19,34,.98); }
+    #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(255,255,255,.98); }
     #mobile-menu.open { max-height:320px; }
   </style>
 </head>
-<body class="bg-cream text-navy-900 antialiased">
+<body class="bg-slate-50 text-slate-900 antialiased">
 
-<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
-        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-9 h-9 rounded-xl object-cover" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
-        <span class="text-white font-bold text-lg tracking-tight display-heading">BEEDPORTAL</span>
+        <img src="beedportal-logo.png" alt="CSAV" class="w-9 h-9 rounded-xl object-cover" style="box-shadow:0 2px 8px rgba(13,148,136,.25);">
+        <div>
+          <span class="font-bold text-sm leading-none tracking-tight display-heading" style="color:#0f172a;">CSAV</span>
+          <span class="text-xs leading-none block mt-0.5" style="color:#64748b;">Elementary Education</span>
+        </div>
       </a>
-      <div class="hidden md:flex items-center gap-6 text-sm text-gold-200">
-        <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
-        <a href="about.html" class="nav-link hover:text-white transition-colors">About</a>
+      <div class="hidden md:flex items-center gap-6 text-sm">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
         <a href="events.html" class="nav-link nav-active">Events</a>
-        <a href="achievements.html" class="nav-link hover:text-white transition-colors">Achievements</a>
-        <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
+        <a href="achievements.html" class="nav-link">Achievements</a>
+        <a href="contact.html" class="nav-link">Contact</a>
       </div>
       <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
-        class="md:hidden p-2 rounded-lg text-gold-200 hover:text-white hover:bg-white/10 transition-colors">
+        class="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">
         <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
-  <div id="mobile-menu" class="md:hidden border-t border-white/10">
-    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-gold-200">
-      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Home</a>
-      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">About</a>
-      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10" style="color:#c9a84c;">Events</a>
-      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Achievements</a>
-      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Contact</a>
+  <div id="mobile-menu" class="md:hidden border-t border-slate-200">
+    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-slate-600">
+      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Home</a>
+      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">About</a>
+      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50" style="color:#0d9488;">Events</a>
+      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Achievements</a>
+      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Contact</a>
     </div>
   </div>
 </nav>
@@ -132,35 +135,35 @@
   <div class="page-grid-bg"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
-         style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:#f2d98f;">
+         style="background:rgba(13,148,136,.15);border:1px solid rgba(13,148,136,.25);color:#5eead4;">
       Mark Your Calendar
     </div>
     <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mt-4">Upcoming Events</h1>
-    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:rgba(242,217,143,.6);">Stay updated with the latest activities and workshops for BEED students.</p>
+    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:#94a3b8;">Stay updated with the latest activities and workshops for BEED students at CSAV.</p>
   </div>
 </section>
 
 <!-- ═══════ EVENTS ═══════ -->
-<section class="py-24" style="background:#faf6f0;">
+<section class="py-24" style="background:#f1f5f9;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
       <article class="event-card reveal">
-        <div class="event-header navy">
+        <div class="event-header dark">
           <div class="event-date-box">
             <span class="event-date-num">20</span>
             <span class="event-date-month">May</span>
           </div>
           <div>
-            <span style="color:rgba(242,217,143,.65);" class="text-sm font-semibold">2026</span>
+            <span style="color:#94a3b8;" class="text-sm font-semibold">2026</span>
             <div class="event-status mt-1">
               <span class="event-status-dot"></span>
-              <span class="text-xs font-medium" style="color:rgba(242,217,143,.55);">Upcoming</span>
+              <span class="text-xs font-medium" style="color:#94a3b8;">Upcoming</span>
             </div>
           </div>
         </div>
         <div class="p-6 flex flex-col flex-1">
-          <h3 class="text-lg font-bold text-navy-800 mb-2">BEED Practicum Orientation</h3>
-          <p class="text-sm leading-relaxed flex-1" style="color:#8b8580;">Orientation for all BEED students on practicum requirements, schedules, and expectations from cooperating schools.</p>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">BEED Practicum Orientation</h3>
+          <p class="text-sm leading-relaxed flex-1" style="color:#64748b;">Orientation for all BEED students on practicum requirements, schedules, and expectations from cooperating schools.</p>
           <a href="contact.html" class="learn-link mt-5">
             Learn More
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
@@ -169,22 +172,22 @@
       </article>
 
       <article class="event-card reveal d2">
-        <div class="event-header mid-navy">
+        <div class="event-header mid">
           <div class="event-date-box">
             <span class="event-date-num">5</span>
             <span class="event-date-month">Jun</span>
           </div>
           <div>
-            <span style="color:rgba(242,217,143,.65);" class="text-sm font-semibold">2026</span>
+            <span style="color:#94a3b8;" class="text-sm font-semibold">2026</span>
             <div class="event-status mt-1">
               <span class="event-status-dot"></span>
-              <span class="text-xs font-medium" style="color:rgba(242,217,143,.55);">Upcoming</span>
+              <span class="text-xs font-medium" style="color:#94a3b8;">Upcoming</span>
             </div>
           </div>
         </div>
         <div class="p-6 flex flex-col flex-1">
-          <h3 class="text-lg font-bold text-navy-800 mb-2">Demo Teaching Workshop</h3>
-          <p class="text-sm leading-relaxed flex-1" style="color:#8b8580;">Hands-on workshop on creating effective teaching demonstration plans and delivering engaging classroom lessons.</p>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Demo Teaching Workshop</h3>
+          <p class="text-sm leading-relaxed flex-1" style="color:#64748b;">Hands-on workshop on creating effective teaching demonstration plans and delivering engaging classroom lessons.</p>
           <a href="contact.html" class="learn-link mt-5">
             Learn More
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
@@ -193,22 +196,22 @@
       </article>
 
       <article class="event-card reveal d3">
-        <div class="event-header navy">
+        <div class="event-header dark">
           <div class="event-date-box">
             <span class="event-date-num">15</span>
             <span class="event-date-month">Jun</span>
           </div>
           <div>
-            <span style="color:rgba(242,217,143,.65);" class="text-sm font-semibold">2026</span>
+            <span style="color:#94a3b8;" class="text-sm font-semibold">2026</span>
             <div class="event-status mt-1">
               <span class="event-status-dot"></span>
-              <span class="text-xs font-medium" style="color:rgba(242,217,143,.55);">Upcoming</span>
+              <span class="text-xs font-medium" style="color:#94a3b8;">Upcoming</span>
             </div>
           </div>
         </div>
         <div class="p-6 flex flex-col flex-1">
-          <h3 class="text-lg font-bold text-navy-800 mb-2">Lesson Plan Writing Seminar</h3>
-          <p class="text-sm leading-relaxed flex-1" style="color:#8b8580;">Learn how to write DepEd-compliant Detailed Lesson Plans from experienced educators and master teachers.</p>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Lesson Plan Writing Seminar</h3>
+          <p class="text-sm leading-relaxed flex-1" style="color:#64748b;">Learn how to write DepEd-compliant Detailed Lesson Plans from experienced educators and master teachers.</p>
           <a href="contact.html" class="learn-link mt-5">
             Learn More
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
@@ -220,26 +223,26 @@
 </section>
 
 <!-- ═══════ FOOTER ═══════ -->
-<footer style="background:#070e1a;">
+<footer style="background:#0f172a;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="reveal flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
       <div class="flex items-center gap-3">
-        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-10 h-10 rounded-xl object-cover" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
+        <img src="beedportal-logo.png" alt="CSAV" class="w-10 h-10 rounded-xl object-cover" style="box-shadow:0 2px 8px rgba(13,148,136,.25);">
         <div>
-          <p class="text-white font-bold text-lg leading-none display-heading">BEEDPORTAL</p>
-          <p class="text-xs mt-0.5" style="color:#6b6760;">Plan Smart. Teach Better.</p>
+          <p class="text-white font-bold text-lg leading-none display-heading">CSAV</p>
+          <p class="text-xs mt-0.5" style="color:#64748b;">Department of Elementary Education</p>
         </div>
       </div>
       <nav class="flex flex-wrap gap-x-7 gap-y-2 text-sm">
         <a href="index.html" class="footer-link">Home</a>
         <a href="about.html" class="footer-link">About</a>
-        <a href="events.html" class="footer-link" style="color:#c9a84c;">Events</a>
+        <a href="events.html" class="footer-link" style="color:#5eead4;">Events</a>
         <a href="achievements.html" class="footer-link">Achievements</a>
         <a href="contact.html" class="footer-link">Contact</a>
       </nav>
     </div>
-    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(201,168,76,.06);">
-      <p class="text-xs" style="color:#4a4540;">BEEDPORTAL &copy; 2026 — Built for BEED Students at CSAV Victoria's</p>
+    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(13,148,136,.08);">
+      <p class="text-xs" style="color:#475569;">CSAV Department of Elementary Education &copy; 2026 — Victorias City, Negros Occidental</p>
     </div>
   </div>
 </footer>
