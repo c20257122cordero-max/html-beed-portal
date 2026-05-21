@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BEEDPORTAL — About</title>
+  <meta name="description" content="Learn about BEEDPORTAL — the DepEd-ready teaching toolkit built for BEED students at CSAV Victoria's. Our mission, vision, and story." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+          },
+          colors: {
+            navy: { 50:'#f0f3f9',100:'#dce3f0',200:'#b9c8e1',300:'#8fa6cc',400:'#6382b3',500:'#4a6b9e',600:'#3a5585',700:'#2f456d',800:'#0f1b2d',900:'#0a1322' },
+            gold:  { 50:'#fdf8ed',100:'#f9edcc',200:'#f2d98f',300:'#e8c45a',400:'#d9b14a',500:'#c9a84c',600:'#a8843a',700:'#8a682f',800:'#6f5228',900:'#5a4322' },
+            cream: '#faf6f0',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(201,168,76,.3); color: #0f1b2d; }
+    .display-heading { font-family: 'Playfair Display', Georgia, serif; }
+
+    #main-nav { background: rgba(10,19,34,.75); backdrop-filter: blur(14px); }
+    #main-nav.scrolled { background: rgba(10,19,34,.95) !important; box-shadow: 0 2px 24px rgba(0,0,0,.3); }
+    .nav-link { position: relative; font-weight: 500; transition: color .2s ease; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#c9a84c; transition: width .25s ease; }
+    .nav-link:hover::after { width:100%; }
+    .nav-link.nav-active { color:#c9a84c; }
+    .nav-link.nav-active::after { width:100%; }
+
+    .page-header {
+      padding-top: 96px;
+      background: linear-gradient(135deg, rgba(15,27,45,.82), rgba(26,45,74,.75), rgba(15,27,45,.85)), url('mpfgtaqk-image.png') center/cover fixed;
+    }
+    .page-grid-bg {
+      position:absolute; inset:0; opacity:.06;
+      background-image: linear-gradient(rgba(201,168,76,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.3) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .stats-bg { background: linear-gradient(135deg,#0f1b2d,#1a2d4a,#0f1b2d); }
+    .stats-grid-bg { position:absolute; inset:0; opacity:.06; background-image: linear-gradient(rgba(201,168,76,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.3) 1px, transparent 1px); background-size: 48px 48px; }
+
+    .reveal { opacity:0; transform:translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; } .d4 { transition-delay:.4s; }
+
+    .grad-text {
+      background: linear-gradient(135deg,#c9a84c,#e8c45a,#f2d98f,#c9a84c);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% center; } }
+
+    .tag { display:inline-block; padding:.25rem .75rem; border-radius:999px; font-size:.75rem; font-weight:600; letter-spacing:.02em; }
+    .tag-gold { background:rgba(201,168,76,.12); color:#8a682f; }
+    .tag-gold-light { background:rgba(201,168,76,.15); color:#f2d98f; }
+
+    .feature-card {
+      background:#fff; border:1px solid rgba(201,168,76,.12); border-radius:1.5rem; padding:2rem;
+      display:flex; flex-direction:column; transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(15,27,45,.06); }
+    .feature-card .icon-box {
+      width:3rem; height:3rem; border-radius:.875rem;
+      display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem; flex-shrink:0;
+      background: linear-gradient(135deg,#3a5585,#0f1b2d);
+    }
+
+    .timeline-line {
+      position:absolute; left:1.25rem; top:0; bottom:0;
+      width:2px;
+      background: linear-gradient(180deg,#c9a84c,#f2d98f,#c9a84c);
+    }
+    .timeline-dot {
+      width:2.5rem; height:2.5rem; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+      background: linear-gradient(135deg,#c9a84c,#8a682f);
+      color:#fff; font-weight:800; font-size:.875rem;
+    }
+
+    .footer-link { color:#6b6760; transition: color .2s ease; }
+    .footer-link:hover { color:#c9a84c; }
+
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-track { background:transparent; }
+    ::-webkit-scrollbar-thumb { background:#c9a84c; border-radius:99px; }
+
+    #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(10,19,34,.98); }
+    #mobile-menu.open { max-height:320px; }
+  </style>
+</head>
+<body class="bg-cream text-navy-900 antialiased">
+
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
+        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-9 h-9 rounded-xl object-cover" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
+        <span class="text-white font-bold text-lg tracking-tight display-heading">BEEDPORTAL</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-gold-200">
+        <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
+        <a href="about.html" class="nav-link nav-active">About</a>
+        <a href="events.html" class="nav-link hover:text-white transition-colors">Events</a>
+        <a href="achievements.html" class="nav-link hover:text-white transition-colors">Achievements</a>
+        <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
+      </div>
+      <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
+        class="md:hidden p-2 rounded-lg text-gold-200 hover:text-white hover:bg-white/10 transition-colors">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden border-t border-white/10">
+    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-gold-200">
+      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Home</a>
+      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10" style="color:#c9a84c;">About</a>
+      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Events</a>
+      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Achievements</a>
+      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════ PAGE HEADER ═══════ -->
+<section class="page-header relative overflow-hidden">
+  <div class="page-grid-bg"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
+         style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:#f2d98f;">
+      About BEEDPORTAL
+    </div>
+    <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mt-4">Built for BEED Students</h1>
+    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:rgba(242,217,143,.6);">Purpose-built tools that match exactly what you need during field study and practicum.</p>
+  </div>
+</section>
+
+<!-- ═══════ MISSION & VISION ═══════ -->
+<section class="py-20" style="background:#fff;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(201,168,76,.12);">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#c9a84c;"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h2 class="display-heading text-2xl font-bold text-navy-800">Our Mission</h2>
+        </div>
+        <p class="text-base leading-relaxed" style="color:#6b6760;">
+          To empower BEED students at CSAV Victoria's with a unified digital platform that simplifies lesson planning, demonstration preparation, and practicum documentation — so they can focus on becoming effective educators instead of wrestling with document formats.
+        </p>
+      </div>
+      <div class="reveal d2">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(201,168,76,.12);">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#c9a84c;"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <h2 class="display-heading text-2xl font-bold text-navy-800">Our Vision</h2>
+        </div>
+        <p class="text-base leading-relaxed" style="color:#6b6760;">
+          A future where every BEED student steps into their practicum with confidence — armed with well-structured, DepEd-aligned lesson plans and a clear roadmap for their teaching demonstration.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ OUR STORY ═══════ -->
+<section class="py-20" style="background:#faf6f0;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal max-w-3xl mx-auto text-center mb-16">
+      <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#c9a84c;">Our Story</p>
+      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-navy-800 mb-6">Why We Built BEEDPORTAL</h2>
+      <p class="text-base leading-relaxed" style="color:#6b6760;">
+        BEEDPORTAL started with a simple observation: BEED students at CSAV Victoria's were spending more time formatting lesson plans than actually planning how to teach. Templates were scattered across different sources — some DepEd-compliant, some not. There was no central place to create, save, and reuse lesson plans.
+      </p>
+      <p class="text-base leading-relaxed mt-4" style="color:#6b6760;">
+        We built BEEDPORTAL to solve exactly that. One platform. Every template a BEED student needs. Guided workflows for lesson plans, demonstration outlines, and practicum materials. All backed by DepEd standards and designed around the real curriculum of the BEED program.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      <div class="reveal feature-card text-center items-center">
+        <div class="icon-box">
+          <svg class="w-5 h-5 text-gold-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-navy-800 mb-2">DepEd-Aligned</h3>
+        <p class="text-sm leading-relaxed" style="color:#8b8580;">Every template follows the official DepEd Detailed Lesson Plan structure — no guesswork, no reformatting.</p>
+      </div>
+      <div class="reveal d2 feature-card text-center items-center">
+        <div class="icon-box">
+          <svg class="w-5 h-5 text-gold-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-navy-800 mb-2">Time-Saving</h3>
+        <p class="text-sm leading-relaxed" style="color:#8b8580;">Create a complete lesson plan in minutes instead of hours. Save templates and reuse them across subjects and grade levels.</p>
+      </div>
+      <div class="reveal d3 feature-card text-center items-center">
+        <div class="icon-box">
+          <svg class="w-5 h-5 text-gold-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-navy-800 mb-2">Practicum-Ready</h3>
+        <p class="text-sm leading-relaxed" style="color:#8b8580;">Designed specifically for field study and practice teaching requirements — from demo outlines to completed DLPs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ TIMELINE ═══════ -->
+<section class="stats-bg relative py-20 overflow-hidden">
+  <div class="stats-grid-bg"></div>
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#c9a84c;">Our Journey</p>
+      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-white">BEEDPORTAL Timeline</h2>
+    </div>
+    <div class="relative pl-14">
+      <div class="timeline-line"></div>
+
+      <div class="reveal relative mb-12">
+        <div class="timeline-dot" style="position:absolute;left:-3rem;">1</div>
+        <div class="pl-4">
+          <p class="text-sm font-bold" style="color:#c9a84c;">Phase 1</p>
+          <h3 class="text-xl font-bold text-white mt-1">Research & Discovery</h3>
+          <p class="text-sm mt-2 leading-relaxed" style="color:rgba(242,217,143,.55);">Interviewed BEED students and cooperating teachers to understand the real pain points in lesson planning and practicum preparation.</p>
+        </div>
+      </div>
+
+      <div class="reveal d2 relative mb-12">
+        <div class="timeline-dot" style="position:absolute;left:-3rem;">2</div>
+        <div class="pl-4">
+          <p class="text-sm font-bold" style="color:#c9a84c;">Phase 2</p>
+          <h3 class="text-xl font-bold text-white mt-1">Platform Development</h3>
+          <p class="text-sm mt-2 leading-relaxed" style="color:rgba(242,217,143,.55);">Built the core platform with DepEd-aligned templates, lesson plan builder, and demo teaching planner — tested with real BEED students.</p>
+        </div>
+      </div>
+
+      <div class="reveal d3 relative mb-12">
+        <div class="timeline-dot" style="position:absolute;left:-3rem;">3</div>
+        <div class="pl-4">
+          <p class="text-sm font-bold" style="color:#c9a84c;">Phase 3</p>
+          <h3 class="text-xl font-bold text-white mt-1">Pilot Launch</h3>
+          <p class="text-sm mt-2 leading-relaxed" style="color:rgba(242,217,143,.55);">Launched with CSAV Victoria's BEED program — students creating real lesson plans and demo outlines within the first week.</p>
+        </div>
+      </div>
+
+      <div class="reveal d4 relative">
+        <div class="timeline-dot" style="position:absolute;left:-3rem;">4</div>
+        <div class="pl-4">
+          <p class="text-sm font-bold" style="color:#c9a84c;">Phase 4</p>
+          <h3 class="text-xl font-bold text-white mt-1">Expansion & Refinement</h3>
+          <p class="text-sm mt-2 leading-relaxed" style="color:rgba(242,217,143,.55);">Adding more templates, improving workflows, and expanding to serve more BEED students across additional year levels.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer style="background:#070e1a;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="reveal flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
+      <div class="flex items-center gap-3">
+        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-10 h-10 rounded-xl object-cover" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
+        <div>
+          <p class="text-white font-bold text-lg leading-none display-heading">BEEDPORTAL</p>
+          <p class="text-xs mt-0.5" style="color:#6b6760;">Plan Smart. Teach Better.</p>
+        </div>
+      </div>
+      <nav class="flex flex-wrap gap-x-7 gap-y-2 text-sm">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link" style="color:#c9a84c;">About</a>
+        <a href="events.html" class="footer-link">Events</a>
+        <a href="achievements.html" class="footer-link">Achievements</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </nav>
+    </div>
+    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(201,168,76,.06);">
+      <p class="text-xs" style="color:#4a4540;">BEEDPORTAL &copy; 2026 — Built for BEED Students at CSAV Victoria's</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  window.toggleMenu = function() {
+    var menu = document.getElementById('mobile-menu');
+    var btn = document.getElementById('hamburger-btn');
+    var open = document.getElementById('icon-open');
+    var close = document.getElementById('icon-close');
+    var isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open');
+    open.classList.toggle('hidden', isOpen);
+    close.classList.toggle('hidden', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  };
+  window.closeMenu = function() {
+    var menu = document.getElementById('mobile-menu');
+    var open = document.getElementById('icon-open');
+    var close = document.getElementById('icon-close');
+    menu.classList.remove('open');
+    open.classList.remove('hidden');
+    close.classList.add('hidden');
+    document.getElementById('hamburger-btn').setAttribute('aria-expanded','false');
+  };
+  window.addEventListener('resize', function() { if (window.innerWidth >= 768) window.closeMenu(); });
+
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+
+  var nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BEEDPORTAL — How It Works</title>
-  <meta name="description" content="Get started with BEEDPORTAL in 3 simple steps — pick a template, build your plan, export and submit." />
+  <title>BEEDPORTAL — Achievements</title>
+  <meta name="description" content="BEEDPORTAL milestones and achievements — see how many students we've helped, templates created, and workshops delivered." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,9 +58,7 @@
 
     .reveal { opacity:0; transform:translateY(28px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity:1; transform:none; }
-    .reveal-scale { opacity:0; transform:scale(.94); transition: opacity .7s ease, transform .7s ease; }
-    .reveal-scale.visible { opacity:1; transform:scale(1); }
-    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
+    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; } .d4 { transition-delay:.4s; }
 
     .grad-text {
       background: linear-gradient(135deg,#c9a84c,#e8c45a,#f2d98f,#c9a84c);
@@ -71,28 +69,29 @@
     }
     @keyframes shimmer { to { background-position: 200% center; } }
 
-    .step-card {
-      display: flex; flex-direction: column; align-items: center; text-align: center;
-      padding: 2rem; border-radius: 1.5rem; border: 1px solid rgba(201,168,76,.12);
+    .stat-number {
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 800;
+      color: #f2d98f;
+      line-height: 1.1;
+      font-family: 'Playfair Display', Georgia, serif;
     }
-    .step-card.highlight { background: rgba(201,168,76,.06); }
-    .step-number {
-      width: 3.5rem; height: 3.5rem; border-radius: 1rem;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.375rem; font-weight: 800; color: #fff;
-      background: linear-gradient(135deg,#c9a84c,#8a682f);
-      box-shadow: 0 6px 16px rgba(201,168,76,.25);
-      margin-bottom: 1rem;
-    }
-    .step-icon-box {
-      width: 2.75rem; height: 2.75rem; border-radius: 0.875rem;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1rem;
-      background: #fff; border: 1px solid rgba(201,168,76,.12);
-    }
-
     .tag { display:inline-block; padding:.25rem .75rem; border-radius:999px; font-size:.75rem; font-weight:600; letter-spacing:.02em; }
+    .tag-gold { background:rgba(201,168,76,.12); color:#8a682f; }
     .tag-gold-light { background:rgba(201,168,76,.15); color:#f2d98f; }
+
+    .achievement-card {
+      background:#fff; border:1px solid rgba(201,168,76,.12); border-radius:1.5rem;
+      overflow:hidden; display:flex; flex-direction:column;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .achievement-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(15,27,45,.06); }
+    .achievement-icon-box {
+      width:3rem; height:3rem; border-radius:.875rem;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .achievement-icon-box.gold { background: linear-gradient(135deg,#c9a84c,#8a682f); }
+    .achievement-icon-box.navy { background: linear-gradient(135deg,#3a5585,#0f1b2d); }
 
     .footer-link { color:#6b6760; transition: color .2s ease; }
     .footer-link:hover { color:#c9a84c; }
@@ -103,20 +102,6 @@
 
     #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(10,19,34,.98); }
     #mobile-menu.open { max-height:320px; }
-
-    .step-connector { display:none; }
-    @media (min-width: 768px) {
-      .step-connector {
-        display: block;
-        position: absolute;
-        top: 3rem;
-        left: calc(16.67% + 2rem);
-        right: calc(16.67% + 2rem);
-        height: 2px;
-        background: linear-gradient(90deg,#c9a84c,#f2d98f,#c9a84c);
-        z-index: 0;
-      }
-    }
   </style>
 </head>
 <body class="bg-cream text-navy-900 antialiased">
@@ -132,7 +117,7 @@
         <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
         <a href="about.html" class="nav-link hover:text-white transition-colors">About</a>
         <a href="events.html" class="nav-link hover:text-white transition-colors">Events</a>
-        <a href="achievements.html" class="nav-link hover:text-white transition-colors">Achievements</a>
+        <a href="achievements.html" class="nav-link nav-active">Achievements</a>
         <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
       </div>
       <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
@@ -147,7 +132,7 @@
       <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Home</a>
       <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">About</a>
       <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Events</a>
-      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Achievements</a>
+      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10" style="color:#c9a84c;">Achievements</a>
       <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Contact</a>
     </div>
   </div>
@@ -159,54 +144,95 @@
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
          style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:#f2d98f;">
-      Simple Process
+      Milestones
     </div>
-    <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mt-4">Ready in 3 Easy Steps</h1>
-    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:rgba(242,217,143,.6);">From choosing a template to a polished, print-ready lesson plan in minutes.</p>
+    <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mt-4">Our Achievements</h1>
+    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:rgba(242,217,143,.6);">Every milestone represents real impact for BEED students and future educators.</p>
   </div>
 </section>
 
-<!-- ═══════ STEPS ═══════ -->
-<section class="py-24" style="background:#fff;">
+<!-- ═══════ BIG STATS ═══════ -->
+<section class="stats-bg relative py-20 overflow-hidden">
+  <div class="stats-grid-bg"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+      <div class="reveal text-center">
+        <p class="stat-number"><span data-target="120" class="count-up">0</span>+</p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.55);">Students Reached</p>
+      </div>
+      <div class="reveal d2 text-center">
+        <p class="stat-number"><span data-target="350" class="count-up">0</span>+</p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.55);">Lesson Plans Created</p>
+      </div>
+      <div class="reveal d3 text-center">
+        <p class="stat-number"><span data-target="8" class="count-up">0</span></p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.55);">Workshops Held</p>
+      </div>
+      <div class="reveal d4 text-center">
+        <p class="stat-number"><span data-target="7" class="count-up">0</span></p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.55);">Subjects Supported</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ACHIEVEMENTS GRID ═══════ -->
+<section class="py-24" style="background:#faf6f0;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 relative">
-      <div class="step-connector"></div>
+    <div class="text-center mb-16">
+      <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#c9a84c;">Key Milestones</p>
+      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-navy-800">What We've Accomplished</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 
-      <div class="step-card highlight relative z-10 reveal">
-        <div class="step-number">1</div>
-        <div class="step-icon-box">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#c9a84c;"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+      <div class="reveal achievement-card">
+        <div class="p-8">
+          <div class="achievement-icon-box gold mb-5">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy-800 mb-2">Pilot Program Launch</h3>
+          <p class="text-sm leading-relaxed" style="color:#8b8580;">Successfully launched BEEDPORTAL with the CSAV Victoria's BEED program. Students created DepEd-aligned lesson plans within the first week of deployment.</p>
         </div>
-        <h3 class="text-lg font-bold text-navy-800 mb-2">Pick a Template</h3>
-        <p class="text-sm leading-relaxed" style="color:#8b8580;">Choose from subject-specific DepEd-aligned templates or start fresh. Every format follows the official DLP structure.</p>
+        <div class="px-8 pb-6 mt-auto">
+          <span class="tag tag-gold">Q1 2026</span>
+        </div>
       </div>
 
-      <div class="step-card relative z-10 reveal d2" style="background:rgba(201,168,76,.08);">
-        <div class="step-number">2</div>
-        <div class="step-icon-box">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#c9a84c;"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10"/></svg>
+      <div class="reveal d2 achievement-card">
+        <div class="p-8">
+          <div class="achievement-icon-box navy mb-5">
+            <svg class="w-5 h-5 text-gold-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy-800 mb-2">All 7 Core Subjects Covered</h3>
+          <p class="text-sm leading-relaxed" style="color:#8b8580;">Completed DepEd-aligned templates for all seven BEED core subjects — English, Filipino, Mathematics, Science, Social Studies, MAPEH, and EPP.</p>
         </div>
-        <h3 class="text-lg font-bold text-navy-800 mb-2">Fill Your Plan</h3>
-        <p class="text-sm leading-relaxed" style="color:#8b8580;">Follow the guided sections — Subject Matter, Procedure, Evaluation — and watch your lesson plan build itself as you type.</p>
+        <div class="px-8 pb-6 mt-auto">
+          <span class="tag tag-gold">Q1 2026</span>
+        </div>
       </div>
 
-      <div class="step-card highlight relative z-10 reveal d3">
-        <div class="step-number">3</div>
-        <div class="step-icon-box">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#c9a84c;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+      <div class="reveal d3 achievement-card">
+        <div class="p-8">
+          <div class="achievement-icon-box gold mb-5">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy-800 mb-2">Demo Teaching Workshops</h3>
+          <p class="text-sm leading-relaxed" style="color:#8b8580;">Conducted hands-on workshops teaching BEED students how to create effective demonstration plans and deliver engaging lessons during practicum.</p>
         </div>
-        <h3 class="text-lg font-bold text-navy-800 mb-2">Export &amp; Submit</h3>
-        <p class="text-sm leading-relaxed" style="color:#8b8580;">Print your DepEd-formatted plan and submit with confidence. Your cooperating teacher will see a polished, professional document.</p>
+        <div class="px-8 pb-6 mt-auto">
+          <span class="tag tag-gold">Ongoing</span>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- ═══════ CSAV BANNER ═══════ -->
-<section class="stats-bg relative py-20 overflow-hidden">
+<section class="stats-bg relative py-20 overflow-hidden border-t" style="border-color:rgba(201,168,76,.06);">
   <div class="stats-grid-bg"></div>
   <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div class="reveal-scale">
+    <div class="reveal-scale" style="opacity:0; transform:scale(.94); transition: opacity .7s ease, transform .7s ease;">
       <h2 class="display-heading text-3xl sm:text-4xl font-bold text-white mb-4">
         <span class="grad-text">BEEDPORTAL</span> — Your Teaching Toolkit
       </h2>
@@ -240,7 +266,7 @@
         <a href="index.html" class="footer-link">Home</a>
         <a href="about.html" class="footer-link">About</a>
         <a href="events.html" class="footer-link">Events</a>
-        <a href="achievements.html" class="footer-link">Achievements</a>
+        <a href="achievements.html" class="footer-link" style="color:#c9a84c;">Achievements</a>
         <a href="contact.html" class="footer-link">Contact</a>
       </nav>
     </div>
@@ -279,6 +305,26 @@
     entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal, .reveal-scale').forEach(function(el) { revealObserver.observe(el); });
+
+  var countObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      if (isNaN(target)) return;
+      var current = 0;
+      var step = Math.max(1, Math.floor(target / 50));
+      var timer = setInterval(function() {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = current;
+      }, 20);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-target]').forEach(function(el) {
+    countObserver.observe(el);
+  });
 
   var nav = document.getElementById('main-nav');
   window.addEventListener('scroll', function() {

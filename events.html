@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BEEDPORTAL — Events</title>
+  <meta name="description" content="Stay updated with BEEDPORTAL's upcoming events — practicum orientations, demo teaching workshops, and lesson plan writing seminars." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -25,192 +28,218 @@
       },
     }
   </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(201,168,76,.3); color: #0f1b2d; }
     .display-heading { font-family: 'Playfair Display', Georgia, serif; }
-    .nav-link { position: relative; }
-    .nav-link::after {
-      content:''; position:absolute; bottom:-2px; left:0;
-      width:0; height:2px; background:#c9a84c;
-      transition: width .25s ease;
-    }
+
+    #main-nav { background: rgba(10,19,34,.75); backdrop-filter: blur(14px); }
+    #main-nav.scrolled { background: rgba(10,19,34,.95) !important; box-shadow: 0 2px 24px rgba(0,0,0,.3); }
+    .nav-link { position: relative; font-weight: 500; transition: color .2s ease; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#c9a84c; transition: width .25s ease; }
     .nav-link:hover::after { width:100%; }
-    nav.scrolled { background: rgba(10,19,34,0.95) !important; backdrop-filter: blur(16px); box-shadow: 0 4px 30px rgba(0,0,0,0.35); }
-    .reveal {
-      opacity:0; transform:translateY(36px);
-      transition: opacity .7s ease, transform .7s ease;
+    .nav-link.nav-active { color:#c9a84c; }
+    .nav-link.nav-active::after { width:100%; }
+
+    .page-header {
+      padding-top: 96px;
+      background: linear-gradient(135deg, rgba(15,27,45,.82), rgba(26,45,74,.75), rgba(15,27,45,.85)), url('mpfgtaqk-image.png') center/cover fixed;
     }
+    .page-grid-bg {
+      position:absolute; inset:0; opacity:.06;
+      background-image: linear-gradient(rgba(201,168,76,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.3) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .reveal { opacity:0; transform:translateY(28px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity:1; transform:none; }
-    .s1{transition-delay:.1s;} .s2{transition-delay:.2s;} .s3{transition-delay:.3s;}
-    .tilt-card {
-      transform-style: preserve-3d;
-      transition: transform .08s linear, box-shadow .3s ease;
-      will-change: transform;
+    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
+
+    .event-card {
+      background:#fff; border:1px solid rgba(201,168,76,.10); border-radius:1.5rem;
+      overflow:hidden; display:flex; flex-direction:column;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
-    .tilt-card:hover { box-shadow: 0 24px 50px rgba(15,27,45,.10); }
-    .tilt-inner { transform: translateZ(16px); }
-    #scroll-progress {
-      position:fixed; top:0; left:0; right:0; height:3px; z-index:999;
-      background:linear-gradient(90deg,#c9a84c,#f2d98f);
-      transform-origin:0 50%;
-      scale:0 1;
+    .event-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(15,27,45,.06); }
+    .event-header { padding:1.25rem 1.5rem; display:flex; align-items:center; gap:1rem; }
+    .event-header.navy { background: linear-gradient(135deg,#0f1b2d,#1a2d4a); }
+    .event-header.mid-navy { background: linear-gradient(135deg,#1a2d4a,#2f456d); }
+    .event-date-box { text-align:center; padding:.75rem 1rem; border-radius:1rem; min-width:64px; background:rgba(201,168,76,.12); border:1px solid rgba(201,168,76,.2); }
+    .event-date-num { display:block; font-size:1.75rem; font-weight:800; color:#fff; line-height:1.1; }
+    .event-date-month { display:block; font-size:.6875rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#f2d98f; margin-top:.125rem; }
+    .event-status { display:flex; align-items:center; gap:.375rem; }
+    .event-status-dot { width:.5rem; height:.5rem; border-radius:50%; background:#c9a84c; }
+
+    .learn-link {
+      display:inline-flex; align-items:center; gap:.375rem;
+      font-size:.875rem; font-weight:600; color:#c9a84c;
+      transition: color .2s ease;
     }
-    .section-badge {
-      display:inline-flex; align-items:center; gap:6px;
-      padding:4px 14px; border-radius:99px;
-      font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-    }
+    .learn-link:hover { color:#8a682f; }
+    .learn-link svg { transition: transform .2s ease; }
+    .learn-link:hover svg { transform: translateX(3px); }
+
+    .footer-link { color:#6b6760; transition: color .2s ease; }
+    .footer-link:hover { color:#c9a84c; }
+
     ::-webkit-scrollbar { width:5px; }
     ::-webkit-scrollbar-track { background:transparent; }
     ::-webkit-scrollbar-thumb { background:#c9a84c; border-radius:99px; }
-    .nav-active { color: #c9a84c !important; }
-    .nav-active::after { width: 100% !important; }
-    .page-header {
-      padding-top: 96px;
-      background: linear-gradient(135deg,#0f1b2d 0%,#1a2d4a 50%,#0f1b2d 100%);
-    }
+
+    #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(10,19,34,.98); }
+    #mobile-menu.open { max-height:320px; }
   </style>
 </head>
-<body class="text-navy-900 antialiased bg-cream">
+<body class="bg-cream text-navy-900 antialiased">
 
-<div id="scroll-progress"></div>
-
-<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:rgba(10,19,34,0.75); backdrop-filter:blur(12px);">
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
-        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-9 h-9 rounded-xl object-cover shadow-lg" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
+        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-9 h-9 rounded-xl object-cover" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
         <span class="text-white font-bold text-lg tracking-tight display-heading">BEEDPORTAL</span>
       </a>
-      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gold-200">
+      <div class="hidden md:flex items-center gap-6 text-sm text-gold-200">
         <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
-        <a href="services.html" class="nav-link hover:text-white transition-colors">Services</a>
-        <a href="how-it-works.html" class="nav-link hover:text-white transition-colors">How It Works</a>
-        <a href="events.html" class="nav-link nav-active hover:text-white transition-colors">Events</a>
+        <a href="about.html" class="nav-link hover:text-white transition-colors">About</a>
+        <a href="events.html" class="nav-link nav-active">Events</a>
+        <a href="achievements.html" class="nav-link hover:text-white transition-colors">Achievements</a>
         <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
       </div>
       <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
         class="md:hidden p-2 rounded-lg text-gold-200 hover:text-white hover:bg-white/10 transition-colors">
-        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
-  <div id="mobile-menu" class="md:hidden border-t border-white/10" style="background:rgba(10,19,34,0.97);">
-    <div class="px-4 py-4 flex flex-col gap-1 text-sm font-medium text-gold-200">
-      <a href="index.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">Home</a>
-      <a href="services.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">Services</a>
-      <a href="how-it-works.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">How It Works</a>
-      <a href="events.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors" style="color:#c9a84c;">Events</a>
-      <a href="contact.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">Contact</a>
+  <div id="mobile-menu" class="md:hidden border-t border-white/10">
+    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-gold-200">
+      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Home</a>
+      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">About</a>
+      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10" style="color:#c9a84c;">Events</a>
+      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Achievements</a>
+      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-white hover:bg-white/10">Contact</a>
     </div>
   </div>
 </nav>
 
-<!-- ═══════════════ PAGE HEADER ═══════════════ -->
+<!-- ═══════ PAGE HEADER ═══════ -->
 <section class="page-header relative overflow-hidden">
-  <div class="absolute inset-0 opacity-8">
-    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-      <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#c9a84c" stroke-width="0.5"/></pattern></defs>
-      <rect width="100%" height="100%" fill="url(#grid)"/>
-    </svg>
-  </div>
+  <div class="page-grid-bg"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-    <span class="section-badge mb-4 inline-flex" style="background:rgba(201,168,76,.18);color:#f2d98f;border:1px solid rgba(201,168,76,.3);">
-      <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#c9a84c;"></span> Mark Your Calendar
-    </span>
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
+         style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:#f2d98f;">
+      Mark Your Calendar
+    </div>
     <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mt-4">Upcoming Events</h1>
-    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:rgba(242,217,143,.65);">Stay updated with the latest activities and workshops for BEED students.</p>
+    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:rgba(242,217,143,.6);">Stay updated with the latest activities and workshops for BEED students.</p>
   </div>
 </section>
 
-<!-- ═══════════════ EVENTS ═══════════════ -->
-<section data-od-id="events" class="py-24" style="background:#faf6f0;">
+<!-- ═══════ EVENTS ═══════ -->
+<section class="py-24" style="background:#faf6f0;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="tilt-card rounded-3xl overflow-hidden flex flex-col reveal s1" style="background:#fff; border:1px solid rgba(201,168,76,.12);">
-        <div class="px-6 py-5 flex items-center gap-4" style="background:linear-gradient(135deg,#0f1b2d,#1a2d4a);">
-          <div class="text-center rounded-2xl px-4 py-3 min-w-[64px]" style="background:rgba(201,168,76,.15); border:1px solid rgba(201,168,76,.25);">
-            <span class="block text-3xl font-black text-white leading-none">20</span>
-            <span class="block text-xs font-bold uppercase tracking-widest mt-1" style="color:#f2d98f;">May</span>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      <article class="event-card reveal">
+        <div class="event-header navy">
+          <div class="event-date-box">
+            <span class="event-date-num">20</span>
+            <span class="event-date-month">May</span>
           </div>
           <div>
-            <span style="color:rgba(242,217,143,.7);" class="text-sm font-semibold">2026</span>
-            <div class="flex items-center gap-1.5 mt-1"><span class="w-2 h-2 rounded-full animate-pulse" style="background:#c9a84c;"></span><span class="text-xs font-medium" style="color:rgba(242,217,143,.6);">Upcoming</span></div>
+            <span style="color:rgba(242,217,143,.65);" class="text-sm font-semibold">2026</span>
+            <div class="event-status mt-1">
+              <span class="event-status-dot"></span>
+              <span class="text-xs font-medium" style="color:rgba(242,217,143,.55);">Upcoming</span>
+            </div>
           </div>
         </div>
         <div class="p-6 flex flex-col flex-1">
           <h3 class="text-lg font-bold text-navy-800 mb-2">BEED Practicum Orientation</h3>
           <p class="text-sm leading-relaxed flex-1" style="color:#8b8580;">Orientation for all BEED students on practicum requirements, schedules, and expectations from cooperating schools.</p>
-          <a href="contact.html" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors group" style="color:#c9a84c;">Learn More<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
+          <a href="contact.html" class="learn-link mt-5">
+            Learn More
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
         </div>
-      </div>
-      <div class="tilt-card rounded-3xl overflow-hidden flex flex-col reveal s2" style="background:#fff; border:1px solid rgba(201,168,76,.12);">
-        <div class="px-6 py-5 flex items-center gap-4" style="background:linear-gradient(135deg,#1a2d4a,#2f456d);">
-          <div class="text-center rounded-2xl px-4 py-3 min-w-[64px]" style="background:rgba(201,168,76,.15); border:1px solid rgba(201,168,76,.25);">
-            <span class="block text-3xl font-black text-white leading-none">5</span>
-            <span class="block text-xs font-bold uppercase tracking-widest mt-1" style="color:#f2d98f;">Jun</span>
+      </article>
+
+      <article class="event-card reveal d2">
+        <div class="event-header mid-navy">
+          <div class="event-date-box">
+            <span class="event-date-num">5</span>
+            <span class="event-date-month">Jun</span>
           </div>
           <div>
-            <span style="color:rgba(242,217,143,.7);" class="text-sm font-semibold">2026</span>
-            <div class="flex items-center gap-1.5 mt-1"><span class="w-2 h-2 rounded-full animate-pulse" style="background:#c9a84c;"></span><span class="text-xs font-medium" style="color:rgba(242,217,143,.6);">Upcoming</span></div>
+            <span style="color:rgba(242,217,143,.65);" class="text-sm font-semibold">2026</span>
+            <div class="event-status mt-1">
+              <span class="event-status-dot"></span>
+              <span class="text-xs font-medium" style="color:rgba(242,217,143,.55);">Upcoming</span>
+            </div>
           </div>
         </div>
         <div class="p-6 flex flex-col flex-1">
           <h3 class="text-lg font-bold text-navy-800 mb-2">Demo Teaching Workshop</h3>
           <p class="text-sm leading-relaxed flex-1" style="color:#8b8580;">Hands-on workshop on creating effective teaching demonstration plans and delivering engaging classroom lessons.</p>
-          <a href="contact.html" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors group" style="color:#c9a84c;">Learn More<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
+          <a href="contact.html" class="learn-link mt-5">
+            Learn More
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
         </div>
-      </div>
-      <div class="tilt-card rounded-3xl overflow-hidden flex flex-col reveal s3" style="background:#fff; border:1px solid rgba(201,168,76,.12);">
-        <div class="px-6 py-5 flex items-center gap-4" style="background:linear-gradient(135deg,#0f1b2d,#1a2d4a);">
-          <div class="text-center rounded-2xl px-4 py-3 min-w-[64px]" style="background:rgba(201,168,76,.15); border:1px solid rgba(201,168,76,.25);">
-            <span class="block text-3xl font-black text-white leading-none">15</span>
-            <span class="block text-xs font-bold uppercase tracking-widest mt-1" style="color:#f2d98f;">Jun</span>
+      </article>
+
+      <article class="event-card reveal d3">
+        <div class="event-header navy">
+          <div class="event-date-box">
+            <span class="event-date-num">15</span>
+            <span class="event-date-month">Jun</span>
           </div>
           <div>
-            <span style="color:rgba(242,217,143,.7);" class="text-sm font-semibold">2026</span>
-            <div class="flex items-center gap-1.5 mt-1"><span class="w-2 h-2 rounded-full animate-pulse" style="background:#c9a84c;"></span><span class="text-xs font-medium" style="color:rgba(242,217,143,.6);">Upcoming</span></div>
+            <span style="color:rgba(242,217,143,.65);" class="text-sm font-semibold">2026</span>
+            <div class="event-status mt-1">
+              <span class="event-status-dot"></span>
+              <span class="text-xs font-medium" style="color:rgba(242,217,143,.55);">Upcoming</span>
+            </div>
           </div>
         </div>
         <div class="p-6 flex flex-col flex-1">
           <h3 class="text-lg font-bold text-navy-800 mb-2">Lesson Plan Writing Seminar</h3>
           <p class="text-sm leading-relaxed flex-1" style="color:#8b8580;">Learn how to write DepEd-compliant Detailed Lesson Plans from experienced educators and master teachers.</p>
-          <a href="contact.html" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors group" style="color:#c9a84c;">Learn More<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
+          <a href="contact.html" class="learn-link mt-5">
+            Learn More
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ FOOTER ═══════════════ -->
+<!-- ═══════ FOOTER ═══════ -->
 <footer style="background:#070e1a;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="reveal flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-10">
+    <div class="reveal flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
       <div class="flex items-center gap-3">
-        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-10 h-10 rounded-2xl object-cover shadow-lg" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
+        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-10 h-10 rounded-xl object-cover" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
         <div>
           <p class="text-white font-bold text-lg leading-none display-heading">BEEDPORTAL</p>
           <p class="text-xs mt-0.5" style="color:#6b6760;">Plan Smart. Teach Better.</p>
         </div>
       </div>
-      <nav class="flex flex-wrap gap-x-7 gap-y-2 text-sm" style="color:#6b6760;">
-        <a href="index.html" class="hover:text-gold-400 transition-colors">Home</a>
-        <a href="services.html" class="hover:text-gold-400 transition-colors">Services</a>
-        <a href="how-it-works.html" class="hover:text-gold-400 transition-colors">How It Works</a>
-        <a href="events.html" class="hover:text-gold-400 transition-colors" style="color:#c9a84c;">Events</a>
-        <a href="contact.html" class="hover:text-gold-400 transition-colors">Contact</a>
+      <nav class="flex flex-wrap gap-x-7 gap-y-2 text-sm">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="events.html" class="footer-link" style="color:#c9a84c;">Events</a>
+        <a href="achievements.html" class="footer-link">Achievements</a>
+        <a href="contact.html" class="footer-link">Contact</a>
       </nav>
     </div>
-    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(201,168,76,.08);">
-      <p class="text-xs" style="color:#4a4540;">BEEDPORTAL &copy; 2026 &mdash; Built for BEED Students</p>
-      <p class="text-xs" style="color:#3a3530;">Made with <span style="color:#c9a84c;">♥</span> for Filipino teachers</p>
+    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(201,168,76,.06);">
+      <p class="text-xs" style="color:#4a4540;">BEEDPORTAL &copy; 2026 — Built for BEED Students at CSAV Victoria's</p>
     </div>
   </div>
 </footer>
@@ -224,10 +253,10 @@
     var open = document.getElementById('icon-open');
     var close = document.getElementById('icon-close');
     var isOpen = menu.classList.contains('open');
-    menu.classList.toggle('open', !isOpen);
-    open.classList.toggle('hidden', !isOpen);
-    close.classList.toggle('hidden', isOpen);
-    btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    menu.classList.toggle('open');
+    open.classList.toggle('hidden', isOpen);
+    close.classList.toggle('hidden', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
   };
   window.closeMenu = function() {
     var menu = document.getElementById('mobile-menu');
@@ -238,47 +267,15 @@
     close.classList.add('hidden');
     document.getElementById('hamburger-btn').setAttribute('aria-expanded','false');
   };
-  window.addEventListener('resize', function() {
-    if (window.innerWidth >= 768) closeMenu();
-  });
+  window.addEventListener('resize', function() { if (window.innerWidth >= 768) window.closeMenu(); });
 
-  /* Scroll reveal */
   var revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
 
-  /* 3D card tilt */
-  document.querySelectorAll('.tilt-card').forEach(function(card) {
-    card.addEventListener('mousemove', function(e) {
-      var r = card.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
-      var cx = r.width / 2, cy = r.height / 2;
-      card.style.transform = 'perspective(900px) rotateX(' + ((y - cy) / cy * -7) + 'deg) rotateY(' + ((x - cx) / cx * 7) + 'deg) translateY(-5px) scale(1.01)';
-    });
-    card.addEventListener('mouseleave', function() { card.style.transform = ''; });
-  });
-
-  /* Scroll progress */
-  var progressBar = document.getElementById('scroll-progress');
-  var progTarget = 0, progCurrent = 0, progRaf = null;
-  function springProgress() {
-    var diff = progTarget - progCurrent;
-    progCurrent += diff * 0.1;
-    progressBar.style.scale = Math.min(1, Math.max(0, progCurrent)) + ' 1';
-    if (Math.abs(diff) > 0.0008) { progRaf = requestAnimationFrame(springProgress); }
-    else { progRaf = null; }
-  }
-  window.addEventListener('scroll', function() {
-    if (!progressBar) return;
-    var scrollTop = window.scrollY, docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    progTarget = docHeight > 0 ? scrollTop / docHeight : 0;
-    if (!progRaf) progRaf = requestAnimationFrame(springProgress);
-  }, { passive: true });
-
-  /* Nav glass */
   var nav = document.getElementById('main-nav');
   window.addEventListener('scroll', function() {
-    if (!nav) return;
     if (window.scrollY > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
   }, { passive: true });
 })();
