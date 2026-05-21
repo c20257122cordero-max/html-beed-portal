@@ -80,13 +80,15 @@
 
     /* ── Hero ── */
     .hero-overlay {
-      background: linear-gradient(135deg, rgba(15,23,42,0.55), rgba(30,41,59,0.40), rgba(15,23,42,0.60));
+      background: linear-gradient(135deg, rgba(15,23,42,0.50), rgba(30,41,59,0.25), rgba(15,23,42,0.55));
     }
     .hero-vignette {
-      background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(15,23,42,0.45) 100%);
+      background: radial-gradient(ellipse at 50% 30%, transparent 25%, rgba(15,23,42,0.50) 100%);
     }
     .hero-bg-img {
-      object-position: center center;
+      object-position: center 30%;
+      transform: scale(1.08);
+      transition: transform 1.2s cubic-bezier(0.2, 0, 0, 1);
     }
 
     .grad-text {
