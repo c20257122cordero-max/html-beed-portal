@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BEEDPORTAL — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+          },
+          colors: {
+            navy: { 50:'#f0f3f9',100:'#dce3f0',200:'#b9c8e1',300:'#8fa6cc',400:'#6382b3',500:'#4a6b9e',600:'#3a5585',700:'#2f456d',800:'#0f1b2d',900:'#0a1322' },
+            gold:  { 50:'#fdf8ed',100:'#f9edcc',200:'#f2d98f',300:'#e8c45a',400:'#d9b14a',500:'#c9a84c',600:'#a8843a',700:'#8a682f',800:'#6f5228',900:'#5a4322' },
+            cream: '#faf6f0',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+
+    .display-heading { font-family: 'Playfair Display', Georgia, serif; }
+
+    @keyframes kenBurns {
+      0%   { transform: scale(1.0) translate(0%, 0%); }
+      25%  { transform: scale(1.05) translate(-1%, -0.5%); }
+      50%  { transform: scale(1.08) translate(0.5%, -1.5%); }
+      75%  { transform: scale(1.05) translate(1%, 0.5%); }
+      100% { transform: scale(1.0) translate(0%, 0%); }
+    }
+    @keyframes aurora {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    #hero-bg-img { transform-origin: center center; }
+    #hero-aurora {
+      background: linear-gradient(-45deg, rgba(15,27,45,.78), rgba(42,65,105,.55), rgba(10,19,34,.82), rgba(31,49,84,.60), rgba(15,27,45,.75));
+      background-size: 400% 400%;
+      animation: aurora 16s ease infinite;
+    }
+
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content:''; position:absolute; bottom:-2px; left:0;
+      width:0; height:2px; background:#c9a84c;
+      transition: width .25s ease;
+    }
+    .nav-link:hover::after { width:100%; }
+    nav.scrolled { background: rgba(10,19,34,0.95) !important; backdrop-filter: blur(16px); box-shadow: 0 4px 30px rgba(0,0,0,0.35); }
+
+    .grad-text {
+      background: linear-gradient(135deg,#c9a84c 0%,#e8c45a 40%,#f2d98f 70%,#c9a84c 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% center; } }
+
+    .parallax-shape { transition: transform .12s ease-out; will-change: transform; }
+
+    @keyframes floatY {
+      0%,100%{ transform: translateY(0); }
+      50%    { transform: translateY(-18px); }
+    }
+    @keyframes floatY2 {
+      0%,100%{ transform: translateY(0) rotate(0deg); }
+      50%    { transform: translateY(-12px) rotate(4deg); }
+    }
+    .float-a { animation: floatY 6s ease-in-out infinite; }
+    .float-b { animation: floatY 8s ease-in-out infinite reverse; }
+    .float-c { animation: floatY2 10s ease-in-out infinite; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(32px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .fade-up { animation: fadeUp .8s ease both; }
+    .d1 { animation-delay:.1s; } .d2 { animation-delay:.25s; }
+    .d3 { animation-delay:.4s;  } .d4 { animation-delay:.55s; }
+    .d5 { animation-delay:.7s;  }
+
+    #typewriter::after {
+      content:'|'; animation: blink .7s step-end infinite;
+      color: #c9a84c; margin-left:2px;
+    }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+
+    .reveal {
+      opacity:0; transform:translateY(36px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.left  { transform:translateX(-36px); }
+    .reveal.right { transform:translateX(36px); }
+    .reveal.scale { transform:scale(.93); }
+    .reveal.visible { opacity:1; transform:none; }
+    .s1{transition-delay:.1s;} .s2{transition-delay:.2s;} .s3{transition-delay:.3s;}
+
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform .08s linear, box-shadow .3s ease;
+      will-change: transform;
+    }
+    .tilt-card:hover { box-shadow: 0 24px 50px rgba(15,27,45,.10); }
+    .tilt-inner { transform: translateZ(16px); }
+
+    #scroll-progress {
+      position:fixed; top:0; left:0; right:0; height:3px; z-index:999;
+      background:linear-gradient(90deg,#c9a84c,#f2d98f);
+      transform-origin:0 50%;
+      scale:0 1;
+    }
+
+    .sparkle-area { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .sparkle {
+      position:absolute; width:4px; height:4px; border-radius:50%;
+      background:#c9a84c;
+      animation: sparkleFloat linear infinite;
+      opacity:0;
+    }
+    @keyframes sparkleFloat {
+      0%   { transform: translateY(0) translateX(0) scale(0); opacity:0; }
+      10%  { opacity:0.6; }
+      90%  { opacity:0.6; }
+      100% { transform: translateY(-120vh) translateX(40px) scale(1); opacity:0; }
+    }
+    .sparkle:nth-child(1)  { left:10%;  animation-duration:9s;  animation-delay:0s;  width:3px;  height:3px;  }
+    .sparkle:nth-child(2)  { left:25%;  animation-duration:11s; animation-delay:2s;  width:5px;  height:5px;  }
+    .sparkle:nth-child(3)  { left:40%;  animation-duration:8s;  animation-delay:4s;  width:3px;  height:3px;  }
+    .sparkle:nth-child(4)  { left:55%;  animation-duration:10s; animation-delay:1s;  width:4px;  height:4px;  }
+    .sparkle:nth-child(5)  { left:70%;  animation-duration:12s; animation-delay:3s;  width:6px;  height:6px;  }
+    .sparkle:nth-child(6)  { left:85%;  animation-duration:9s;  animation-delay:5s;  width:3px;  height:3px;  }
+    .sparkle:nth-child(7)  { left:15%;  animation-duration:13s; animation-delay:7s;  width:5px;  height:5px;  }
+    .sparkle:nth-child(8)  { left:50%;  animation-duration:10s; animation-delay:6s;  width:4px;  height:4px;  }
+    .sparkle:nth-child(9)  { left:75%;  animation-duration:8s;  animation-delay:2.5s; width:3px; height:3px; }
+    .sparkle:nth-child(10) { left:90%;  animation-duration:11s; animation-delay:8s;  width:5px; height:5px; }
+
+    .reveal-scale {
+      opacity:0; transform:scale(.92); filter:blur(4px);
+      transition: opacity .8s ease, transform .8s ease, filter .8s ease;
+    }
+    .reveal-scale.visible { opacity:1; transform:scale(1); filter:blur(0); }
+
+    .parallax-bg { will-change: transform; transition: none; }
+
+    .cta-pulse { position:relative; }
+    .cta-pulse::before {
+      content:''; position:absolute; inset:-4px; border-radius:inherit;
+      border:2px solid #c9a84c;
+      animation: pulseRing 2s cubic-bezier(.215,.61,.355,1) infinite;
+    }
+    @keyframes pulseRing {
+      0%   { transform:scale(1); opacity:0.8; }
+      100% { transform:scale(1.15); opacity:0; }
+    }
+
+    .count-up { display:inline-block; }
+
+    .card-glow::before {
+      content:''; position:absolute; inset:0; border-radius:inherit;
+      padding:1.5px;
+      background: linear-gradient(135deg,rgba(201,168,76,.35),rgba(242,217,143,.1),rgba(201,168,76,.35));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out; mask-composite: exclude;
+      pointer-events:none;
+    }
+
+    .section-badge {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 14px; border-radius:99px;
+      font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg,#c9a84c,#b8953e);
+      color: #0f1b2d;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201,168,76,.4);
+    }
+    .btn-ghost {
+      border: 2px solid rgba(255,255,255,.35);
+      color: #fff;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,.1);
+      border-color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .feat-icon {
+      width:56px; height:56px; border-radius:16px;
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:20px;
+      box-shadow: 0 8px 20px -4px rgba(201,168,76,.3);
+    }
+
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-track { background:transparent; }
+    ::-webkit-scrollbar-thumb { background:#c9a84c; border-radius:99px; }
+
+    .nav-active {
+      color: #c9a84c !important;
+    }
+    .nav-active::after {
+      width: 100% !important;
+    }
+  </style>
+</head>
+<body class="text-navy-900 antialiased bg-cream">
+
+<div id="scroll-progress"></div>
+<div id="toast" class="toast" style="position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(100px);z-index:999;padding:14px 28px;border-radius:14px;font-size:.875rem;font-weight:600;background:rgba(10,19,34,.92);backdrop-filter:blur(12px);border:1px solid rgba(201,168,76,.25);color:#fff;box-shadow:0 8px 32px rgba(0,0,0,.3);opacity:0;transition:all .4s ease;pointer-events:none;"></div>
+
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:rgba(10,19,34,0.75); backdrop-filter:blur(12px);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
+        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-9 h-9 rounded-xl object-cover shadow-lg" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
+        <span class="text-white font-bold text-lg tracking-tight display-heading">BEEDPORTAL</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gold-200">
+        <a href="index.html" class="nav-link nav-active hover:text-white transition-colors">Home</a>
+        <a href="services.html" class="nav-link hover:text-white transition-colors">Services</a>
+        <a href="how-it-works.html" class="nav-link hover:text-white transition-colors">How It Works</a>
+        <a href="events.html" class="nav-link hover:text-white transition-colors">Events</a>
+        <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
+      </div>
+
+      <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
+        class="md:hidden p-2 rounded-lg text-gold-200 hover:text-white hover:bg-white/10 transition-colors">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="md:hidden border-t border-white/10" style="background:rgba(10,19,34,0.97);">
+    <div class="px-4 py-4 flex flex-col gap-1 text-sm font-medium text-gold-200">
+      <a href="index.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors" style="color:#c9a84c;">Home</a>
+      <a href="services.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">Services</a>
+      <a href="how-it-works.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">How It Works</a>
+      <a href="events.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">Events</a>
+      <a href="contact.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section data-od-id="hero" id="home" class="relative min-h-screen flex items-center overflow-hidden">
+  <div class="absolute inset-0 overflow-hidden">
+    <img id="hero-bg-img" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
+  </div>
+  <div id="hero-aurora" class="absolute inset-0"></div>
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 50% 40%, transparent 25%, rgba(10,19,34,.6) 100%);"></div>
+  <div class="sparkle-area" aria-hidden="true">
+    <div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div>
+    <div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div>
+  </div>
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" id="parallax-layer">
+    <div class="parallax-shape float-a" data-speed="0.02" style="position:absolute;top:-60px;left:-60px;width:360px;height:360px;background:radial-gradient(circle,rgba(201,168,76,.18),transparent 70%);border-radius:50%;"></div>
+    <div class="parallax-shape float-b" data-speed="0.035" style="position:absolute;top:25%;right:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(242,217,143,.15),transparent 70%);border-radius:50%;"></div>
+    <div class="parallax-shape float-c" data-speed="0.025" style="position:absolute;bottom:-40px;left:20%;width:280px;height:280px;background:radial-gradient(circle,rgba(168,132,58,.14),transparent 70%);border-radius:50%;"></div>
+    <div class="parallax-shape" data-speed="0.05" style="position:absolute;top:18%;left:8%;">
+      <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center float-a shadow-lg" style="background:rgba(201,168,76,.15);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(4px);">
+        <svg class="w-7 h-7 text-gold-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+      </div>
+    </div>
+    <div class="parallax-shape" data-speed="0.04" style="position:absolute;top:12%;right:18%;">
+      <div class="w-14 h-14 rounded-2xl flex items-center justify-center float-a" style="background:rgba(201,168,76,.15);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(4px);animation-delay:2s;">
+        <svg class="w-7 h-7 text-gold-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+      </div>
+    </div>
+    <div class="parallax-shape" data-speed="0.055" style="position:absolute;bottom:30%;right:6%;">
+      <div class="w-12 h-12 rounded-xl flex items-center justify-center float-b" style="background:rgba(242,217,143,.12);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(4px);animation-delay:4s;">
+        <svg class="w-6 h-6 text-gold-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 text-center">
+    <div class="fade-up d1 inline-flex items-center gap-2 mb-7 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase" style="background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.35);backdrop-filter:blur(6px);color:#f2d98f;">
+      <span class="w-2 h-2 rounded-full animate-pulse flex-shrink-0" style="background:#c9a84c;"></span>
+      BEEDPORTAL
+    </div>
+    <h1 class="fade-up d2 display-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] mb-6">Plan Smart.<br><span class="grad-text">Teach Better.</span></h1>
+    <p class="fade-up d3 text-lg sm:text-xl max-w-2xl mx-auto mb-3 leading-relaxed" style="color:rgba(242,217,143,.85);">The DepEd-ready teaching toolkit built for BEED students.</p>
+    <p class="fade-up d3 text-base sm:text-lg max-w-xl mx-auto mb-10" style="color:rgba(201,168,76,.6);"><span id="typewriter"></span></p>
+
+    <div class="fade-up d4 mb-16">
+      <a href="services.html" class="btn-ghost inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-2xl text-base">
+        Explore the Portal
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </a>
+    </div>
+
+    <div class="fade-up d5 flex flex-wrap justify-center gap-3">
+      <div class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.22);backdrop-filter:blur(8px);"><span>🎓</span><span>CSAV Victoria's</span></div>
+      <div class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.22);backdrop-filter:blur(8px);"><span>✅</span><span>DepEd K-12 Aligned</span></div>
+      <div class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.22);backdrop-filter:blur(8px);"><span>📚</span><span><span data-target="7" class="count-up">0</span> Subjects Covered</span></div>
+      <div class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.22);backdrop-filter:blur(8px);"><span>⚡</span><span>Plans in Minutes</span></div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 fade-up d5" style="color:rgba(242,217,143,.5);">
+    <span class="text-xs font-medium tracking-widest uppercase">Scroll</span>
+    <div class="w-5 h-9 rounded-full flex items-start justify-center pt-1" style="border:2px solid rgba(201,168,76,.35);">
+      <div class="w-1 h-2.5 rounded-full animate-bounce" style="background:#c9a84c;"></div>
+    </div>
+  </div>
+</section>
+
+<div style="background:#0f1b2d;">
+  <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path fill="#faf6f0" d="M0,64 C360,0 1080,80 1440,32 L1440,80 L0,80 Z"/>
+  </svg>
+</div>
+
+<!-- ═══════════════ STATS ═══════════════ -->
+<section data-od-id="stats" class="py-20" style="background:linear-gradient(135deg,#0f1b2d 0%,#1a2d4a 50%,#0f1b2d 100%);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+      <div class="reveal text-center">
+        <p class="text-4xl sm:text-5xl font-black text-white leading-none display-heading" style="color:#f2d98f;"><span data-target="7" class="count-up">0</span></p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.6);">Core Subjects</p>
+      </div>
+      <div class="reveal s1 text-center">
+        <p class="text-4xl sm:text-5xl font-black text-white leading-none display-heading" style="color:#f2d98f;"><span data-target="4" class="count-up">0</span></p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.6);">Year Curriculum</p>
+      </div>
+      <div class="reveal s2 text-center">
+        <p class="text-4xl sm:text-5xl font-black text-white leading-none display-heading" style="color:#f2d98f;"><span data-target="2" class="count-up">0</span></p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.6);">Practicum Semesters</p>
+      </div>
+      <div class="reveal s3 text-center">
+        <p class="text-4xl sm:text-5xl font-black text-white leading-none display-heading" style="color:#f2d98f;"><span data-target="6" class="count-up">0</span></p>
+        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:rgba(242,217,143,.6);">Grade Levels (K–6)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CSAV BANNER ═══════════════ -->
+<section data-od-id="csav-banner" class="py-20 relative overflow-hidden" style="background:linear-gradient(135deg,#0f1b2d 0%,#1a2d4a 50%,#0f1b2d 100%);">
+  <div class="absolute inset-0 opacity-8">
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#c9a84c" stroke-width="0.5"/></pattern></defs>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+    </svg>
+  </div>
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="reveal-scale">
+      <div class="text-5xl mb-4">👩‍🏫</div>
+      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-white mb-4"><span class="grad-text">BEEDPORTAL</span> — Your teaching toolkit</h2>
+      <p class="mb-8 text-lg max-w-2xl mx-auto leading-relaxed" style="color:rgba(242,217,143,.65);">Every field study template, lesson plan builder, and teaching tool — designed around the real needs of BEED students preparing for their practicum.</p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm" style="color:rgba(201,168,76,.75);">
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">🎓 CSAV Victoria's</span>
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">✅ DepEd K-12 Aligned</span>
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">✅ All 7 Core Subjects</span>
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">✅ Grades K–6</span>
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">✅ Print-Ready Format</span>
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">✅ 4A's & 5E's Templates</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer style="background:#070e1a;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="reveal flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-10">
+      <div class="flex items-center gap-3">
+        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-10 h-10 rounded-2xl object-cover shadow-lg" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
+        <div>
+          <p class="text-white font-bold text-lg leading-none display-heading">BEEDPORTAL</p>
+          <p class="text-xs mt-0.5" style="color:#6b6760;">Plan Smart. Teach Better.</p>
+        </div>
+      </div>
+      <nav class="flex flex-wrap gap-x-7 gap-y-2 text-sm" style="color:#6b6760;">
+        <a href="index.html" class="hover:text-gold-400 transition-colors" style="color:#c9a84c;">Home</a>
+        <a href="services.html" class="hover:text-gold-400 transition-colors">Services</a>
+        <a href="how-it-works.html" class="hover:text-gold-400 transition-colors">How It Works</a>
+        <a href="events.html" class="hover:text-gold-400 transition-colors">Events</a>
+        <a href="contact.html" class="hover:text-gold-400 transition-colors">Contact</a>
+      </nav>
+    </div>
+    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(201,168,76,.08);">
+      <p class="text-xs" style="color:#4a4540;">BEEDPORTAL &copy; 2026 &mdash; Built for BEED Students</p>
+      <p class="text-xs" style="color:#3a3530;">Made with <span style="color:#c9a84c;">♥</span> for Filipino teachers</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── Toast system ── */
+  function showToast(msg, type) {
+    var toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.className = ''; /* reset */
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(-50%) translateY(0)';
+    if (type === 'success') toast.style.borderColor = 'rgba(74,222,128,.4)';
+    else if (type === 'error') toast.style.borderColor = 'rgba(248,113,113,.4)';
+    setTimeout(function() {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(100px)';
+    }, 3500);
+  }
+
+  /* ── Mobile menu ── */
+  window.toggleMenu = function() {
+    var menu  = document.getElementById('mobile-menu');
+    var btn   = document.getElementById('hamburger-btn');
+    var open  = document.getElementById('icon-open');
+    var close = document.getElementById('icon-close');
+    var isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open', !isOpen);
+    open.classList.toggle('hidden', !isOpen);
+    close.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  };
+  window.closeMenu = function() {
+    var menu  = document.getElementById('mobile-menu');
+    var open  = document.getElementById('icon-open');
+    var close = document.getElementById('icon-close');
+    menu.classList.remove('open');
+    open.classList.remove('hidden');
+    close.classList.add('hidden');
+    document.getElementById('hamburger-btn').setAttribute('aria-expanded','false');
+  };
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768) closeMenu();
+  });
+
+  /* ── Landing page interactions ── */
+  function initLanding() {
+    /* Mouse parallax */
+    var shapes = document.querySelectorAll('.parallax-shape');
+    var hero   = document.getElementById('home');
+    var mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', function(e) {
+      if (!hero) return;
+      var rect = hero.getBoundingClientRect();
+      mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    });
+    function animateParallax() {
+      shapes.forEach(function(el) {
+        var speed = parseFloat(el.getAttribute('data-speed') || '0.04');
+        el.style.translate = (mouseX * speed * 80) + 'px ' + (mouseY * speed * 60) + 'px';
+      });
+      requestAnimationFrame(animateParallax);
+    }
+    animateParallax();
+
+    /* Typewriter */
+    var tw = document.getElementById('typewriter');
+    if (tw) {
+      var phrases = ['Create demo plans in minutes.', 'Write DepEd-aligned lesson plans.', 'Save & reuse your best templates.', 'Ace your practicum with confidence.', 'Built for BEED students.'];
+      var pIdx = 0, cIdx = 0, deleting = false;
+      function typeStep() {
+        var phrase = phrases[pIdx];
+        if (!deleting) {
+          tw.textContent = phrase.slice(0, ++cIdx);
+          if (cIdx === phrase.length) { deleting = true; setTimeout(typeStep, 1800); return; }
+          setTimeout(typeStep, 48);
+        } else {
+          tw.textContent = phrase.slice(0, --cIdx);
+          if (cIdx === 0) { deleting = false; pIdx = (pIdx + 1) % phrases.length; setTimeout(typeStep, 300); return; }
+          setTimeout(typeStep, 22);
+        }
+      }
+      setTimeout(typeStep, 1000);
+    }
+
+    /* 3D card tilt */
+    document.querySelectorAll('.tilt-card').forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var r = card.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+        var cx = r.width / 2, cy = r.height / 2;
+        card.style.transform = 'perspective(900px) rotateX(' + ((y - cy) / cy * -7) + 'deg) rotateY(' + ((x - cx) / cx * 7) + 'deg) translateY(-5px) scale(1.01)';
+      });
+      card.addEventListener('mouseleave', function() { card.style.transform = ''; });
+    });
+
+    /* Scroll reveal */
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(function(el) { revealObserver.observe(el); });
+
+    /* Scroll progress — spring-physics lerp */
+    var progressBar = document.getElementById('scroll-progress');
+    var progTarget = 0, progCurrent = 0, progRaf = null;
+    function springProgress() {
+      var diff = progTarget - progCurrent;
+      progCurrent += diff * 0.1;
+      progressBar.style.scale = Math.min(1, Math.max(0, progCurrent)) + ' 1';
+      if (Math.abs(diff) > 0.0008) { progRaf = requestAnimationFrame(springProgress); }
+      else { progRaf = null; }
+    }
+    window.addEventListener('scroll', function() {
+      if (!progressBar) return;
+      var scrollTop = window.scrollY, docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      progTarget = docHeight > 0 ? scrollTop / docHeight : 0;
+      if (!progRaf) progRaf = requestAnimationFrame(springProgress);
+    }, { passive: true });
+
+    /* Counter up */
+    var countObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target, target = parseInt(el.getAttribute('data-target'), 10);
+        if (isNaN(target)) return;
+        var current = 0, step = Math.max(1, Math.floor(target / 60));
+        var timer = setInterval(function() { current += step; if (current >= target) { current = target; clearInterval(timer); } el.textContent = current; }, 24);
+        countObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(function(el) { countObserver.observe(el); });
+
+    /* Hero parallax scroll */
+    var heroBg = document.getElementById('hero-bg-img');
+    var heroSection = document.getElementById('home');
+    function updateHeroParallax() {
+      if (!heroBg || !heroSection) return;
+      var rect = heroSection.getBoundingClientRect();
+      var offset = Math.max(0, -rect.top);
+      heroBg.style.transform = 'translateY(' + (offset * 0.18) + 'px) scale(1.06)';
+    }
+    if (heroBg && heroSection) {
+      updateHeroParallax();
+      window.addEventListener('scroll', updateHeroParallax, { passive: true });
+    }
+
+    /* Nav glass on scroll */
+    var nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', function() {
+      if (!nav) return;
+      if (window.scrollY > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+    }, { passive: true });
+  }
+
+  initLanding();
+})();
+</script>
+</body>
+</html>

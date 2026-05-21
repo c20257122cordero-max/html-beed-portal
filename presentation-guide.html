@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BEEDPORTAL — Presentation Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #faf6f0;
+      color: #0f1b2d;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .display { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* ── Layout ── */
+    .max-w { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Cover ── */
+    .cover {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #0f1b2d 0%, #1a2d4a 50%, #0f1b2d 100%);
+      padding: 48px 24px;
+      position: relative; overflow: hidden;
+    }
+    .cover::before {
+      content:''; position:absolute; inset:0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,.08), transparent 70%);
+    }
+    .cover-grid { opacity: .04; position:absolute; inset:0;
+      background-image: linear-gradient(rgba(201,168,76,.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,.3) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .cover h1 {
+      font-size: clamp(36px, 6vw, 60px); font-weight: 800;
+      color: #fff; margin: 0 0 8px; position: relative;
+    }
+    .cover .sub {
+      color: rgba(242,217,143,.65); font-size: clamp(14px, 2.5vw, 18px);
+      max-width: 560px; margin: 0 auto 32px; position: relative;
+    }
+    .cover .badge {
+      display: inline-block;
+      padding: 6px 20px; border-radius: 99px;
+      font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.25);
+      color: #f2d98f;
+      margin-bottom: 20px; position: relative;
+    }
+    .cover-meta {
+      display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
+      color: rgba(201,168,76,.45); font-size: 12px; font-weight: 500;
+      position: relative;
+    }
+    .cover-meta span { display: flex; align-items: center; gap: 6px; }
+    .cover .scroll-hint {
+      position: absolute; bottom: 32px;
+      color: rgba(242,217,143,.3); font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    }
+
+    /* ─── Nav tabs ── */
+    .nav-bar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(250,246,240,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,.12);
+    }
+    .nav-bar .max-w {
+      display: flex; gap: 4px; overflow-x: auto;
+      padding-top: 0; padding-bottom: 0;
+      scrollbar-width: none;
+    }
+    .nav-bar a {
+      flex-shrink: 0;
+      padding: 12px 14px;
+      font-size: 12px; font-weight: 600;
+      color: #6b6760; text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+    .nav-bar a:hover, .nav-bar a:focus { color: #0f1b2d; border-bottom-color: #c9a84c; }
+
+    /* ── Section ── */
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid rgba(201,168,76,.08); }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: #8a682f;
+      margin-bottom: 6px;
+    }
+    .section-label::before {
+      content:''; width:6px; height:6px; border-radius:50%;
+      background: #c9a84c;
+    }
+    h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      margin: 0 0 24px;
+      color: #0f1b2d;
+    }
+    h3 {
+      font-size: 14px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #8a682f;
+      margin: 32px 0 12px;
+    }
+    h3:first-child { margin-top: 0; }
+    p { margin: 0 0 16px; color: #4a4540; font-size: 15px; }
+    p:last-child { margin-bottom: 0; }
+
+    .script {
+      position: relative;
+      padding: 20px 24px;
+      margin: 20px 0;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid rgba(201,168,76,.15);
+    }
+    .script::before {
+      content: '🎤 Say this';
+      display: block;
+      font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: #c9a84c;
+      margin-bottom: 10px;
+    }
+    .script p { font-style: italic; color: #0f1b2d; }
+    .script p:last-child { margin-bottom: 0; }
+
+    .tip {
+      position: relative;
+      padding: 16px 20px;
+      margin: 16px 0;
+      border-radius: 12px;
+      background: rgba(201,168,76,.06);
+      border: 1px solid rgba(201,168,76,.12);
+    }
+    .tip::before {
+      content: '💡 Presenter tip';
+      display: block;
+      font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: #8a682f;
+      margin-bottom: 6px;
+    }
+    .tip p { font-size: 14px; color: #6b6760; margin: 0; }
+
+    ul, ol { margin: 0 0 16px; padding-left: 20px; color: #4a4540; font-size: 15px; }
+    li { margin-bottom: 6px; }
+    li strong { color: #0f1b2d; }
+
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+    .stat-card {
+      background: linear-gradient(135deg, #0f1b2d, #1a2d4a);
+      border-radius: 14px; padding: 20px; color: #fff;
+    }
+    .stat-card p:first-child { font-size: 28px; font-weight: 800; color: #f2d98f; margin-bottom: 2px; }
+    .stat-card p:last-child { font-size: 12px; color: rgba(242,217,143,.55); margin: 0; text-transform: uppercase; letter-spacing: .06em; }
+
+    .qa-card {
+      background: #fff;
+      border: 1px solid rgba(201,168,76,.12);
+      border-radius: 14px; padding: 20px;
+      margin-bottom: 16px;
+    }
+    .qa-card .q {
+      font-weight: 700; color: #0f1b2d;
+      display: flex; align-items: start; gap: 8px;
+      margin-bottom: 8px;
+    }
+    .qa-card .q::before { content:'Q:'; color: #c9a84c; font-weight: 800; }
+    .qa-card .a {
+      color: #6b6760; font-size: 14px;
+      display: flex; align-items: start; gap: 8px;
+    }
+    .qa-card .a::before { content:'A:'; color: #8a682f; font-weight: 600; }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 10px; border-radius: 99px;
+      font-size: 10px; font-weight: 700; letter-spacing: .04em;
+      background: rgba(201,168,76,.12); color: #8a682f;
+      margin-right: 4px; margin-bottom: 4px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center; padding: 32px 24px;
+      background: #0f1b2d; color: rgba(242,217,143,.4);
+      font-size: 12px;
+    }
+    footer strong { color: #c9a84c; }
+
+    @media print {
+      .nav-bar { display: none; }
+      .cover { min-height: auto; padding: 48px 24px; }
+      section { padding: 40px 0; page-break-inside: avoid; }
+      .script { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ COVER ═══════════════ -->
+<header class="cover" id="top">
+  <div class="cover-grid"></div>
+  <div class="badge">Presentation Guide</div>
+  <h1 class="display">BEEDPORTAL</h1>
+  <p class="sub">A complete speaker's script for presenting the BEED student teaching toolkit to academic committee members and faculty.</p>
+  <div class="cover-meta">
+    <span>⏱ ~15–20 min presentation</span>
+    <span>👥 Academic committee / faculty</span>
+    <span>🎯 BEEDPORTAL v1.0</span>
+  </div>
+  <div class="scroll-hint">Scroll for script</div>
+</header>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav-bar" id="nav">
+  <div class="max-w">
+    <a href="#intro">Intro</a>
+    <a href="#problem">Problem</a>
+    <a href="#solution">Solution</a>
+    <a href="#features">Features</a>
+    <a href="#design">Design</a>
+    <a href="#walkthrough">Walkthrough</a>
+    <a href="#tech">Technical</a>
+    <a href="#qa">Q&amp;A</a>
+    <a href="#next">Next Steps</a>
+  </div>
+</nav>
+
+<!-- ═══════════════ CONTENT ═══════════════ -->
+<main class="max-w">
+
+<!-- ─── 1. INTRODUCTION ─── -->
+<section id="intro">
+  <p class="section-label">Section 1</p>
+  <h2>Introduction &mdash; What is BEEDPORTAL?</h2>
+  <p><strong>Slide:</strong> Project title slide &mdash; BEEDPORTAL logo, tagline &ldquo;Plan Smart. Teach Better.&rdquo;</p>
+
+  <div class="script">
+    <p>Good morning/afternoon, members of the committee and esteemed faculty.</p>
+    <p>Today I'm presenting <strong>BEEDPORTAL</strong> — a digital teaching toolkit built specifically for Bachelor of Elementary Education students at CSAV Victoria's.</p>
+    <p>BEEDPORTAL is a web-based platform that helps BEED students create DepEd-aligned lesson plans, build teaching demonstration outlines, and organise their practicum materials — all in one place.</p>
+    <p>The core idea is simple: give our BEED students a purpose-built tool that mirrors exactly what they need during field study and practicum, so they spend less time formatting documents and more time practicing how to teach.</p>
+  </div>
+
+  <div class="tip">
+    <p>Open with the <strong>problem</strong> first, not the product name. The committee cares about why this exists. Keep the intro under 90 seconds — you'll demonstrate specifics in the walkthrough.</p>
+  </div>
+</section>
+
+<!-- ─── 2. THE PROBLEM ─── -->
+<section id="problem">
+  <p class="section-label">Section 2</p>
+  <h2>The Problem &mdash; What BEED Students Face</h2>
+  <p><strong>Slide:</strong> 2–3 bullet points showing pain points (optional: a photo of disorganised papers or a stressed student).</p>
+
+  <div class="script">
+    <p>Before BEEDPORTAL, our students faced a handful of recurring challenges:</p>
+    <p><strong>First — template fragmentation.</strong> Every cooperating teacher asks for a slightly different format. Students would download DLPs from random sources online — some correct, some outdated, some not DepEd-compliant at all.</p>
+    <p><strong>Second — no central workflow.</strong> Lesson planning, demo outlines, and teaching materials lived in separate folders, separate Word documents, with no consistency. A student might plan a demo with one structure and write their DLP in a completely different format.</p>
+    <p><strong>Third — wasted time on formatting.</strong> Our students told us they were spending 30–40% of their planning time just getting the document layout right — the table of contents, the margins, the section headers — instead of thinking about what they would actually teach.</p>
+    <p><strong>Fourth — no reuse.</strong> Every lesson plan was built from scratch. If a student wrote a great DLP for Math in Week 3, they had no way to adapt it for Science in Week 5 without starting over.</p>
+  </div>
+
+  <div class="tip">
+    <p>This section establishes <strong>why</strong> the project matters. Use real stories if you have them — even one student quote carries more weight than three bullet points. Keep it to 2 minutes.</p>
+  </div>
+</section>
+
+<!-- ─── 3. THE SOLUTION ─── -->
+<section id="solution">
+  <p class="section-label">Section 3</p>
+  <h2>The Solution &mdash; BEEDPORTAL Overview</h2>
+  <p><strong>Slide:</strong> BEEDPORTAL hero section of the website, showing the headline and key value props.</p>
+
+  <div class="script">
+    <p>BEEDPORTAL solves these problems in three targeted ways:</p>
+    <p><strong>One — guided templates.</strong> Instead of hunting for the right format, students open BEEDPORTAL and choose from pre-built DepEd-aligned templates — 4A's, 5E's, standard DLP — each with the correct section structure already in place.</p>
+    <p><strong>Two — integrated tools.</strong> The Demo Maker, Lesson Plan Planner, and Smart Templates live in one interface. A student can plan a demo, then immediately export a full DLP, using the same content across both tools.</p>
+    <p><strong>Three — save and reuse.</strong> Every lesson plan a student creates becomes a personal template they can duplicate, adapt for a different subject, or export as a print-ready document.</p>
+    <p>The result: less time formatting, more time practicing. A task that used to take 90 minutes can now be done in 15–20.</p>
+  </div>
+
+  <div class="tip">
+    <p>Show the <strong>landing page hero</strong> here — the navy-and-gold visual hook. Let them see the product before you explain it. Point to the tagline and the three value badges on screen.</p>
+  </div>
+</section>
+
+<!-- ─── 4. KEY FEATURES ─── -->
+<section id="features">
+  <p class="section-label">Section 4</p>
+  <h2>Key Features &mdash; What It Does</h2>
+  <p><strong>Slide:</strong> Three feature cards side by side (Demo Maker, Lesson Plan Planner, Smart Templates).</p>
+
+  <div class="two-col" style="margin-bottom: 24px;">
+    <div class="stat-card">
+      <p>7</p>
+      <p>Core subjects covered</p>
+    </div>
+    <div class="stat-card">
+      <p>K–6</p>
+      <p>Grade levels supported</p>
+    </div>
+    <div class="stat-card">
+      <p>2</p>
+      <p>Practicum semesters</p>
+    </div>
+    <div class="stat-card">
+      <p>4</p>
+      <p>Year curriculum</p>
+    </div>
+  </div>
+
+  <div class="script">
+    <p>Let me walk through the three main tools:</p>
+    <p><strong>Demo Maker.</strong> Students build step-by-step teaching demonstration plans using subject-specific guided templates. The structure walks them from motivation through presentation, discussion, and evaluation — following the 4A's or 5E's framework depending on what the lesson requires.</p>
+    <p><strong>Lesson Plan Planner.</strong> This is the core tool. Students create complete DepEd Detailed Lesson Plans with every required section — Subject Matter, Procedure A through F, Evaluation, and Assignment — pre-structured and guided. They simply fill in their content.</p>
+    <p><strong>Smart Templates.</strong> Once a student completes a lesson plan, they can save it as a personal template. Next time they need to plan for a different subject or grade level, they duplicate and adapt — not start from zero.</p>
+    <p>Collectively, these tools cover all <strong>7 core subjects</strong> across <strong>Grades K–6</strong>, matching the BEED curriculum at CSAV Victoria's.</p>
+  </div>
+
+  <div class="tip">
+    <p>Pause after the stat cards — let the numbers sink in. The committee appreciates scope quantified. If you have usage data (even pilot data), insert it here. Spend 2.5 minutes on features.</p>
+  </div>
+</section>
+
+<!-- ─── 5. DESIGN & RATIONALE ─── -->
+<section id="design">
+  <p class="section-label">Section 5</p>
+  <h2>Design &amp; Visual Rationale</h2>
+  <p><strong>Slide:</strong> The BEEDPORTAL colour palette (navy swatch, gold swatch, cream bg) + type specimens (Playfair Display, Inter).</p>
+
+  <div class="script">
+    <p>The visual design was a deliberate choice. I want to briefly explain the thinking behind it, because it directly supports the product's purpose.</p>
+    <p><strong>Navy primary</strong> — the deep blue feels academic, serious, and trustworthy. It's a colour associated with institutions and professionalism. When a BEED student opens BEEDPORTAL to prepare a practicum requirement, the visual language says "this is important work."</p>
+    <p><strong>Gold accent</strong> — the gold is warm and aspirational. It signals quality, achievement, and the value of the teaching profession. We use it sparingly — one decisive accent per screen — so it never overwhelms.</p>
+    <p><strong>Playfair Display</strong> for headings — a serif typeface that brings editorial gravitas. The headings feel like a publication, not a generic web app. This matters because lesson planning is a craft.</p>
+    <p><strong>Inter</strong> for body — clean, highly readable, and system-native. Students working on their plans for hours won't experience eye strain.</p>
+    <p><strong>The cream background</strong> — it is softer than pure white, reducing glare during long planning sessions. It also evokes the paper of a real lesson plan document.</p>
+    <p>The animations — scroll reveal, card tilt, the typewriter — are not decorative. They create a sense of <strong>discovery</strong> as the user scrolls through the product information. The motion is purposeful, not ornamental.</p>
+  </div>
+
+  <div class="tip">
+    <p>This is where you show design thinking. Committees want to know you made <em>intentional</em> choices, not just "it looked nice." Frame everything as having a rationale. Keep to 2 minutes — don't get lost in typography details.</p>
+  </div>
+</section>
+
+<!-- ─── 6. WALKTHROUGH ─── -->
+<section id="walkthrough">
+  <p class="section-label">Section 6</p>
+  <h2>Live Walkthrough &mdash; Section by Section</h2>
+  <p><strong>Slide:</strong> Live demo &mdash; open BEEDPORTAL on a projector. Walk through each section.</p>
+
+  <h3>Hero / Home</h3>
+  <div class="script">
+    <p>The landing page opens on the hero section. You see "Plan Smart. Teach Better." — this is the core promise. The typewriter cycles through specific use cases: creating demo plans, writing DepEd-aligned lessons, saving templates.</p>
+    <p>Notice the badges at the bottom: subjects covered, DepEd alignment. This communicates breadth immediately.</p>
+  </div>
+
+  <h3>Services (What We Offer)</h3>
+  <div class="script">
+    <p>Scrolling down reveals the three product cards: Demo Maker, Lesson Plan Planner, and Smart Templates.</p>
+    <p>The centre card — Lesson Plan Planner — is highlighted with a gold badge and placed on a dark background. This is the flagship feature. The eye lands on it first.</p>
+    <p>Each card lists specific tags: the template types supported, the export options.</p>
+  </div>
+
+  <h3>Stats</h3>
+  <div class="script">
+    <p>The stats section gives the committee the numbers: 7 subjects, 4-year curriculum, 2 practicum semesters, 6 grade levels. These count up automatically when they scroll into view — a small interactive touch that reinforces the data.</p>
+  </div>
+
+  <h3>How It Works</h3>
+  <div class="script">
+    <p>Three simple steps: Pick a Template → Choose a Template → Export & Impress. The journey is intentionally short. This communicates that BEEDPORTAL is not complicated — students can go from opening the site to having a finished DLP in minutes.</p>
+  </div>
+
+  <h3>Events</h3>
+  <div class="script">
+    <p>The events section shows upcoming BEED activities — Practicum Orientation, Demo Teaching Workshop, Lesson Plan Writing Seminar. This positions BEEDPORTAL not just as a tool but as a hub for the BEED community at CSAV.</p>
+  </div>
+
+  <h3>Contact</h3>
+  <div class="script">
+    <p>Contact details include email (BEEDPORTAL@gmail.com), phone, and a contact form. The location — Victorias City — grounds it in the CSAV community.</p>
+  </div>
+
+  <h3>Login / Register</h3>
+  <div class="script">
+    <p>These are functional auth screens with a carousel of classroom imagery, a canvas particle network, and parallax effects. They demonstrate that BEEDPORTAL can support user accounts and personalisation — a foundation for future features like saved lesson plan libraries.</p>
+  </div>
+
+  <div class="tip">
+    <p>This is the <strong>meat</strong> of the presentation. Plan for 6–8 minutes here. Don't click through too fast — pause on each section, let the animations play, explain what the user would do on each screen. Use actual student scenarios: "A third-year BEED student preparing for her demo teaching in Science would open Demo Maker, select 5E's template..."</p>
+  </div>
+</section>
+
+<!-- ─── 7. TECHNICAL ─── -->
+<section id="tech">
+  <p class="section-label">Section 7</p>
+  <h2>Technical Architecture</h2>
+  <p><strong>Slide:</strong> Architecture diagram or bullet list of tech stack.</p>
+
+  <div class="script">
+    <p>On the technical side, BEEDPORTAL is built as a <strong>single-page application</strong> — meaning the entire experience loads once, and switching between views (landing, login, register) happens instantly without page reloads.</p>
+    <p>The tech stack:</p>
+    <ul>
+      <li><strong>HTML + CSS + vanilla JavaScript</strong> — no framework dependencies; the site is lightweight and loads fast even on slower connections common in provincial areas.</li>
+      <li><strong>Tailwind CSS</strong> — used for utility-first styling, keeping the CSS clean and maintainable.</li>
+      <li><strong>Custom CSS animations</strong> — scroll reveal, parallax, typewriter, card tilt, and kenBurns carousel effects are all hand-coded for performance.</li>
+      <li><strong>Intersection Observer API</strong> — powers the scroll-triggered reveals and count-up animations without third-party libraries.</li>
+      <li><strong>Canvas API</strong> — the particle network on the auth screens uses the HTML5 canvas for a lightweight interactive background.</li>
+      <li><strong>Spring-physics scroll progress</strong> — the progress bar at the top uses a lerp-based spring simulation for smooth, natural motion.</li>
+    </ul>
+    <p>The site is fully <strong>responsive</strong> — it works on desktop, tablet, and mobile — which matters because students may access it from their phones between classes.</p>
+    <p>It's also <strong>ready for Vercel deployment</strong> as a static site, making hosting straightforward.</p>
+  </div>
+
+  <div class="tip">
+    <p>Adjust depth here based on your audience. If the committee is mostly education faculty, keep it high-level and emphasise reliability, speed, and accessibility. If there are IT/computing faculty present, have a second slide with more technical detail ready to pull up.</p>
+  </div>
+</section>
+
+<!-- ─── 8. Q&A PREP ─── -->
+<section id="qa">
+  <p class="section-label">Section 8</p>
+  <h2>Anticipated Questions &amp; Responses</h2>
+  <p><strong>Slide:</strong> Optional — just a title slide reading "Questions &amp; Discussion"</p>
+
+  <div class="qa-card">
+    <div class="q">How does this differ from existing lesson plan templates online?</div>
+    <div class="a">BEEDPORTAL is not just a template — it's a workflow. Existing templates are static Word/PDF files. BEEDPORTAL provides guided input, saves student work, supports reuse and adaptation across subjects, and integrates demo planning with DLP writing. The templates are pre-aligned to DepEd standards, removing the guesswork.</div>
+  </div>
+
+  <div class="qa-card">
+    <div class="q">Is this only for CSAV Victoria's students, or can it scale?</div>
+    <div class="a">It was built for CSAV as a pilot, but the architecture is content-driven — expanding to other institutions would mean adding their subject lists and specific requirements, not rewriting the platform.</div>
+  </div>
+
+  <div class="qa-card">
+    <div class="q">How do you ensure the lesson plans are actually DepEd-compliant?</div>
+    <div class="a">The template structures follow the official DepEd Detailed Lesson Plan format — Subject Matter, Procedure A–F, Evaluation, Assignment — as specified in DepEd Order 42, s. 2016 and related guidelines. The 4A's and 5E's templates reflect current BEED pedagogy.</div>
+  </div>
+
+  <div class="qa-card">
+    <div class="q">What about assessment? Can the tool grade or evaluate plans?</div>
+    <div class="a">Not in version 1.0. BEEDPORTAL currently focuses on <em>creation</em> — getting the plan written in the correct format. Peer review, faculty feedback, and rubric-based assessment are logical next features but are not yet implemented.</div>
+  </div>
+
+  <div class="qa-card">
+    <div class="q">Is there a cost for students?</div>
+    <div class="a">The site is free for all BEED students. The goal is to remove barriers — financial and technical — so every student can produce quality lesson plans regardless of their background.</div>
+  </div>
+
+  <div class="qa-card">
+    <div class="q">How will students learn to use it?</div>
+    <div class="a">The interface is designed to be intuitive — sections are labelled in plain language, the process has only three steps, and form fields guide the user. A brief orientation during the Practicum Orientation event (already listed on the site) would be sufficient.</div>
+  </div>
+
+  <div class="qa-card">
+    <div class="q">What are your plans for future development?</div>
+    <div class="a">Version 2.0 would prioritise: (1) a personal dashboard where students see all their saved plans, (2) faculty review and commenting, (3) PDF export with proper formatting, and (4) expansion to include field study documentation forms (FS 1–6).</div>
+  </div>
+
+  <div class="tip">
+    <p>For each question, <strong>do not rush to answer</strong>. Repeat the question to confirm understanding, then pause before responding. If you don't know the answer, say "That's a great question — I don't have a definitive answer right now, but I'd be happy to explore it." Never bluff.</p>
+  </div>
+</section>
+
+<!-- ─── 9. NEXT STEPS ─── -->
+<section id="next">
+  <p class="section-label">Section 9</p>
+  <h2>Next Steps &amp; Closing</h2>
+  <p><strong>Slide:</strong> A clean "Next Steps" slide with 3–4 action items.</p>
+
+  <div class="script">
+    <p>To summarise, here is where BEEDPORTAL is and where it's going:</p>
+    <ul>
+      <li><strong>Done.</strong> Version 1.0 of the landing page, demo tools, and auth system are live and functional.</li>
+      <li><strong>In progress.</strong> We are building out the actual Lesson Plan Planner interface — the form-based DLP builder that students will use to create and save their plans.</li>
+      <li><strong>Next:</strong> Pilot testing with a cohort of BEED students to gather feedback before full rollout.</li>
+      <li><strong>Future:</strong> Faculty review dashboard, PDF export, and field study documentation modules.</li>
+    </ul>
+    <p>We would welcome the committee's feedback, questions, and — if you see the value — guidance on how this can best support the BEED program at CSAV Victoria's.</p>
+    <p>Thank you.</p>
+  </div>
+
+  <div style="text-align:center; margin-top: 48px; padding: 32px; background: linear-gradient(135deg, #0f1b2d, #1a2d4a); border-radius: 20px;">
+    <p style="color: #f2d98f; font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 700; margin: 0 0 4px;">Plan Smart. Teach Better.</p>
+    <p style="color: rgba(242,217,143,.5); font-size: 13px; margin: 0;">BEEDPORTAL &mdash; Built for BEED Students at CSAV Victoria's</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>BEEDPORTAL</strong> Presentation Guide &mdash; Designed for academic committee / faculty review</p>
+  <p style="margin-top:4px;">BEEDPORTAL@gmail.com &mdash; Victorias City, Negros Occidental</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BEEDPORTAL — How It Works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+          },
+          colors: {
+            navy: { 50:'#f0f3f9',100:'#dce3f0',200:'#b9c8e1',300:'#8fa6cc',400:'#6382b3',500:'#4a6b9e',600:'#3a5585',700:'#2f456d',800:'#0f1b2d',900:'#0a1322' },
+            gold:  { 50:'#fdf8ed',100:'#f9edcc',200:'#f2d98f',300:'#e8c45a',400:'#d9b14a',500:'#c9a84c',600:'#a8843a',700:'#8a682f',800:'#6f5228',900:'#5a4322' },
+            cream: '#faf6f0',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+    .display-heading { font-family: 'Playfair Display', Georgia, serif; }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content:''; position:absolute; bottom:-2px; left:0;
+      width:0; height:2px; background:#c9a84c;
+      transition: width .25s ease;
+    }
+    .nav-link:hover::after { width:100%; }
+    nav.scrolled { background: rgba(10,19,34,0.95) !important; backdrop-filter: blur(16px); box-shadow: 0 4px 30px rgba(0,0,0,0.35); }
+    .reveal {
+      opacity:0; transform:translateY(36px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity:1; transform:none; }
+    .s1{transition-delay:.1s;} .s2{transition-delay:.2s;} .s3{transition-delay:.3s;}
+    #scroll-progress {
+      position:fixed; top:0; left:0; right:0; height:3px; z-index:999;
+      background:linear-gradient(90deg,#c9a84c,#f2d98f);
+      transform-origin:0 50%;
+      scale:0 1;
+    }
+    .section-badge {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 14px; border-radius:99px;
+      font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    }
+    .reveal-scale {
+      opacity:0; transform:scale(.92); filter:blur(4px);
+      transition: opacity .8s ease, transform .8s ease, filter .8s ease;
+    }
+    .reveal-scale.visible { opacity:1; transform:scale(1); filter:blur(0); }
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-track { background:transparent; }
+    ::-webkit-scrollbar-thumb { background:#c9a84c; border-radius:99px; }
+    .nav-active { color: #c9a84c !important; }
+    .nav-active::after { width: 100% !important; }
+    .page-header {
+      padding-top: 96px;
+      background: linear-gradient(135deg,#0f1b2d 0%,#1a2d4a 50%,#0f1b2d 100%);
+    }
+  </style>
+</head>
+<body class="text-navy-900 antialiased bg-cream">
+
+<div id="scroll-progress"></div>
+
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:rgba(10,19,34,0.75); backdrop-filter:blur(12px);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
+        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-9 h-9 rounded-xl object-cover shadow-lg" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
+        <span class="text-white font-bold text-lg tracking-tight display-heading">BEEDPORTAL</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gold-200">
+        <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
+        <a href="services.html" class="nav-link hover:text-white transition-colors">Services</a>
+        <a href="how-it-works.html" class="nav-link nav-active hover:text-white transition-colors">How It Works</a>
+        <a href="events.html" class="nav-link hover:text-white transition-colors">Events</a>
+        <a href="contact.html" class="nav-link hover:text-white transition-colors">Contact</a>
+      </div>
+      <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
+        class="md:hidden p-2 rounded-lg text-gold-200 hover:text-white hover:bg-white/10 transition-colors">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden border-t border-white/10" style="background:rgba(10,19,34,0.97);">
+    <div class="px-4 py-4 flex flex-col gap-1 text-sm font-medium text-gold-200">
+      <a href="index.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">Home</a>
+      <a href="services.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">Services</a>
+      <a href="how-it-works.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors" style="color:#c9a84c;">How It Works</a>
+      <a href="events.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">Events</a>
+      <a href="contact.html" onclick="closeMenu()" class="hover:text-white hover:bg-white/10 rounded-lg px-3 py-2.5 transition-colors">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════ PAGE HEADER ═══════════════ -->
+<section class="page-header relative overflow-hidden">
+  <div class="absolute inset-0 opacity-8">
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#c9a84c" stroke-width="0.5"/></pattern></defs>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+    </svg>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <span class="section-badge mb-4 inline-flex" style="background:rgba(201,168,76,.18);color:#f2d98f;border:1px solid rgba(201,168,76,.3);">
+      <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#c9a84c;"></span> Simple Process
+    </span>
+    <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mt-4">Ready in 3 Easy Steps</h1>
+    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:rgba(242,217,143,.65);">From sign-up to a polished, print-ready lesson plan in minutes.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+<section data-od-id="how" class="py-24" style="background:#fff;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+      <div class="hidden md:block absolute top-14 left-[calc(16.67%+32px)] right-[calc(16.67%+32px)] h-0.5 z-0" style="background:linear-gradient(90deg,#c9a84c,#f2d98f,#c9a84c);"></div>
+      <div class="relative z-10 flex flex-col items-center text-center p-8 rounded-3xl border reveal s1" style="background:rgba(201,168,76,.06); border-color:rgba(201,168,76,.15);">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 shadow-lg text-2xl font-black text-white" style="background:linear-gradient(135deg,#c9a84c,#8a682f);">1</div>
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 shadow-sm" style="background:#fff; border:1px solid rgba(201,168,76,.15);">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#c9a84c;"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-navy-800 mb-2">Pick a Template</h3>
+        <p class="text-sm leading-relaxed" style="color:#8b8580;">Choose from subject-specific DepEd-aligned templates or start fresh. Every format follows official DLP structure.</p>
+      </div>
+      <div class="relative z-10 flex flex-col items-center text-center p-8 rounded-3xl border reveal s2" style="background:rgba(201,168,76,.08); border-color:rgba(201,168,76,.18);">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 shadow-lg text-2xl font-black text-white" style="background:linear-gradient(135deg,#c9a84c,#8a682f);">2</div>
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 shadow-sm" style="background:#fff; border:1px solid rgba(201,168,76,.15);">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#c9a84c;"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-navy-800 mb-2">Choose a Template</h3>
+        <p class="text-sm leading-relaxed" style="color:#8b8580;">Pick from subject-specific templates or start from scratch. Every template follows the official DepEd format for DLPs.</p>
+      </div>
+      <div class="relative z-10 flex flex-col items-center text-center p-8 rounded-3xl border reveal s3" style="background:rgba(201,168,76,.06); border-color:rgba(201,168,76,.15);">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 shadow-lg text-2xl font-black text-white" style="background:linear-gradient(135deg,#c9a84c,#8a682f);">3</div>
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 shadow-sm" style="background:#fff; border:1px solid rgba(201,168,76,.15);">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#c9a84c;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-navy-800 mb-2">Export & Impress</h3>
+        <p class="text-sm leading-relaxed" style="color:#8b8580;">Print your DepEd-formatted plan and submit with confidence. Your cooperating teacher will be impressed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CSAV BANNER ═══════════════ -->
+<section data-od-id="csav-banner" class="py-20 relative overflow-hidden" style="background:linear-gradient(135deg,#0f1b2d 0%,#1a2d4a 50%,#0f1b2d 100%);">
+  <div class="absolute inset-0 opacity-8">
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#c9a84c" stroke-width="0.5"/></pattern></defs>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+    </svg>
+  </div>
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="reveal-scale">
+      <div class="text-5xl mb-4">👩‍🏫</div>
+      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-white mb-4"><span class="grad-text">BEEDPORTAL</span> — Your teaching toolkit</h2>
+      <p class="mb-8 text-lg max-w-2xl mx-auto leading-relaxed" style="color:rgba(242,217,143,.65);">Every field study template, lesson plan builder, and teaching tool — designed around the real needs of BEED students preparing for their practicum.</p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm" style="color:rgba(201,168,76,.75);">
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">🎓 CSAV Victoria's</span>
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">✅ DepEd K-12 Aligned</span>
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">✅ All 7 Core Subjects</span>
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">✅ Grades K–6</span>
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">✅ Print-Ready Format</span>
+        <span class="px-4 py-2 rounded-full font-medium" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);">✅ 4A's & 5E's Templates</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer style="background:#070e1a;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="reveal flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-10">
+      <div class="flex items-center gap-3">
+        <img src="beedportal-logo.png" alt="BEEDPORTAL" class="w-10 h-10 rounded-2xl object-cover shadow-lg" style="box-shadow:0 4px 12px rgba(201,168,76,.35);">
+        <div>
+          <p class="text-white font-bold text-lg leading-none display-heading">BEEDPORTAL</p>
+          <p class="text-xs mt-0.5" style="color:#6b6760;">Plan Smart. Teach Better.</p>
+        </div>
+      </div>
+      <nav class="flex flex-wrap gap-x-7 gap-y-2 text-sm" style="color:#6b6760;">
+        <a href="index.html" class="hover:text-gold-400 transition-colors">Home</a>
+        <a href="services.html" class="hover:text-gold-400 transition-colors">Services</a>
+        <a href="how-it-works.html" class="hover:text-gold-400 transition-colors" style="color:#c9a84c;">How It Works</a>
+        <a href="events.html" class="hover:text-gold-400 transition-colors">Events</a>
+        <a href="contact.html" class="hover:text-gold-400 transition-colors">Contact</a>
+      </nav>
+    </div>
+    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(201,168,76,.08);">
+      <p class="text-xs" style="color:#4a4540;">BEEDPORTAL &copy; 2026 &mdash; Built for BEED Students</p>
+      <p class="text-xs" style="color:#3a3530;">Made with <span style="color:#c9a84c;">♥</span> for Filipino teachers</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  window.toggleMenu = function() {
+    var menu = document.getElementById('mobile-menu');
+    var btn = document.getElementById('hamburger-btn');
+    var open = document.getElementById('icon-open');
+    var close = document.getElementById('icon-close');
+    var isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open', !isOpen);
+    open.classList.toggle('hidden', !isOpen);
+    close.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  };
+  window.closeMenu = function() {
+    var menu = document.getElementById('mobile-menu');
+    var open = document.getElementById('icon-open');
+    var close = document.getElementById('icon-close');
+    menu.classList.remove('open');
+    open.classList.remove('hidden');
+    close.classList.add('hidden');
+    document.getElementById('hamburger-btn').setAttribute('aria-expanded','false');
+  };
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768) closeMenu();
+  });
+
+  /* Scroll reveal */
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .reveal-scale').forEach(function(el) { revealObserver.observe(el); });
+
+  /* Scroll progress */
+  var progressBar = document.getElementById('scroll-progress');
+  var progTarget = 0, progCurrent = 0, progRaf = null;
+  function springProgress() {
+    var diff = progTarget - progCurrent;
+    progCurrent += diff * 0.1;
+    progressBar.style.scale = Math.min(1, Math.max(0, progCurrent)) + ' 1';
+    if (Math.abs(diff) > 0.0008) { progRaf = requestAnimationFrame(springProgress); }
+    else { progRaf = null; }
+  }
+  window.addEventListener('scroll', function() {
+    if (!progressBar) return;
+    var scrollTop = window.scrollY, docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progTarget = docHeight > 0 ? scrollTop / docHeight : 0;
+    if (!progRaf) progRaf = requestAnimationFrame(springProgress);
+  }, { passive: true });
+
+  /* Nav glass */
+  var nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', function() {
+    if (!nav) return;
+    if (window.scrollY > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  }, { passive: true });
+
+  /* Grad text for banner */
+  var style = document.createElement('style');
+  style.textContent = '.grad-text { background:linear-gradient(135deg,#c9a84c 0%,#e8c45a 40%,#f2d98f 70%,#c9a84c 100%); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 4s linear infinite; } @keyframes shimmer { to { background-position:200% center; } }';
+  document.head.appendChild(style);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "BEEDPORTAL Presentation Guide",
+  "entry": "beedportal-presentation-guide.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-05-21T02:27:45.064Z",
+  "updatedAt": "2026-05-21T02:27:45.081Z",
+  "sourceSkillId": "agent-browser",
+  "designSystemId": "default",
+  "metadata": {
+    "identifier": "beedportal-presentation-guide",
+    "artifactType": "text/html",
+    "inferred": false
+  }
+}
