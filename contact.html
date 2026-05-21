@@ -128,6 +128,46 @@
 
     #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(255,255,255,.98); }
     #mobile-menu.open { max-height:320px; }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity:0; }
+      10% { opacity:.35; }
+      90% { opacity:.25; }
+      100% { transform: translateY(-120px) translateX(40px) rotate(60deg); opacity:0; }
+    }
+    .hero-particle {
+      position:absolute; border-radius:50%; pointer-events:none;
+      will-change:transform;
+    }
+    .hero-particle.p-diamond { border-radius:2px; transform:rotate(45deg); }
+
+    @keyframes iconPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(241,178,74,.15); }
+      50% { box-shadow: 0 0 0 10px rgba(241,178,74,.06); }
+    }
+    .icon-pulse {
+      animation: iconPulse 3.5s ease-in-out infinite;
+    }
+    .icon-pulse-d1 {
+      animation: iconPulse 3.5s ease-in-out infinite;
+      animation-delay: -1.17s;
+    }
+    .icon-pulse-d2 {
+      animation: iconPulse 3.5s ease-in-out infinite;
+      animation-delay: -2.33s;
+    }
+
+    .btn-submit { position:relative; overflow:hidden; }
+    .ripple {
+      position:absolute; border-radius:50%;
+      background:rgba(255,255,255,.25);
+      transform:scale(0);
+      animation: rippleAnim .6s ease-out forwards;
+      pointer-events:none;
+    }
+    @keyframes rippleAnim {
+      to { transform:scale(4); opacity:0; }
+    }
   </style>
 </head>
 <body class="bg-[#f2f7f0] text-[#164A41] antialiased">
@@ -138,10 +178,10 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
-        <img src="beedportal-logo.png" alt="CSAV" class="w-8 h-8 rounded-lg object-cover" style="background:rgba(22,74,65,.08);" />
+        <img src="beedportal-logo.png" alt="CSAV" class="w-8 h-8 rounded-lg object-cover" style="background:rgba(77,119,78,.1);" />
         <div>
           <span class="font-bold text-sm leading-none tracking-tight display-heading" style="color:#164A41;">CSAV</span>
-          <span class="text-xs leading-none block mt-0.5" style="color:#4D774E;">Future Educators Hub</span>
+          <span class="text-xs leading-none block mt-0.5" style="color:#9DC88D;">Future Educators Hub</span>
         </div>
       </a>
       <div class="hidden md:flex items-center gap-6 text-sm">
@@ -152,19 +192,19 @@
         <a href="contact.html" class="nav-link nav-active">Contact</a>
       </div>
       <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
-        class="md:hidden p-2 rounded-lg text-[#4D774E] hover:text-[#164A41] hover:bg-[#e0efe0] transition-colors">
+        class="md:hidden p-2 rounded-lg text-[#4D774E] hover:text-[#164A41] hover:bg-[#f6f7f4] transition-colors">
         <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
-  <div id="mobile-menu" class="md:hidden border-t" style="border-color:#dce8d8;">
+  <div id="mobile-menu" class="md:hidden border-t" style="border-color:rgba(157,200,141,.15);">
     <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-[#4D774E]">
-      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Home</a>
-      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">About</a>
-      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Events</a>
-      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Career Opportunities</a>
-      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]" style="color:#164A41;">Contact</a>
+      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">Home</a>
+      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">About</a>
+      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">Events</a>
+      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">Career Opportunities</a>
+      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]" style="color:#164A41;">Contact</a>
     </div>
   </div>
 </nav>
@@ -172,6 +212,11 @@
 <!-- ═══════ PAGE HEADER ═══════ -->
 <section class="page-header relative overflow-hidden" style="background: linear-gradient(135deg, rgba(13,51,45,.82), rgba(22,74,65,.72), rgba(13,51,45,.88)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80') center / cover no-repeat;">
   <div class="page-grid-bg"></div>
+  <div class="hero-particle" style="width:12px;height:12px;background:#F1B24A;top:18%;left:8%;animation:particleFloat 24s ease-in-out infinite;animation-delay:-2s;"></div>
+  <div class="hero-particle" style="width:8px;height:8px;background:#9DC88D;top:12%;right:12%;animation:particleFloat 28s ease-in-out infinite;animation-delay:-8s;"></div>
+  <div class="hero-particle p-diamond" style="width:10px;height:10px;background:rgba(241,178,74,.5);top:40%;left:5%;animation:particleFloat 20s ease-in-out infinite;animation-delay:-14s;"></div>
+  <div class="hero-particle" style="width:6px;height:6px;background:#fff;top:55%;right:8%;animation:particleFloat 30s ease-in-out infinite;animation-delay:-5s;"></div>
+  <div class="hero-particle" style="width:9px;height:9px;background:rgba(241,178,74,.6);top:65%;left:12%;animation:particleFloat 26s ease-in-out infinite;animation-delay:-10s;"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
          style="background:rgba(241,178,74,.12);border:1px solid rgba(241,178,74,.2);color:#F1B24A;">
@@ -191,7 +236,7 @@
         <p class="text-sm leading-relaxed mb-8" style="color:#4D774E;">Whether it's a question about the BEED program, technical support, or just want to say hi — reach out. We're here to help you succeed.</p>
         <div class="space-y-3">
           <div class="contact-card">
-            <div class="contact-icon-box">
+            <div class="contact-icon-box icon-pulse">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </div>
             <div>
@@ -200,7 +245,7 @@
             </div>
           </div>
           <div class="contact-card">
-            <div class="contact-icon-box">
+            <div class="contact-icon-box icon-pulse-d1">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
             </div>
             <div>
@@ -209,7 +254,7 @@
             </div>
           </div>
           <div class="contact-card">
-            <div class="contact-icon-box">
+            <div class="contact-icon-box icon-pulse-d2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
             <div>
@@ -312,6 +357,18 @@
   var form = document.getElementById('contact-form');
   var submitBtn = document.getElementById('submit-btn');
   var toast = document.getElementById('toast');
+
+  submitBtn.addEventListener('click', function(e) {
+    var rect = this.getBoundingClientRect();
+    var ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    var size = Math.max(rect.width, rect.height);
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+    ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+    this.appendChild(ripple);
+    setTimeout(function() { ripple.remove(); }, 600);
+  });
 
   function showToast(msg, type) {
     toast.textContent = msg;

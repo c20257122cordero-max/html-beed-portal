@@ -154,6 +154,30 @@
       transform: translateY(-3px);
       box-shadow: 0 8px 28px rgba(22,74,65,.04);
     }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity:0; }
+      10% { opacity:.35; }
+      90% { opacity:.25; }
+      100% { transform: translateY(-120px) translateX(40px) rotate(60deg); opacity:0; }
+    }
+    .hero-particle {
+      position:absolute; border-radius:50%; pointer-events:none;
+      will-change:transform;
+    }
+    .hero-particle.p-diamond { border-radius:2px; transform:rotate(45deg); }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(241,178,74,.2); }
+      50% { box-shadow: 0 0 0 12px rgba(241,178,74,.08); }
+    }
+    .icon-glow {
+      animation: glowPulse 3.5s ease-in-out infinite;
+    }
+    .icon-glow-delay {
+      animation: glowPulse 3.5s ease-in-out infinite;
+      animation-delay: -1.75s;
+    }
   </style>
 </head>
 <body class="bg-[#f2f7f0] text-[#164A41] antialiased">
@@ -162,10 +186,10 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
-        <img src="beedportal-logo.png" alt="CSAV" class="w-8 h-8 rounded-lg object-cover" style="background:rgba(22,74,65,.08);" />
+        <img src="beedportal-logo.png" alt="CSAV" class="w-8 h-8 rounded-lg object-cover" style="background:rgba(77,119,78,.1);" />
         <div>
           <span class="font-bold text-sm leading-none tracking-tight display-heading" style="color:#164A41;">CSAV</span>
-          <span class="text-xs leading-none block mt-0.5" style="color:#4D774E;">Future Educators Hub</span>
+          <span class="text-xs leading-none block mt-0.5" style="color:#9DC88D;">Future Educators Hub</span>
         </div>
       </a>
       <div class="hidden md:flex items-center gap-6 text-sm">
@@ -176,19 +200,19 @@
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
       <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
-        class="md:hidden p-2 rounded-lg text-[#4D774E] hover:text-[#164A41] hover:bg-[#e0efe0] transition-colors">
+        class="md:hidden p-2 rounded-lg text-[#4D774E] hover:text-[#164A41] hover:bg-[#f6f7f4] transition-colors">
         <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
-  <div id="mobile-menu" class="md:hidden border-t" style="border-color:#dce8d8;">
+  <div id="mobile-menu" class="md:hidden border-t" style="border-color:rgba(157,200,141,.15);">
     <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-[#4D774E]">
-      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Home</a>
-      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">About</a>
-      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Events</a>
-      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]" style="color:#164A41;">Career Opportunities</a>
-      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Contact</a>
+      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">Home</a>
+      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">About</a>
+      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">Events</a>
+      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]" style="color:#164A41;">Career Opportunities</a>
+      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">Contact</a>
     </div>
   </div>
 </nav>
@@ -197,6 +221,12 @@
 <section class="page-header" style="background: linear-gradient(135deg, rgba(13,51,45,.82), rgba(22,74,65,.72), rgba(13,51,45,.88)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80') center / cover no-repeat;">
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-particle" style="width:12px;height:12px;background:#F1B24A;top:18%;left:8%;animation:particleFloat 24s ease-in-out infinite;animation-delay:-2s;"></div>
+  <div class="hero-particle" style="width:8px;height:8px;background:#9DC88D;top:12%;right:12%;animation:particleFloat 28s ease-in-out infinite;animation-delay:-8s;"></div>
+  <div class="hero-particle p-diamond" style="width:10px;height:10px;background:rgba(241,178,74,.5);top:40%;left:5%;animation:particleFloat 20s ease-in-out infinite;animation-delay:-14s;"></div>
+  <div class="hero-particle" style="width:6px;height:6px;background:#fff;top:55%;right:8%;animation:particleFloat 30s ease-in-out infinite;animation-delay:-5s;"></div>
+  <div class="hero-particle p-diamond" style="width:14px;height:14px;background:rgba(157,200,141,.35);top:25%;right:22%;animation:particleFloat 22s ease-in-out infinite;animation-delay:-18s;"></div>
+  <div class="hero-particle" style="width:9px;height:9px;background:rgba(241,178,74,.6);top:65%;left:12%;animation:particleFloat 26s ease-in-out infinite;animation-delay:-10s;"></div>
   <div class="page-grid-bg"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
@@ -229,7 +259,7 @@
            onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(22,74,65,.08)';this.style.borderColor='#9DC88D'"
            onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(22,74,65,.04)';this.style.borderColor='#dce8d8'">
         <div class="flex items-center justify-center pt-10 pb-2" style="background:#f2f7f0;">
-          <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:#164A41;">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center icon-glow" style="background:#164A41;">
             <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
             </svg>
@@ -273,7 +303,7 @@
            onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(22,74,65,.08)';this.style.borderColor='#9DC88D'"
            onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(22,74,65,.04)';this.style.borderColor='#dce8d8'">
         <div class="flex items-center justify-center pt-10 pb-2" style="background:#f2f7f0;">
-          <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:#164A41;">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center icon-glow-delay" style="background:#164A41;">
             <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
             </svg>
@@ -317,7 +347,7 @@
            onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(22,74,65,.08)';this.style.borderColor='#9DC88D'"
            onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(22,74,65,.04)';this.style.borderColor='#dce8d8'">
         <div class="flex items-center justify-center pt-10 pb-2" style="background:#f2f7f0;">
-          <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:#164A41;">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:#164A41;animation:glowPulse 3.5s ease-in-out infinite;animation-delay:-0.88s;">
             <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-8.25ZM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-2.25Z" />
             </svg>
