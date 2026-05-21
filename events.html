@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Events — CSAV Department of Elementary Education</title>
-  <meta name="description" content="Stay updated with the latest events from the CSAV Department of Elementary Education — orientations, workshops, and seminars for BEED students." />
+  <meta name="description" content="Events and activities for BEED students at CSAV Department of Elementary Education — orientations, workshops, seminars, and community moments that shape future educators." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,41 +46,69 @@
 
     .page-header {
       padding-top: 96px;
-      background: linear-gradient(135deg, rgba(15,23,42,.78), rgba(30,41,59,.68), rgba(15,23,42,.82)), url('mpfgtaqk-image.png') center/cover fixed;
+      background: linear-gradient(135deg, rgba(15,23,42,.82), rgba(30,41,59,.72), rgba(15,23,42,.88)), url('mpfgtaqk-image.png') center/cover fixed;
+      position: relative; overflow: hidden;
     }
     .page-grid-bg {
-      position:absolute; inset:0; opacity:.06;
-      background-image: linear-gradient(rgba(13,148,136,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(13,148,136,.3) 1px, transparent 1px);
+      position:absolute; inset:0; opacity:.04;
+      background-image: linear-gradient(rgba(13,148,136,.4) 1px, transparent 1px), linear-gradient(90deg, rgba(13,148,136,.4) 1px, transparent 1px);
       background-size: 48px 48px;
+    }
+    .hero-orb {
+      position:absolute; border-radius:50%; filter:blur(60px); opacity:.25;
+      pointer-events:none;
+    }
+    .hero-orb.a { width:300px; height:300px; background:#0d9488; top:-80px; right:-60px; animation: orbDrift 8s ease-in-out infinite alternate; }
+    .hero-orb.b { width:200px; height:200px; background:#14b8a6; bottom:-40px; left:-40px; animation: orbDrift 10s ease-in-out infinite alternate-reverse; }
+
+    @keyframes orbDrift {
+      0% { transform:translate(0,0) scale(1); }
+      100% { transform:translate(30px,-20px) scale(1.15); }
     }
 
     .reveal { opacity:0; transform:translateY(28px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity:1; transform:none; }
-    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
+    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; } .d4 { transition-delay:.4s; }
+    .reveal-scale { opacity:0; transform:scale(.94); transition: opacity .6s ease, transform .6s ease; }
+    .reveal-scale.visible { opacity:1; transform:scale(1); }
+
+    .event-spotlight-card {
+      background:#fff; border-radius:1.5rem; overflow:hidden;
+      display:grid; grid-template-columns: 1.3fr 1fr;
+      box-shadow: 0 4px 24px rgba(13,148,136,.08);
+      border: 1px solid #e2e8f0;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .event-spotlight-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(13,148,136,.1); }
+    @media (max-width: 768px) { .event-spotlight-card { grid-template-columns: 1fr; } }
 
     .event-card {
-      background:#fff; border:1px solid #e2e8f0; border-radius:1.25rem;
-      overflow:hidden; display:flex; flex-direction:column;
+      background:#fff; border-radius:1.25rem; overflow:hidden;
+      border:1px solid #e2e8f0;
+      display:flex; flex-direction:column;
       transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
     }
-    .event-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(15,23,42,.05); border-color: #99f6e4; }
-    .event-header { padding:1.25rem 1.5rem; display:flex; align-items:center; gap:1rem; }
-    .event-header.dark { background: linear-gradient(135deg,#0f172a,#1e293b); }
-    .event-header.mid { background: linear-gradient(135deg,#1e293b,#334155); }
-    .event-date-box { text-align:center; padding:.75rem 1rem; border-radius:1rem; min-width:64px; background:rgba(13,148,136,.12); border:1px solid rgba(13,148,136,.2); }
-    .event-date-num { display:block; font-size:1.75rem; font-weight:800; color:#fff; line-height:1.1; }
-    .event-date-month { display:block; font-size:.6875rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#5eead4; margin-top:.125rem; }
-    .event-status { display:flex; align-items:center; gap:.375rem; }
-    .event-status-dot { width:.5rem; height:.5rem; border-radius:50%; background:#5eead4; }
+    .event-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(15,23,42,.06); border-color: #99f6e4; }
+    .event-card-top { height:6px; flex-shrink:0; }
+    .event-card-body { padding:1.5rem; display:flex; flex-direction:column; flex:1; }
 
-    .learn-link {
-      display:inline-flex; align-items:center; gap:.375rem;
-      font-size:.875rem; font-weight:600; color:#0d9488;
-      transition: color .2s ease;
+    .moment-card {
+      aspect-ratio: 1; border-radius:1rem; overflow:hidden;
+      position:relative; cursor:pointer;
+      display:flex; align-items:flex-end;
+      transition: transform .4s ease, box-shadow .4s ease;
     }
-    .learn-link:hover { color:#0f766e; }
-    .learn-link svg { transition: transform .2s ease; }
-    .learn-link:hover svg { transform: translateX(3px); }
+    .moment-card:hover { transform: scale(1.03); box-shadow: 0 12px 36px rgba(15,23,42,.1); }
+    .moment-overlay {
+      position:absolute; inset:0;
+      background: linear-gradient(to top, rgba(15,23,42,.85) 0%, rgba(15,23,42,.1) 60%, transparent 100%);
+      transition: opacity .3s ease;
+    }
+    .moment-card:hover .moment-overlay { opacity:.9; }
+    .moment-label {
+      position:relative; z-index:2; padding:1rem;
+      width:100%;
+    }
 
     .footer-link { color:#94a3b8; transition: color .2s ease; }
     .footer-link:hover { color:#5eead4; }
@@ -91,7 +119,16 @@
 
     #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(255,255,255,.98); }
     #mobile-menu.open { max-height:320px; }
+
+    .tag-pill {
+      display:inline-flex; align-items:center; gap:.375rem;
+      padding:2px 10px; border-radius:999px;
+      font-size:.6875rem; font-weight:600; letter-spacing:.04em;
+    }
   </style>
+
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
 
@@ -130,94 +167,112 @@
   </div>
 </nav>
 
-<!-- ═══════ PAGE HEADER ═══════ -->
-<section class="page-header relative overflow-hidden">
+<!-- ═══════ HERO ═══════ -->
+<section class="page-header min-h-[60vh] flex items-center">
   <div class="page-grid-bg"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
-         style="background:rgba(13,148,136,.15);border:1px solid rgba(13,148,136,.25);color:#5eead4;">
-      Mark Your Calendar
+  <div class="hero-orb a"></div>
+  <div class="hero-orb b"></div>
+  <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-5"
+         style="background:rgba(13,148,136,.12);border:1px solid rgba(13,148,136,.2);color:#5eead4;">
+      BEED Student Activities
     </div>
-    <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mt-4">Upcoming Events</h1>
-    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:#94a3b8;">Stay updated with the latest activities and workshops for BEED students at CSAV.</p>
+    <h1 class="display-heading text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.1] mt-2 max-w-4xl mx-auto">
+      Where Future
+      <br><span style="background:linear-gradient(135deg,#5eead4,#14b8a6,#0d9488);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Teachers Come Together</span>
+    </h1>
+    <p class="text-base sm:text-lg max-w-2xl mx-auto mt-5 leading-relaxed" style="color:#94a3b8;">
+      "Every great teacher was once a beginner who never stopped growing. Here, you belong."
+    </p>
+    <div class="flex flex-wrap justify-center gap-4 mt-8">
+      <a href="#upcoming" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white transition-all duration-200"
+         style="background:linear-gradient(135deg,#0d9488,#0f766e);"
+         onmouseover="this.style.opacity='.9'" onmouseout="this.style.opacity='1'">
+        View Upcoming
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+      </a>
+      <a href="#facebook-feed" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200"
+         style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#cbd5e1;backdrop-filter:blur(4px);"
+         onmouseover="this.style.background='rgba(255,255,255,.15)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+        Past Moments
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ═══════ EVENTS ═══════ -->
-<section class="py-24" style="background:#f1f5f9;">
+<!-- ═══════ FACEBOOK FEED ═══════ -->
+<section id="facebook-feed" class="py-20 lg:py-28" style="background:#f8fafc;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-      <article class="event-card reveal">
-        <div class="event-header dark">
-          <div class="event-date-box">
-            <span class="event-date-num">20</span>
-            <span class="event-date-month">May</span>
-          </div>
-          <div>
-            <span style="color:#94a3b8;" class="text-sm font-semibold">2026</span>
-            <div class="event-status mt-1">
-              <span class="event-status-dot"></span>
-              <span class="text-xs font-medium" style="color:#94a3b8;">Upcoming</span>
-            </div>
-          </div>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <h3 class="text-lg font-bold text-slate-900 mb-2">BEED Practicum Orientation</h3>
-          <p class="text-sm leading-relaxed flex-1" style="color:#64748b;">Orientation for all BEED students on practicum requirements, schedules, and expectations from cooperating schools.</p>
-          <a href="contact.html" class="learn-link mt-5">
-            Learn More
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-          </a>
-        </div>
-      </article>
+    <div class="text-center mb-14 reveal">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[.625rem] font-bold tracking-widest uppercase mb-3"
+           style="background:rgba(13,148,136,.08);border:1px solid rgba(13,148,136,.12);color:#0d9488;">
+        <span class="w-1.5 h-1.5 rounded-full" style="background:#0d9488;"></span>
+        Live Feed
+      </div>
+      <h2 class="display-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">Follow Our Journey</h2>
+      <p class="text-sm mt-3 max-w-xl mx-auto" style="color:#64748b;">
+        Stay up to date with the latest announcements, event photos, and department moments — automatically pulled from our official Facebook page.
+      </p>
+    </div>
 
-      <article class="event-card reveal d2">
-        <div class="event-header mid">
-          <div class="event-date-box">
-            <span class="event-date-num">5</span>
-            <span class="event-date-month">Jun</span>
-          </div>
-          <div>
-            <span style="color:#94a3b8;" class="text-sm font-semibold">2026</span>
-            <div class="event-status mt-1">
-              <span class="event-status-dot"></span>
-              <span class="text-xs font-medium" style="color:#94a3b8;">Upcoming</span>
-            </div>
-          </div>
+    <div class="max-w-3xl mx-auto flex flex-col items-center reveal d1">
+      <div class="w-full rounded-2xl overflow-hidden border" style="border-color:#e2e8f0;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.03);">
+        <div class="fb-page"
+             data-href="https://www.facebook.com/educationdepartmentcsav"
+             data-tabs="timeline"
+             data-width=""
+             data-height="800"
+             data-small-header="false"
+             data-adapt-container-width="true"
+             data-hide-cover="false"
+             data-show-facepile="true"
+             data-lazy="false">
         </div>
-        <div class="p-6 flex flex-col flex-1">
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Demo Teaching Workshop</h3>
-          <p class="text-sm leading-relaxed flex-1" style="color:#64748b;">Hands-on workshop on creating effective teaching demonstration plans and delivering engaging classroom lessons.</p>
-          <a href="contact.html" class="learn-link mt-5">
-            Learn More
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-          </a>
-        </div>
-      </article>
+      </div>
 
-      <article class="event-card reveal d3">
-        <div class="event-header dark">
-          <div class="event-date-box">
-            <span class="event-date-num">15</span>
-            <span class="event-date-month">Jun</span>
-          </div>
-          <div>
-            <span style="color:#94a3b8;" class="text-sm font-semibold">2026</span>
-            <div class="event-status mt-1">
-              <span class="event-status-dot"></span>
-              <span class="text-xs font-medium" style="color:#94a3b8;">Upcoming</span>
-            </div>
-          </div>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Lesson Plan Writing Seminar</h3>
-          <p class="text-sm leading-relaxed flex-1" style="color:#64748b;">Learn how to write DepEd-compliant Detailed Lesson Plans from experienced educators and master teachers.</p>
-          <a href="contact.html" class="learn-link mt-5">
-            Learn More
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      <div class="mt-6 flex items-center gap-3 text-sm reveal d2">
+        <span style="color:#64748b;">Not loading?</span>
+        <a href="https://www.facebook.com/educationdepartmentcsav" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all"
+           style="background:#1877f2;"
+           onmouseover="this.style.opacity='.9'" onmouseout="this.style.opacity='1'">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Visit Facebook Page
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ STAY CONNECTED ═══════ -->
+<section class="py-20" style="background:#f1f5f9;">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+    <div class="p-10 lg:p-14 rounded-2xl relative overflow-hidden"
+         style="background:linear-gradient(135deg,#0f172a,#1e293b);border:1px solid rgba(13,148,136,.12);">
+      <div class="absolute inset-0 opacity-[.03]"
+           style="background-image: radial-gradient(circle at 20% 50%, #5eead4 1px, transparent 1px); background-size: 32px 32px;"></div>
+      <div class="relative">
+        <span class="text-xs font-bold tracking-widest uppercase" style="color:#5eead4;">Follow Us</span>
+        <h2 class="display-heading text-2xl sm:text-3xl font-bold text-white mt-3 leading-tight">Join Us on Facebook</h2>
+        <p class="text-sm mt-3 max-w-md mx-auto" style="color:#94a3b8;">
+          All events, announcements, and department moments are posted on our official Facebook page. Follow us so you never miss a thing.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-sm mx-auto">
+          <a href="https://www.facebook.com/educationdepartmentcsav" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white transition-all w-full sm:w-auto justify-center"
+             style="background:#1877f2;"
+             onmouseover="this.style.opacity='.9'" onmouseout="this.style.opacity='1'">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Follow on Facebook
+          </a>
+          <a href="about.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all w-full sm:w-auto justify-center"
+             style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#cbd5e1;"
+             onmouseover="this.style.background='rgba(255,255,255,.1)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">
+            About the Department
           </a>
         </div>
-      </article>
+      </div>
     </div>
   </div>
 </section>
@@ -273,9 +328,14 @@
   window.addEventListener('resize', function() { if (window.innerWidth >= 768) window.closeMenu(); });
 
   var revealObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+  document.querySelectorAll('.reveal, .reveal-scale').forEach(function(el) { revealObserver.observe(el); });
 
   var nav = document.getElementById('main-nav');
   window.addEventListener('scroll', function() {
