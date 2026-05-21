@@ -47,6 +47,7 @@
     .page-header {
       padding-top: 96px;
       background: linear-gradient(135deg, rgba(15,23,42,.78), rgba(30,41,59,.68), rgba(15,23,42,.82)), url('mpfgtaqk-image.png') center/cover fixed;
+      position: relative; overflow: hidden;
     }
     .page-grid-bg {
       position:absolute; inset:0; opacity:.06;
@@ -54,32 +55,79 @@
       background-size: 48px 48px;
     }
 
+    .hero-orb {
+      position:absolute; border-radius:50%;
+      filter:blur(80px); pointer-events:none;
+    }
+    .hero-orb-1 { width:400px; height:400px; background:rgba(13,148,136,.08); top:-120px; right:-80px; }
+    .hero-orb-2 { width:300px; height:300px; background:rgba(45,212,191,.06); bottom:-100px; left:-60px; }
+
     .reveal { opacity:0; transform:translateY(28px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity:1; transform:none; }
-    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; } .d4 { transition-delay:.4s; }
+    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; } .d4 { transition-delay:.4s; } .d5 { transition-delay:.5s; }
 
     .stat-number {
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
       font-weight: 800;
       color: #5eead4;
-      line-height: 1.1;
+      line-height: 1;
       font-family: 'Playfair Display', Georgia, serif;
+    }
+    .stat-label {
+      font-size: .75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: #64748b;
+      margin-top: .5rem;
+    }
+
+    .accent-line {
+      width: 40px; height: 3px; border-radius: 99px;
+      background: #0d9488;
+      margin: 0 auto 1rem;
     }
 
     .achievement-card {
-      background:#fff; border:1px solid #e2e8f0; border-radius:1.25rem;
-      overflow:hidden; display:flex; flex-direction:column;
-      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      background:#fff;
+      border:1px solid #e2e8f0;
+      border-radius:1.25rem;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition: transform .4s cubic-bezier(.2,0,0,1), box-shadow .4s ease;
     }
-    .achievement-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(15,23,42,.05); border-color: #99f6e4; }
-    .achievement-icon-box {
-      width:3rem; height:3rem; border-radius:.875rem;
-      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    .achievement-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(15,23,42,.06);
+      border-color: #99f6e4;
     }
-    .achievement-icon-box.teal { background: linear-gradient(135deg,#0d9488,#0f766e); }
-    .achievement-icon-box.navy { background: linear-gradient(135deg,#1e293b,#0f172a); }
+    .card-top-accent {
+      height: 4px; width:100%; flex-shrink:0;
+      background: linear-gradient(90deg, #0d9488, #5eead4);
+    }
 
-    .tag { display:inline-block; padding:.25rem .75rem; border-radius:999px; font-size:.75rem; font-weight:600; letter-spacing:.02em; }
+    .photo-chip {
+      width: 6rem; height: 6rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 16px rgba(13,148,136,.18);
+      transition: transform .35s ease, box-shadow .35s ease;
+      cursor: default;
+    }
+    .photo-chip:hover {
+      transform: scale(1.12);
+      box-shadow: 0 8px 28px rgba(13,148,136,.25);
+    }
+    @media (min-width: 640px) { .photo-chip { width: 7rem; height: 7rem; } }
+
+    .card-number {
+      font-size: 2.25rem;
+      font-weight: 800;
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1;
+    }
+
+    .tag { display:inline-block; padding:.2rem .75rem; border-radius:999px; font-size:.75rem; font-weight:600; letter-spacing:.02em; }
     .tag-teal { background:rgba(13,148,136,.1); color:#0f766e; }
 
     .footer-link { color:#94a3b8; transition: color .2s ease; }
@@ -91,6 +139,21 @@
 
     #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(255,255,255,.98); }
     #mobile-menu.open { max-height:320px; }
+
+    .quote-mark {
+      font-size: 5rem; line-height: .6;
+      font-family: 'Playfair Display', Georgia, serif;
+      color: rgba(13,148,136,.2);
+      font-weight: 400;
+    }
+
+    .hover-lift {
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(15,23,42,.04);
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
@@ -131,139 +194,224 @@
 </nav>
 
 <!-- ═══════ PAGE HEADER ═══════ -->
-<section class="page-header relative overflow-hidden">
+<section class="page-header">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
   <div class="page-grid-bg"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
          style="background:rgba(13,148,136,.15);border:1px solid rgba(13,148,136,.25);color:#5eead4;">
-      Milestones
+      Milestones & Impact
     </div>
     <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mt-4">Our Achievements</h1>
-    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:#94a3b8;">Every milestone represents real impact for BEED students and future educators at CSAV.</p>
+    <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4 font-light" style="color:#94a3b8;">
+      Every milestone represents a step forward for BEED students and the future of elementary education.
+    </p>
   </div>
 </section>
 
 <!-- ═══════ BIG STATS ═══════ -->
-<section class="relative py-20 overflow-hidden" style="background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);">
+<section class="relative py-24 overflow-hidden" style="background:linear-gradient(135deg,#0f172a,#1e293b);">
   <div class="absolute inset-0" style="opacity:.05;background-image:linear-gradient(rgba(13,148,136,.3) 1px, transparent 1px),linear-gradient(90deg, rgba(13,148,136,.3) 1px, transparent 1px);background-size:48px 48px;"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+    <div class="text-center mb-16">
+      <div class="accent-line"></div>
+      <h2 class="display-heading text-2xl sm:text-3xl font-bold text-white">Our Impact in Numbers</h2>
+      <p class="text-sm mt-2" style="color:#64748b;">Real results from the BEED program at CSAV Victoria's</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
       <div class="reveal text-center">
-        <p class="stat-number"><span data-target="120" class="count-up">0</span>+</p>
-        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:#64748b;">Students Reached</p>
+        <p class="stat-number"><span data-target="120" class="count-up">0</span><span class="text-teal-300 text-3xl font-bold">+</span></p>
+        <p class="stat-label">Students Reached</p>
+        <div class="w-8 h-0.5 mx-auto mt-3 rounded-full" style="background:rgba(13,148,136,.3);"></div>
       </div>
       <div class="reveal d2 text-center">
-        <p class="stat-number"><span data-target="350" class="count-up">0</span>+</p>
-        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:#64748b;">Lesson Plans Created</p>
+        <p class="stat-number"><span data-target="350" class="count-up">0</span><span class="text-teal-300 text-3xl font-bold">+</span></p>
+        <p class="stat-label">Lesson Plans Created</p>
+        <div class="w-8 h-0.5 mx-auto mt-3 rounded-full" style="background:rgba(13,148,136,.3);"></div>
       </div>
       <div class="reveal d3 text-center">
         <p class="stat-number"><span data-target="8" class="count-up">0</span></p>
-        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:#64748b;">Workshops Held</p>
+        <p class="stat-label">Workshops Held</p>
+        <div class="w-8 h-0.5 mx-auto mt-3 rounded-full" style="background:rgba(13,148,136,.3);"></div>
       </div>
       <div class="reveal d4 text-center">
         <p class="stat-number"><span data-target="7" class="count-up">0</span></p>
-        <p class="text-sm font-semibold mt-2 uppercase tracking-wider" style="color:#64748b;">Subjects Supported</p>
+        <p class="stat-label">Subjects Supported</p>
+        <div class="w-8 h-0.5 mx-auto mt-3 rounded-full" style="background:rgba(13,148,136,.3);"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ PHOTO MOMENTS STRIP ═══════ -->
-<section class="py-16" style="background:#f8fafc;">
+<!-- ═══════ PARTNER SCHOOLS ═══════ -->
+<section class="py-20" style="background:#fff;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-10">
-      <p class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#0d9488;">Moments That Matter</p>
-      <h2 class="display-heading text-2xl sm:text-3xl font-bold text-slate-900">Glimpses from Our Journey</h2>
+    <div class="text-center mb-12">
+      <div class="accent-line"></div>
+      <h2 class="display-heading text-2xl sm:text-3xl font-bold text-slate-900">Our Partner Schools</h2>
+      <p class="text-sm mt-2" style="color:#64748b;">Institutions that trust and support the BEED program</p>
     </div>
-    <div class="flex flex-wrap justify-center gap-5 md:gap-8">
-      <div class="reveal group relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-xl" style="box-shadow:0 4px 20px rgba(13,148,136,.15);">
+    <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+      <div class="reveal flex flex-col items-center gap-3">
+        <div class="w-20 h-20 rounded-full flex items-center justify-center text-xs font-bold text-center leading-tight px-2" style="background:#f1f5f9;border:2px solid #e2e8f0;color:#64748b;">
+          Villa Miranda<br>ES
+        </div>
+        <span class="text-[10px] font-semibold tracking-wider uppercase" style="color:#94a3b8;">DepEd Partner</span>
+      </div>
+      <div class="reveal d2 flex flex-col items-center gap-3">
+        <div class="w-20 h-20 rounded-full flex items-center justify-center text-xs font-bold text-center leading-tight px-2" style="background:#f1f5f9;border:2px solid #e2e8f0;color:#64748b;">
+          Victorias<br>Central ES
+        </div>
+        <span class="text-[10px] font-semibold tracking-wider uppercase" style="color:#94a3b8;">Practicum Site</span>
+      </div>
+      <div class="reveal d3 flex flex-col items-center gap-3">
+        <div class="w-20 h-20 rounded-full flex items-center justify-center text-xs font-bold text-center leading-tight px-2" style="background:#f1f5f9;border:2px solid #e2e8f0;color:#64748b;">
+          Negros<br>Occ. Div.
+        </div>
+        <span class="text-[10px] font-semibold tracking-wider uppercase" style="color:#94a3b8;">DepEd Division</span>
+      </div>
+      <div class="reveal d4 flex flex-col items-center gap-3">
+        <div class="w-20 h-20 rounded-full flex items-center justify-center text-xs font-bold text-center leading-tight px-2" style="background:#f1f5f9;border:2px solid #e2e8f0;color:#64748b;">
+          CSAV<br>Victoria's
+        </div>
+        <span class="text-[10px] font-semibold tracking-wider uppercase" style="color:#94a3b8;">Home Institution</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ NEXT MILESTONE PROGRESS ═══════ -->
+<section class="py-20" style="background:linear-gradient(135deg,#0f172a,#1e293b);">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="reveal">
+      <div style="width:40px;height:3px;border-radius:99px;background:rgba(13,148,136,.4);margin:0 auto 1rem;"></div>
+      <h2 class="display-heading text-2xl sm:text-3xl font-bold text-white mb-3">Next Milestone</h2>
+      <p class="text-sm mb-10" style="color:#64748b;">Our goal: equip 500 BEED students with digital teaching tools by SY 2027–2028</p>
+      <div class="flex items-center justify-between text-xs font-semibold mb-3">
+        <span style="color:#5eead4;">120 Students Reached</span>
+        <span style="color:#64748b;">Target: 500</span>
+      </div>
+      <div class="w-full h-3 rounded-full overflow-hidden" style="background:rgba(255,255,255,.08);">
+        <div class="h-full rounded-full transition-all duration-1000 ease-out" style="width:24%;background:linear-gradient(90deg,#0d9488,#5eead4);"></div>
+      </div>
+      <div class="flex justify-between text-[10px] font-semibold tracking-wider uppercase mt-2" style="color:#475569;">
+        <span>0</span>
+        <span>125</span>
+        <span>250</span>
+        <span>375</span>
+        <span>500</span>
+      </div>
+      <p class="text-xs mt-8" style="color:#475569;">24% of target reached. Help us reach more future educators.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PHOTO MOMENTS ═══════ -->
+<section class="py-20" style="background:#f8fafc;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <div class="accent-line"></div>
+      <h2 class="display-heading text-2xl sm:text-3xl font-bold text-slate-900">Moments That Matter</h2>
+      <p class="text-sm mt-2" style="color:#64748b;">Glimpses from our journey in forming future educators</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-6 md:gap-8">
+      <div class="reveal photo-chip group relative">
         <img src="mpfln0e0-image.png" alt="Outreach program" class="w-full h-full object-cover" loading="lazy">
         <div class="absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full flex items-end justify-center pb-3">
-          <span class="text-[9px] font-bold text-white tracking-wide uppercase">Outreach</span>
+          <span class="text-[9px] font-bold text-white tracking-wider uppercase">Outreach</span>
         </div>
       </div>
-      <div class="reveal d2 group relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-xl" style="box-shadow:0 4px 20px rgba(13,148,136,.15);">
+      <div class="reveal d2 photo-chip group relative">
         <img src="mpflcf3n-image.png" alt="Educ Days" class="w-full h-full object-cover" loading="lazy">
         <div class="absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full flex items-end justify-center pb-3">
-          <span class="text-[9px] font-bold text-white tracking-wide uppercase">Educ Days</span>
+          <span class="text-[9px] font-bold text-white tracking-wider uppercase">Educ Days</span>
         </div>
       </div>
-      <div class="reveal d3 group relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-xl" style="box-shadow:0 4px 20px rgba(13,148,136,.15);">
+      <div class="reveal d3 photo-chip group relative">
         <img src="mpflcce3-image.png" alt="Reading intervention" class="w-full h-full object-cover" loading="lazy">
         <div class="absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full flex items-end justify-center pb-3">
-          <span class="text-[9px] font-bold text-white tracking-wide uppercase">Reading</span>
+          <span class="text-[9px] font-bold text-white tracking-wider uppercase">Reading</span>
         </div>
       </div>
-      <div class="reveal d4 group relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-xl" style="box-shadow:0 4px 20px rgba(13,148,136,.15);">
+      <div class="reveal d4 photo-chip group relative">
         <img src="mpflc8tv-image.png" alt="Workshop" class="w-full h-full object-cover" loading="lazy">
         <div class="absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full flex items-end justify-center pb-3">
-          <span class="text-[9px] font-bold text-white tracking-wide uppercase">Workshop</span>
+          <span class="text-[9px] font-bold text-white tracking-wider uppercase">Workshop</span>
         </div>
       </div>
-      <div class="reveal d1 group relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-xl" style="box-shadow:0 4px 20px rgba(13,148,136,.15);">
+      <div class="reveal d5 photo-chip group relative">
         <img src="mpflc4ye-image.png" alt="Future educators" class="w-full h-full object-cover" loading="lazy">
         <div class="absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full flex items-end justify-center pb-3">
-          <span class="text-[9px] font-bold text-white tracking-wide uppercase">Future Teachers</span>
+          <span class="text-[9px] font-bold text-white tracking-wider uppercase">Future Teachers</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ ACHIEVEMENTS GRID ═══════ -->
+<!-- ═══════ ACHIEVEMENTS — TWO FEATURED ═══════ -->
 <section class="py-24" style="background:#f1f5f9;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#0d9488;">Key Milestones</p>
-      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-slate-900">What We've Accomplished</h2>
+      <div class="accent-line"></div>
+      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-slate-900">Key Milestones</h2>
+      <p class="text-sm mt-2 max-w-xl mx-auto" style="color:#64748b;">The moments that shaped our program and the students we serve</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+
+      <!-- Achievement 1 — wider, featured -->
       <div class="reveal achievement-card">
-        <div class="relative pt-8 px-8">
-          <div class="absolute top-6 right-8 text-4xl font-black display-heading" style="color:rgba(13,148,136,.1);">01</div>
-          <div class="achievement-icon-box teal mb-5">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <div class="card-top-accent"></div>
+        <div class="p-8 lg:p-10 flex flex-col gap-5">
+          <div class="flex items-center gap-4">
+            <div class="card-number text-teal-600" style="font-size:3rem;">45</div>
+            <div>
+              <span class="tag tag-teal">SY 2025–2026, First Semester</span>
+              <p class="text-xs font-semibold tracking-wider uppercase mt-1" style="color:#94a3b8;">Students Trained</p>
+            </div>
           </div>
-          <p class="text-3xl font-black display-heading text-teal-600 mb-1">45</p>
-          <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color:#0d9488;">Students Trained</p>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Pilot Program Launch</h3>
-          <p class="text-sm leading-relaxed" style="color:#64748b;">First BEED cohort to use digital DLPs — 45 students trained and creating DepEd-aligned lesson plans within the first week of deployment.</p>
-        </div>
-        <div class="px-8 pb-6 mt-auto">
-          <span class="tag tag-teal">SY 2025–2026, First Semester</span>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Pilot Program Launch</h3>
+            <p class="text-sm leading-relaxed" style="color:#64748b;">
+              First BEED cohort to use digital DLPs — 45 students trained and creating DepEd-aligned lesson plans within the first week of deployment. This pilot established the foundation for department-wide adoption of digital teaching tools.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full" style="background:rgba(13,148,136,.08);color:#0f766e;">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Milestone Achieved
+            </span>
+            <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full" style="background:rgba(13,148,136,.08);color:#0f766e;">Cohort-based deployment</span>
+          </div>
         </div>
       </div>
 
+      <!-- Achievement 2 — wider, featured -->
       <div class="reveal d2 achievement-card">
-        <div class="relative pt-8 px-8">
-          <div class="absolute top-6 right-8 text-4xl font-black display-heading" style="color:rgba(13,148,136,.1);">02</div>
-          <div class="achievement-icon-box navy mb-5">
-            <svg class="w-5 h-5 text-teal-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+        <div class="card-top-accent"></div>
+        <div class="p-8 lg:p-10 flex flex-col gap-5">
+          <div class="flex items-center gap-4">
+            <div class="card-number text-teal-600" style="font-size:3rem;">120+</div>
+            <div>
+              <span class="tag tag-teal">SY 2025–2026, Ongoing</span>
+              <p class="text-xs font-semibold tracking-wider uppercase mt-1" style="color:#94a3b8;">Students Reached</p>
+            </div>
           </div>
-          <p class="text-3xl font-black display-heading text-teal-600 mb-1">7</p>
-          <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color:#0d9488;">Core Subjects</p>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">All Core Subjects Covered</h3>
-          <p class="text-sm leading-relaxed" style="color:#64748b;">Completed DepEd-aligned templates for all seven BEED core subjects — English, Filipino, Mathematics, Science, Social Studies, MAPEH, and EPP.</p>
-        </div>
-        <div class="px-8 pb-6 mt-auto">
-          <span class="tag tag-teal">SY 2025–2026, Second Semester</span>
-        </div>
-      </div>
-
-      <div class="reveal d3 achievement-card">
-        <div class="relative pt-8 px-8">
-          <div class="absolute top-6 right-8 text-4xl font-black display-heading" style="color:rgba(13,148,136,.1);">03</div>
-          <div class="achievement-icon-box teal mb-5">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Demo Teaching Workshops</h3>
+            <p class="text-sm leading-relaxed" style="color:#64748b;">
+              Conducted hands-on workshops reaching over 120 BEED students — teaching effective demonstration planning, practicum preparation, and classroom delivery across all seven core subjects.
+            </p>
           </div>
-          <p class="text-3xl font-black display-heading text-teal-600 mb-1">120+</p>
-          <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color:#0d9488;">Students Reached</p>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Demo Teaching Workshops</h3>
-          <p class="text-sm leading-relaxed" style="color:#64748b;">Conducted hands-on workshops reaching over 120 BEED students — teaching effective demonstration planning, practicum preparation, and classroom delivery.</p>
-        </div>
-        <div class="px-8 pb-6 mt-auto">
-          <span class="tag tag-teal">SY 2025–2026, Ongoing</span>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full" style="background:rgba(13,148,136,.08);color:#0f766e;">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              Active Program
+            </span>
+            <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full" style="background:rgba(13,148,136,.08);color:#0f766e;">Multi-subject workshops</span>
+          </div>
         </div>
       </div>
 
@@ -271,19 +419,20 @@
   </div>
 </section>
 
-<!-- ═══════ PULL QUOTE ═══════ -->
-<section class="relative py-24 overflow-hidden" style="background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);">
+<!-- ═══════ STUDENT TESTIMONIAL ═══════ -->
+<section class="relative py-28 overflow-hidden" style="background:linear-gradient(135deg,#0f172a,#1e293b);">
   <div class="absolute inset-0" style="opacity:.04;background-image:linear-gradient(rgba(13,148,136,.3) 1px, transparent 1px),linear-gradient(90deg, rgba(13,148,136,.3) 1px, transparent 1px);background-size:48px 48px;"></div>
+  <div class="hero-orb" style="width:350px;height:350px;background:rgba(13,148,136,.06);border-radius:50%;filter:blur(80px);pointer-events:none;position:absolute;top:-80px;right:-60px;"></div>
   <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <div class="reveal">
-      <svg class="w-10 h-10 mx-auto mb-4" style="color:rgba(13,148,136,.3);" fill="currentColor" viewBox="0 0 24 24"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-2.638 3.995-5.242h-4v-8.607h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-2.638 3.996-5.242h-3.983v-8.607h9.983z"/></svg>
-      <blockquote class="display-heading text-xl sm:text-2xl md:text-3xl font-bold italic leading-relaxed text-white max-w-3xl mx-auto" style="color:#e2e8f0;">
+      <svg class="w-8 h-8 mx-auto mb-2" style="color:rgba(13,148,136,.25);" fill="currentColor" viewBox="0 0 24 24"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-2.638 3.995-5.242h-4v-8.607h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-2.638 3.996-5.242h-3.983v-8.607h9.983z"/></svg>
+      <blockquote class="display-heading text-lg sm:text-xl md:text-2xl font-normal italic leading-relaxed max-w-3xl mx-auto" style="color:#cbd5e1;">
         "The portal made my first demo less overwhelming. Having all the templates and guides in one place — it just made sense."
       </blockquote>
-      <div class="mt-6 flex items-center justify-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm">M</div>
+      <div class="mt-8 flex items-center justify-center gap-4">
+        <div class="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:linear-gradient(135deg,#0d9488,#0f766e);">M</div>
         <div class="text-left">
-          <p class="text-sm font-semibold text-white">— Marielle, BEED Student</p>
+          <p class="text-sm font-semibold text-white">Marielle, BEED Student</p>
           <p class="text-xs" style="color:#64748b;">CSAV Victoria's, SY 2025–2026</p>
         </div>
       </div>
@@ -291,24 +440,27 @@
   </div>
 </section>
 
-<!-- ═══════ FORWARD-LOOKING CTA ═══════ -->
-<section class="relative py-20 overflow-hidden" style="background:#f1f5f9;border-top:1px solid #e2e8f0;">
+<!-- ═══════ FUTURE VISION CTA ═══════ -->
+<section class="relative py-24 overflow-hidden" style="background:#f1f5f9;">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div class="reveal-scale" style="opacity:0; transform:scale(.94); transition: opacity .7s ease, transform .7s ease;">
+    <div class="reveal" style="opacity:0; transform:translateY(20px); transition: opacity .7s ease, transform .7s ease;">
+      <div class="accent-line"></div>
       <h2 class="display-heading text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
         Help Us Reach More Future Educators
       </h2>
-      <p class="mb-8 text-lg max-w-2xl mx-auto leading-relaxed" style="color:#64748b;">
+      <p class="mb-10 text-base max-w-xl mx-auto leading-relaxed" style="color:#64748b;">
         Whether you're a cooperating teacher, a fellow educator, or a partner school — your support helps us build better tools for every BEED student who walks through our doors.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="contact.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold tracking-wide uppercase transition-all duration-200"
+        <a href="contact.html"
+           class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold tracking-wide uppercase transition-all duration-200 hover-lift"
            style="background:#0d9488;color:#fff;"
            onmouseover="this.style.background='#0f766e'" onmouseout="this.style.background='#0d9488'">
           Get in Touch
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
-        <a href="events.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold tracking-wide uppercase transition-all duration-200"
+        <a href="events.html"
+           class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold tracking-wide uppercase transition-all duration-200 hover-lift"
            style="background:#fff;color:#0d9488;border:2px solid #0d9488;"
            onmouseover="this.style.background='#f0fdfa'" onmouseout="this.style.background='#fff'">
           Attend an Event
@@ -371,7 +523,7 @@
   var revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal, .reveal-scale').forEach(function(el) { revealObserver.observe(el); });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
 
   var countObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
