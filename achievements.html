@@ -20,8 +20,8 @@
             sans: ['Inter', 'ui-sans-serif', 'system-ui'],
           },
           colors: {
-            teal: { 50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',300:'#5eead4',400:'#2dd4bf',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a' },
-            slate: { 50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1',400:'#94a3b8',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a' },
+            green: { 50:'#f2f7f0',100:'#e0efe0',200:'#b8d8b8',300:'#9DC88D',400:'#6da56a',500:'#4D774E',600:'#3a5e3c',700:'#2a4a2c',800:'#164A41',900:'#0d332d' },
+            gold: { 50:'#fef7e8',100:'#fceec8',200:'#f8dd94',300:'#F1B24A',400:'#e89a20',500:'#d4821a' },
           },
         },
       },
@@ -32,26 +32,26 @@
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
-    ::selection { background: rgba(13,148,136,.2); color: #0f172a; }
+    ::selection { background: rgba(241,178,74,.2); color: #164A41; }
     .display-heading { font-family: 'Playfair Display', Georgia, serif; }
 
     #main-nav { background: rgba(255,255,255,.88); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: background .3s ease, border-color .3s ease, box-shadow .3s ease; }
-    #main-nav.scrolled { background: rgba(255,255,255,.98) !important; border-bottom-color: #e2e8f0; box-shadow: 0 1px 12px rgba(0,0,0,.04); }
-    .nav-link { position: relative; font-weight: 500; color: #475569; transition: color .2s ease; }
-    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#0d9488; transition: width .25s ease; }
-    .nav-link:hover { color:#0f172a; }
+    #main-nav.scrolled { background: rgba(255,255,255,.98) !important; border-bottom-color: #b8d8b8; box-shadow: 0 1px 12px rgba(22,74,65,.04); }
+    .nav-link { position: relative; font-weight: 500; color: #4D774E; transition: color .2s ease; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#164A41; transition: width .25s ease; }
+    .nav-link:hover { color:#164A41; }
     .nav-link:hover::after { width:100%; }
-    .nav-link.nav-active { color:#0d9488; }
-    .nav-link.nav-active::after { width:100%; }
+    .nav-link.nav-active { color:#164A41; font-weight:600; }
+    .nav-link.nav-active::after { width:100%; background:#F1B24A; }
 
     .page-header {
       padding-top: 96px;
-      background: linear-gradient(135deg, rgba(15,23,42,.78), rgba(30,41,59,.68), rgba(15,23,42,.82));
+      background: linear-gradient(135deg, rgba(13,51,45,.82), rgba(22,74,65,.72), rgba(13,51,45,.88));
       position: relative; overflow: hidden;
     }
     .page-grid-bg {
       position:absolute; inset:0; opacity:.06;
-      background-image: linear-gradient(rgba(13,148,136,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(13,148,136,.3) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(241,178,74,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(241,178,74,.3) 1px, transparent 1px);
       background-size: 48px 48px;
     }
 
@@ -59,8 +59,8 @@
       position:absolute; border-radius:50%;
       filter:blur(80px); pointer-events:none;
     }
-    .hero-orb-1 { width:400px; height:400px; background:rgba(13,148,136,.08); top:-120px; right:-80px; }
-    .hero-orb-2 { width:300px; height:300px; background:rgba(45,212,191,.06); bottom:-100px; left:-60px; }
+    .hero-orb-1 { width:400px; height:400px; background:rgba(241,178,74,.08); top:-120px; right:-80px; }
+    .hero-orb-2 { width:300px; height:300px; background:rgba(157,200,141,.06); bottom:-100px; left:-60px; }
 
     .reveal { opacity:0; transform:translateY(28px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity:1; transform:none; }
@@ -69,26 +69,26 @@
     .stat-number {
       font-size: clamp(2.5rem, 5vw, 3.75rem);
       font-weight: 800;
-      color: #5eead4;
+      color: #F1B24A;
       line-height: 1;
       font-family: 'Playfair Display', Georgia, serif;
     }
     .stat-label {
       font-size: .75rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: .08em;
-      color: #64748b;
+      color: #9DC88D;
       margin-top: .5rem;
     }
 
     .accent-line {
       width: 40px; height: 3px; border-radius: 99px;
-      background: #0d9488;
+      background: #F1B24A;
       margin: 0 auto 1rem;
     }
 
     .achievement-card {
       background:#fff;
-      border:1px solid #e2e8f0;
+      border:1px solid #dce8d8;
       border-radius:1.25rem;
       overflow:hidden;
       display:flex;
@@ -97,12 +97,12 @@
     }
     .achievement-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(15,23,42,.06);
-      border-color: #99f6e4;
+      box-shadow: 0 16px 48px rgba(22,74,65,.06);
+      border-color: #9DC88D;
     }
     .card-top-accent {
       height: 4px; width:100%; flex-shrink:0;
-      background: linear-gradient(90deg, #0d9488, #5eead4);
+      background: linear-gradient(90deg, #164A41, #9DC88D);
     }
 
     .photo-chip {
@@ -110,13 +110,13 @@
       border-radius: 50%;
       overflow: hidden;
       border: 3px solid #fff;
-      box-shadow: 0 4px 16px rgba(13,148,136,.18);
+      box-shadow: 0 4px 16px rgba(22,74,65,.18);
       transition: transform .35s ease, box-shadow .35s ease;
       cursor: default;
     }
     .photo-chip:hover {
       transform: scale(1.12);
-      box-shadow: 0 8px 28px rgba(13,148,136,.25);
+      box-shadow: 0 8px 28px rgba(22,74,65,.25);
     }
     @media (min-width: 640px) { .photo-chip { width: 7rem; height: 7rem; } }
 
@@ -128,14 +128,14 @@
     }
 
     .tag { display:inline-block; padding:.2rem .75rem; border-radius:999px; font-size:.75rem; font-weight:600; letter-spacing:.02em; }
-    .tag-teal { background:rgba(13,148,136,.1); color:#0f766e; }
+    .tag-sage { background:rgba(157,200,141,.15); color:#3a5e3c; }
 
-    .footer-link { color:#94a3b8; transition: color .2s ease; }
-    .footer-link:hover { color:#5eead4; }
+    .footer-link { color:#9DC88D; transition: color .2s ease; }
+    .footer-link:hover { color:#F1B24A; }
 
     ::-webkit-scrollbar { width:5px; }
     ::-webkit-scrollbar-track { background:transparent; }
-    ::-webkit-scrollbar-thumb { background:#0d9488; border-radius:99px; }
+    ::-webkit-scrollbar-thumb { background:#164A41; border-radius:99px; }
 
     #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(255,255,255,.98); }
     #mobile-menu.open { max-height:320px; }
@@ -143,7 +143,7 @@
     .quote-mark {
       font-size: 5rem; line-height: .6;
       font-family: 'Playfair Display', Georgia, serif;
-      color: rgba(13,148,136,.2);
+      color: rgba(241,178,74,.2);
       font-weight: 400;
     }
 
@@ -152,20 +152,20 @@
     }
     .hover-lift:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 28px rgba(15,23,42,.04);
+      box-shadow: 0 8px 28px rgba(22,74,65,.04);
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body class="bg-[#f2f7f0] text-[#164A41] antialiased">
 
 <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
-        <img src="beedportal-logo.png" alt="CSAV" class="w-8 h-8 rounded-lg object-cover" style="background:rgba(13,148,136,.08);" />
+        <img src="beedportal-logo.png" alt="CSAV" class="w-8 h-8 rounded-lg object-cover" style="background:rgba(22,74,65,.08);" />
         <div>
-          <span class="font-bold text-sm leading-none tracking-tight display-heading" style="color:#0f172a;">CSAV</span>
-          <span class="text-xs leading-none block mt-0.5" style="color:#64748b;">Future Educators Hub</span>
+          <span class="font-bold text-sm leading-none tracking-tight display-heading" style="color:#164A41;">CSAV</span>
+          <span class="text-xs leading-none block mt-0.5" style="color:#4D774E;">Future Educators Hub</span>
         </div>
       </a>
       <div class="hidden md:flex items-center gap-6 text-sm">
@@ -176,49 +176,47 @@
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
       <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
-        class="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">
+        class="md:hidden p-2 rounded-lg text-[#4D774E] hover:text-[#164A41] hover:bg-[#e0efe0] transition-colors">
         <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
-  <div id="mobile-menu" class="md:hidden border-t border-slate-200">
-    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-slate-600">
-      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Home</a>
-      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">About</a>
-      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Events</a>
-      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50" style="color:#0d9488;">Career Opportunities</a>
-      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Contact</a>
+  <div id="mobile-menu" class="md:hidden border-t" style="border-color:#dce8d8;">
+    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-[#4D774E]">
+      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Home</a>
+      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">About</a>
+      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Events</a>
+      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]" style="color:#164A41;">Career Opportunities</a>
+      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Contact</a>
     </div>
   </div>
 </nav>
 
 <!-- ═══════ PAGE HEADER ═══════ -->
-<section class="page-header" style="background: linear-gradient(135deg, rgba(15,23,42,.78), rgba(30,41,59,.68), rgba(15,23,42,.82)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80') center / cover no-repeat;">
+<section class="page-header" style="background: linear-gradient(135deg, rgba(13,51,45,.82), rgba(22,74,65,.72), rgba(13,51,45,.88)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80') center / cover no-repeat;">
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
   <div class="page-grid-bg"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
-         style="background:rgba(13,148,136,.15);border:1px solid rgba(13,148,136,.25);color:#5eead4;">
+         style="background:rgba(241,178,74,.12);border:1px solid rgba(241,178,74,.2);color:#F1B24A;">
       Career Pathways for BEED Graduates
     </div>
     <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mt-4">Career Opportunities</h1>
-    <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4 font-light" style="color:#94a3b8;">
+    <p class="text-lg sm:text-xl max-w-2xl mx-auto mt-4 font-light" style="color:#9DC88D;">
       Explore teaching positions, practicum placements, and professional development pathways for BEED graduates.
     </p>
   </div>
 </section>
 
-
-
 <!-- ═══════ CAREER OPPORTUNITIES — 3 CARDS ═══════ -->
-<section class="py-24" style="background:#faf6f0;">
+<section class="py-24" style="background:#f2f7f0;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <div style="width:40px;height:3px;border-radius:99px;background:#2d5a4d;margin:0 auto 1rem;"></div>
-      <h2 class="display-heading text-3xl sm:text-4xl font-bold" style="color:#1a3c34;">BEED Career Pathways</h2>
-      <p class="text-sm mt-2 max-w-xl mx-auto" style="color:#7a7066;">
+      <div style="width:40px;height:3px;border-radius:99px;background:#164A41;margin:0 auto 1rem;"></div>
+      <h2 class="display-heading text-3xl sm:text-4xl font-bold" style="color:#0d332d;">BEED Career Pathways</h2>
+      <p class="text-sm mt-2 max-w-xl mx-auto" style="color:#4D774E;">
         Discover the professional paths that await BEED graduates — from the classroom to specialized education roles.
       </p>
     </div>
@@ -227,11 +225,11 @@
 
       <!-- Card 1 — Elementary School Teacher -->
       <div class="reveal rounded-2xl overflow-hidden flex flex-col transition-all duration-400"
-           style="background:#fff;border:1px solid #e8e0d6;box-shadow:0 2px 16px rgba(42,56,40,.04);"
-           onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(42,56,40,.08)';this.style.borderColor='#b8c9b0'"
-           onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(42,56,40,.04)';this.style.borderColor='#e8e0d6'">
-        <div class="flex items-center justify-center pt-10 pb-2" style="background:#f8f4ef;">
-          <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:#2d5a4d;">
+           style="background:#fff;border:1px solid #dce8d8;box-shadow:0 2px 16px rgba(22,74,65,.04);"
+           onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(22,74,65,.08)';this.style.borderColor='#9DC88D'"
+           onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(22,74,65,.04)';this.style.borderColor='#dce8d8'">
+        <div class="flex items-center justify-center pt-10 pb-2" style="background:#f2f7f0;">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:#164A41;">
             <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
             </svg>
@@ -240,29 +238,29 @@
         <div class="p-7 flex flex-col gap-4 flex-1">
           <div class="text-center">
             <span class="inline-block text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3"
-                  style="background:rgba(45,90,77,.1);color:#2d5a4d;">DepEd-Aligned Role</span>
-            <h3 class="text-xl font-bold" style="color:#1a3c34;">Elementary School Teacher</h3>
+                  style="background:rgba(22,74,65,.1);color:#164A41;">DepEd-Aligned Role</span>
+            <h3 class="text-xl font-bold" style="color:#0d332d;">Elementary School Teacher</h3>
           </div>
-          <p class="text-sm leading-relaxed" style="color:#7a7066;">
+          <p class="text-sm leading-relaxed" style="color:#4D774E;">
             Deliver DepEd K–12 curriculum across core subjects in a public or private elementary school setting. BEED graduates are fully qualified to handle kindergarten through Grade 6 classrooms with confidence.
           </p>
           <div class="mt-auto pt-3 space-y-2">
-            <div class="flex items-center gap-2.5 text-xs" style="color:#7a7066;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color:#2d5a4d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <div class="flex items-center gap-2.5 text-xs" style="color:#4D774E;">
+              <svg class="w-4 h-4 flex-shrink-0" style="color:#164A41;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
               K–6 General Education
             </div>
-            <div class="flex items-center gap-2.5 text-xs" style="color:#7a7066;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color:#2d5a4d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <div class="flex items-center gap-2.5 text-xs" style="color:#4D774E;">
+              <svg class="w-4 h-4 flex-shrink-0" style="color:#164A41;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
               DepEd Ranking Eligible
             </div>
-            <div class="flex items-center gap-2.5 text-xs" style="color:#7a7066;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color:#2d5a4d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <div class="flex items-center gap-2.5 text-xs" style="color:#4D774E;">
+              <svg class="w-4 h-4 flex-shrink-0" style="color:#164A41;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
               National & Local Posts
             </div>
           </div>
           <a href="contact.html" class="mt-4 inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold tracking-wide uppercase transition-all duration-200"
-             style="background:#2d5a4d;color:#faf6f0;"
-             onmouseover="this.style.background='#1a3c34'" onmouseout="this.style.background='#2d5a4d'">
+             style="background:#164A41;color:#f2f7f0;"
+             onmouseover="this.style.background='#0d332d'" onmouseout="this.style.background='#164A41'">
             Explore Pathway
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
           </a>
@@ -271,11 +269,11 @@
 
       <!-- Card 2 — Private Tutor -->
       <div class="reveal d2 rounded-2xl overflow-hidden flex flex-col transition-all duration-400"
-           style="background:#fff;border:1px solid #e8e0d6;box-shadow:0 2px 16px rgba(42,56,40,.04);"
-           onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(42,56,40,.08)';this.style.borderColor='#b8c9b0'"
-           onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(42,56,40,.04)';this.style.borderColor='#e8e0d6'">
-        <div class="flex items-center justify-center pt-10 pb-2" style="background:#f8f4ef;">
-          <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:#2d5a4d;">
+           style="background:#fff;border:1px solid #dce8d8;box-shadow:0 2px 16px rgba(22,74,65,.04);"
+           onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(22,74,65,.08)';this.style.borderColor='#9DC88D'"
+           onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(22,74,65,.04)';this.style.borderColor='#dce8d8'">
+        <div class="flex items-center justify-center pt-10 pb-2" style="background:#f2f7f0;">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:#164A41;">
             <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
             </svg>
@@ -284,29 +282,29 @@
         <div class="p-7 flex flex-col gap-4 flex-1">
           <div class="text-center">
             <span class="inline-block text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3"
-                  style="background:rgba(45,90,77,.1);color:#2d5a4d;">Flexible Pathway</span>
-            <h3 class="text-xl font-bold" style="color:#1a3c34;">Private Tutor</h3>
+                  style="background:rgba(22,74,65,.1);color:#164A41;">Flexible Pathway</span>
+            <h3 class="text-xl font-bold" style="color:#0d332d;">Private Tutor</h3>
           </div>
-          <p class="text-sm leading-relaxed" style="color:#7a7066;">
+          <p class="text-sm leading-relaxed" style="color:#4D774E;">
             Provide one-on-one or small-group instruction in literacy, numeracy, and other foundational subjects. Ideal for BEED graduates seeking flexible hours and personalized teaching experience.
           </p>
           <div class="mt-auto pt-3 space-y-2">
-            <div class="flex items-center gap-2.5 text-xs" style="color:#7a7066;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color:#2d5a4d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <div class="flex items-center gap-2.5 text-xs" style="color:#4D774E;">
+              <svg class="w-4 h-4 flex-shrink-0" style="color:#164A41;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
               Flexible Scheduling
             </div>
-            <div class="flex items-center gap-2.5 text-xs" style="color:#7a7066;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color:#2d5a4d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <div class="flex items-center gap-2.5 text-xs" style="color:#4D774E;">
+              <svg class="w-4 h-4 flex-shrink-0" style="color:#164A41;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
               Independent or Agency-Based
             </div>
-            <div class="flex items-center gap-2.5 text-xs" style="color:#7a7066;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color:#2d5a4d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <div class="flex items-center gap-2.5 text-xs" style="color:#4D774E;">
+              <svg class="w-4 h-4 flex-shrink-0" style="color:#164A41;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
               K–6 Subject Specialization
             </div>
           </div>
           <a href="contact.html" class="mt-4 inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold tracking-wide uppercase transition-all duration-200"
-             style="background:#2d5a4d;color:#faf6f0;"
-             onmouseover="this.style.background='#1a3c34'" onmouseout="this.style.background='#2d5a4d'">
+             style="background:#164A41;color:#f2f7f0;"
+             onmouseover="this.style.background='#0d332d'" onmouseout="this.style.background='#164A41'">
             Explore Pathway
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
           </a>
@@ -315,11 +313,11 @@
 
       <!-- Card 3 — SPED Assistant Teacher -->
       <div class="reveal d3 rounded-2xl overflow-hidden flex flex-col transition-all duration-400"
-           style="background:#fff;border:1px solid #e8e0d6;box-shadow:0 2px 16px rgba(42,56,40,.04);"
-           onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(42,56,40,.08)';this.style.borderColor='#b8c9b0'"
-           onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(42,56,40,.04)';this.style.borderColor='#e8e0d6'">
-        <div class="flex items-center justify-center pt-10 pb-2" style="background:#f8f4ef;">
-          <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:#2d5a4d;">
+           style="background:#fff;border:1px solid #dce8d8;box-shadow:0 2px 16px rgba(22,74,65,.04);"
+           onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(22,74,65,.08)';this.style.borderColor='#9DC88D'"
+           onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(22,74,65,.04)';this.style.borderColor='#dce8d8'">
+        <div class="flex items-center justify-center pt-10 pb-2" style="background:#f2f7f0;">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:#164A41;">
             <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-8.25ZM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-2.25Z" />
             </svg>
@@ -328,29 +326,29 @@
         <div class="p-7 flex flex-col gap-4 flex-1">
           <div class="text-center">
             <span class="inline-block text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3"
-                  style="background:rgba(45,90,77,.1);color:#2d5a4d;">Specialized Role</span>
-            <h3 class="text-xl font-bold" style="color:#1a3c34;">SPED Assistant Teacher</h3>
+                  style="background:rgba(22,74,65,.1);color:#164A41;">Specialized Role</span>
+            <h3 class="text-xl font-bold" style="color:#0d332d;">SPED Assistant Teacher</h3>
           </div>
-          <p class="text-sm leading-relaxed" style="color:#7a7066;">
+          <p class="text-sm leading-relaxed" style="color:#4D774E;">
             Support inclusive classrooms by assisting lead SPED teachers in delivering individualized education plans (IEPs) for learners with diverse needs. A growing field that values patience and adaptability.
           </p>
           <div class="mt-auto pt-3 space-y-2">
-            <div class="flex items-center gap-2.5 text-xs" style="color:#7a7066;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color:#2d5a4d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <div class="flex items-center gap-2.5 text-xs" style="color:#4D774E;">
+              <svg class="w-4 h-4 flex-shrink-0" style="color:#164A41;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
               Inclusive Education
             </div>
-            <div class="flex items-center gap-2.5 text-xs" style="color:#7a7066;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color:#2d5a4d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <div class="flex items-center gap-2.5 text-xs" style="color:#4D774E;">
+              <svg class="w-4 h-4 flex-shrink-0" style="color:#164A41;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
               SPED Centers & Public Schools
             </div>
-            <div class="flex items-center gap-2.5 text-xs" style="color:#7a7066;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color:#2d5a4d;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <div class="flex items-center gap-2.5 text-xs" style="color:#4D774E;">
+              <svg class="w-4 h-4 flex-shrink-0" style="color:#164A41;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
               IEP Implementation
             </div>
           </div>
           <a href="contact.html" class="mt-4 inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold tracking-wide uppercase transition-all duration-200"
-             style="background:#2d5a4d;color:#faf6f0;"
-             onmouseover="this.style.background='#1a3c34'" onmouseout="this.style.background='#2d5a4d'">
+             style="background:#164A41;color:#f2f7f0;"
+             onmouseover="this.style.background='#0d332d'" onmouseout="this.style.background='#164A41'">
             Explore Pathway
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
           </a>
@@ -361,30 +359,29 @@
   </div>
 </section>
 
-
 <!-- ═══════ FUTURE VISION CTA ═══════ -->
-<section class="relative py-24 overflow-hidden" style="background:#f1f5f9;">
+<section class="relative py-24 overflow-hidden" style="background:#e0efe0;">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <div class="reveal" style="opacity:0; transform:translateY(20px); transition: opacity .7s ease, transform .7s ease;">
       <div class="accent-line"></div>
-      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-[#164A41] mb-4">
         Help Us Reach More Future Educators
       </h2>
-      <p class="mb-10 text-base max-w-xl mx-auto leading-relaxed" style="color:#64748b;">
+      <p class="mb-10 text-base max-w-xl mx-auto leading-relaxed" style="color:#4D774E;">
         Whether you're a cooperating teacher, a fellow educator, or a partner school — your support helps us build better tools for every BEED student who walks through our doors.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a href="contact.html"
            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold tracking-wide uppercase transition-all duration-200 hover-lift"
-           style="background:#0d9488;color:#fff;"
-           onmouseover="this.style.background='#0f766e'" onmouseout="this.style.background='#0d9488'">
+           style="background:#164A41;color:#fff;"
+           onmouseover="this.style.background='#0d332d'" onmouseout="this.style.background='#164A41'">
           Get in Touch
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
         <a href="events.html"
            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold tracking-wide uppercase transition-all duration-200 hover-lift"
-           style="background:#fff;color:#0d9488;border:2px solid #0d9488;"
-           onmouseover="this.style.background='#f0fdfa'" onmouseout="this.style.background='#fff'">
+           style="background:#fff;color:#164A41;border:2px solid #164A41;"
+           onmouseover="this.style.background='#f2f7f0'" onmouseout="this.style.background='#fff'">
           Attend an Event
         </a>
       </div>
@@ -393,25 +390,25 @@
 </section>
 
 <!-- ═══════ FOOTER ═══════ -->
-<footer style="background:#0f172a;">
+<footer style="background:#0d332d;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="reveal flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
       <div class="flex items-center gap-3">
         <div>
           <p class="text-white font-bold text-lg leading-none display-heading">CSAV</p>
-          <p class="text-xs mt-0.5" style="color:#64748b;">Future Educators Hub</p>
+          <p class="text-xs mt-0.5" style="color:#9DC88D;">Future Educators Hub</p>
         </div>
       </div>
       <nav class="flex flex-wrap gap-x-7 gap-y-2 text-sm">
         <a href="index.html" class="footer-link">Home</a>
         <a href="about.html" class="footer-link">About</a>
         <a href="events.html" class="footer-link">Events</a>
-        <a href="achievements.html" class="footer-link" style="color:#5eead4;">Career Opportunities</a>
+        <a href="achievements.html" class="footer-link" style="color:#F1B24A;">Career Opportunities</a>
         <a href="contact.html" class="footer-link">Contact</a>
       </nav>
     </div>
-    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(13,148,136,.08);">
-      <p class="text-xs" style="color:#475569;">CSAV Future Educators Hub &copy; 2026 — Victorias City, Negros Occidental</p>
+    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(157,200,141,.08);">
+      <p class="text-xs" style="color:#4D774E;">CSAV Future Educators Hub &copy; 2026 — Victorias City, Negros Occidental</p>
     </div>
   </div>
 </footer>

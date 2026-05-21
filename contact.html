@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — CSAV Future Educators Hub</title>
-  <meta name="description" content="Get in touch with the CSAV Future Educators Hub. Send us a message, reach out via email or phone, or visit us in Victorias City." />
+  <meta name="description" content="Get in touch with the CSAV Future Educators Hub. Send us a message, reach out via email, or visit our Facebook page." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +20,8 @@
             sans: ['Inter', 'ui-sans-serif', 'system-ui'],
           },
           colors: {
-            teal: { 50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',300:'#5eead4',400:'#2dd4bf',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a' },
-            slate: { 50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1',400:'#94a3b8',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a' },
+            green: { 50:'#f2f7f0',100:'#e0efe0',200:'#b8d8b8',300:'#9DC88D',400:'#6da56a',500:'#4D774E',600:'#3a5e3c',700:'#2a4a2c',800:'#164A41',900:'#0d332d' },
+            gold: { 50:'#fef7e8',100:'#fceec8',200:'#f8dd94',300:'#F1B24A',400:'#e89a20',500:'#d4821a' },
           },
         },
       },
@@ -32,25 +32,25 @@
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
-    ::selection { background: rgba(13,148,136,.2); color: #0f172a; }
+    ::selection { background: rgba(241,178,74,.2); color: #164A41; }
     .display-heading { font-family: 'Playfair Display', Georgia, serif; }
 
     #main-nav { background: rgba(255,255,255,.88); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: background .3s ease, border-color .3s ease, box-shadow .3s ease; }
-    #main-nav.scrolled { background: rgba(255,255,255,.98) !important; border-bottom-color: #e2e8f0; box-shadow: 0 1px 12px rgba(0,0,0,.04); }
-    .nav-link { position: relative; font-weight: 500; color: #475569; transition: color .2s ease; }
-    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#0d9488; transition: width .25s ease; }
-    .nav-link:hover { color:#0f172a; }
+    #main-nav.scrolled { background: rgba(255,255,255,.98) !important; border-bottom-color: #b8d8b8; box-shadow: 0 1px 12px rgba(22,74,65,.04); }
+    .nav-link { position: relative; font-weight: 500; color: #4D774E; transition: color .2s ease; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#164A41; transition: width .25s ease; }
+    .nav-link:hover { color:#164A41; }
     .nav-link:hover::after { width:100%; }
-    .nav-link.nav-active { color:#0d9488; }
-    .nav-link.nav-active::after { width:100%; }
+    .nav-link.nav-active { color:#164A41; font-weight:600; }
+    .nav-link.nav-active::after { width:100%; background:#F1B24A; }
 
     .page-header {
       padding-top: 96px;
-      background: linear-gradient(135deg, rgba(15,23,42,.78), rgba(30,41,59,.68), rgba(15,23,42,.82));
+      background: linear-gradient(135deg, rgba(13,51,45,.82), rgba(22,74,65,.72), rgba(13,51,45,.88));
     }
     .page-grid-bg {
       position:absolute; inset:0; opacity:.06;
-      background-image: linear-gradient(rgba(13,148,136,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(13,148,136,.3) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(241,178,74,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(241,178,74,.3) 1px, transparent 1px);
       background-size: 48px 48px;
     }
 
@@ -64,25 +64,25 @@
     .contact-card {
       display:flex; align-items:center; gap:1rem;
       padding:1rem 1.25rem; border-radius:1rem;
-      background: #f1f5f9; border:1px solid #e2e8f0;
+      background: #e0efe0; border:1px solid #b8d8b8;
     }
     .contact-icon-box {
       width:2.75rem; height:2.75rem; border-radius:.875rem;
       display:flex; align-items:center; justify-content:center; flex-shrink:0;
-      background: linear-gradient(135deg,#0d9488,#0f766e);
+      background: linear-gradient(135deg,#164A41,#0d332d);
     }
     .contact-icon-box svg { color:#fff; }
 
     .form-input {
       width:100%; padding:.75rem 1rem; border-radius:.75rem;
-      border:1px solid #e2e8f0; background:#fff;
-      color:#0f172a; font-family:inherit; font-size:.875rem;
+      border:1px solid #b8d8b8; background:#fff;
+      color:#164A41; font-family:inherit; font-size:.875rem;
       outline:none;
       transition: border-color .2s ease, box-shadow .2s ease;
     }
     .form-input:focus {
-      border-color:#0d9488;
-      box-shadow: 0 0 0 3px rgba(13,148,136,.12);
+      border-color:#164A41;
+      box-shadow: 0 0 0 3px rgba(22,74,65,.12);
     }
     .form-input.error { border-color:#dc2626; }
     .form-input.error:focus { box-shadow: 0 0 0 3px rgba(220,38,38,.12); }
@@ -92,15 +92,15 @@
     .btn-submit {
       width:100%; padding:.875rem; border-radius:.75rem;
       font-weight:700; font-size:.9375rem; border:none; cursor:pointer;
-      background: #0d9488;
+      background: #164A41;
       color: #fff;
       display:flex; align-items:center; justify-content:center; gap:.5rem;
       transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
     .btn-submit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(13,148,136,.3);
-      background: #0f766e;
+      box-shadow: 0 8px 24px rgba(22,74,65,.3);
+      background: #0d332d;
     }
     .btn-submit:active { transform: translateY(0); }
     .btn-submit:disabled { opacity:0.6; cursor:not-allowed; transform:none !important; box-shadow:none !important; }
@@ -110,27 +110,27 @@
       transform:translateX(-50%) translateY(100px);
       z-index:999; padding:.875rem 1.75rem; border-radius:.875rem;
       font-size:.875rem; font-weight:600;
-      background:rgba(15,23,42,.94); backdrop-filter:blur(12px);
-      border:1px solid rgba(13,148,136,.2); color:#fff;
+      background:rgba(13,51,45,.94); backdrop-filter:blur(12px);
+      border:1px solid rgba(241,178,74,.2); color:#fff;
       opacity:0; transition: all .4s ease;
       pointer-events:none; white-space:nowrap;
     }
     .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
-    .toast.success { border-color:rgba(74,222,128,.3); color:#86efac; }
+    .toast.success { border-color:rgba(157,200,141,.3); color:#9DC88D; }
     .toast.error { border-color:rgba(248,113,113,.3); color:#fca5a5; }
 
-    .footer-link { color:#94a3b8; transition: color .2s ease; }
-    .footer-link:hover { color:#5eead4; }
+    .footer-link { color:#9DC88D; transition: color .2s ease; }
+    .footer-link:hover { color:#F1B24A; }
 
     ::-webkit-scrollbar { width:5px; }
     ::-webkit-scrollbar-track { background:transparent; }
-    ::-webkit-scrollbar-thumb { background:#0d9488; border-radius:99px; }
+    ::-webkit-scrollbar-thumb { background:#164A41; border-radius:99px; }
 
     #mobile-menu { max-height:0; overflow:hidden; transition: max-height .35s ease; background: rgba(255,255,255,.98); }
     #mobile-menu.open { max-height:320px; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body class="bg-[#f2f7f0] text-[#164A41] antialiased">
 
 <div id="toast" class="toast"></div>
 
@@ -138,10 +138,10 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
-        <img src="beedportal-logo.png" alt="CSAV" class="w-8 h-8 rounded-lg object-cover" style="background:rgba(13,148,136,.08);" />
+        <img src="beedportal-logo.png" alt="CSAV" class="w-8 h-8 rounded-lg object-cover" style="background:rgba(22,74,65,.08);" />
         <div>
-          <span class="font-bold text-sm leading-none tracking-tight display-heading" style="color:#0f172a;">CSAV</span>
-          <span class="text-xs leading-none block mt-0.5" style="color:#64748b;">Future Educators Hub</span>
+          <span class="font-bold text-sm leading-none tracking-tight display-heading" style="color:#164A41;">CSAV</span>
+          <span class="text-xs leading-none block mt-0.5" style="color:#4D774E;">Future Educators Hub</span>
         </div>
       </a>
       <div class="hidden md:flex items-center gap-6 text-sm">
@@ -152,33 +152,33 @@
         <a href="contact.html" class="nav-link nav-active">Contact</a>
       </div>
       <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
-        class="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">
+        class="md:hidden p-2 rounded-lg text-[#4D774E] hover:text-[#164A41] hover:bg-[#e0efe0] transition-colors">
         <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
-  <div id="mobile-menu" class="md:hidden border-t border-slate-200">
-    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-slate-600">
-      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Home</a>
-      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">About</a>
-      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Events</a>
-      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Career Opportunities</a>
-      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50" style="color:#0d9488;">Contact</a>
+  <div id="mobile-menu" class="md:hidden border-t" style="border-color:#dce8d8;">
+    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-[#4D774E]">
+      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Home</a>
+      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">About</a>
+      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Events</a>
+      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]">Career Opportunities</a>
+      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#e0efe0]" style="color:#164A41;">Contact</a>
     </div>
   </div>
 </nav>
 
 <!-- ═══════ PAGE HEADER ═══════ -->
-<section class="page-header relative overflow-hidden" style="background: linear-gradient(135deg, rgba(15,23,42,.78), rgba(30,41,59,.68), rgba(15,23,42,.82)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80') center / cover no-repeat;">
+<section class="page-header relative overflow-hidden" style="background: linear-gradient(135deg, rgba(13,51,45,.82), rgba(22,74,65,.72), rgba(13,51,45,.88)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80') center / cover no-repeat;">
   <div class="page-grid-bg"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
-         style="background:rgba(13,148,136,.15);border:1px solid rgba(13,148,136,.25);color:#5eead4;">
+         style="background:rgba(241,178,74,.12);border:1px solid rgba(241,178,74,.2);color:#F1B24A;">
       Get In Touch
     </div>
     <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mt-4">Contact Us</h1>
-    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:#94a3b8;">Have questions or need support? We're here for you.</p>
+    <p class="text-lg max-w-2xl mx-auto mt-4" style="color:#9DC88D;">Have questions or need support? We're here for you.</p>
   </div>
 </section>
 
@@ -187,16 +187,16 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
       <div class="reveal left">
-        <h3 class="text-xl font-bold text-slate-900 mb-2">We'd love to hear from you</h3>
-        <p class="text-sm leading-relaxed mb-8" style="color:#64748b;">Whether it's a question about the BEED program, technical support, or just want to say hi — reach out. We're here to help you succeed.</p>
+        <h3 class="text-xl font-bold text-[#164A41] mb-2">We'd love to hear from you</h3>
+        <p class="text-sm leading-relaxed mb-8" style="color:#4D774E;">Whether it's a question about the BEED program, technical support, or just want to say hi — reach out. We're here to help you succeed.</p>
         <div class="space-y-3">
           <div class="contact-card">
             <div class="contact-icon-box">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </div>
             <div>
-              <p class="text-xs font-bold uppercase tracking-widest" style="color:#64748b;">Email</p>
-              <p class="font-semibold text-sm mt-0.5" style="color:#0f172a;">FutureEducHub@gmail.com</p>
+              <p class="text-xs font-bold uppercase tracking-widest" style="color:#4D774E;">Email</p>
+              <p class="font-semibold text-sm mt-0.5" style="color:#164A41;">FutureEducHub@gmail.com</p>
             </div>
           </div>
           <div class="contact-card">
@@ -204,8 +204,8 @@
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
             </div>
             <div>
-              <p class="text-xs font-bold uppercase tracking-widest" style="color:#64748b;">Facebook</p>
-              <a href="https://www.facebook.com/educationdepartmentcsav" target="_blank" rel="noopener noreferrer" class="font-semibold text-sm mt-0.5 hover:underline" style="color:#0d9488;">CSAV Education Department</a>
+              <p class="text-xs font-bold uppercase tracking-widest" style="color:#4D774E;">Facebook</p>
+              <a href="https://www.facebook.com/educationdepartmentcsav" target="_blank" rel="noopener noreferrer" class="font-semibold text-sm mt-0.5 hover:underline" style="color:#164A41;">CSAV Education Department</a>
             </div>
           </div>
           <div class="contact-card">
@@ -213,29 +213,29 @@
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
             <div>
-              <p class="text-xs font-bold uppercase tracking-widest" style="color:#64748b;">Location</p>
-              <p class="font-semibold text-sm mt-0.5" style="color:#0f172a;">Victorias City, Negros Occidental</p>
+              <p class="text-xs font-bold uppercase tracking-widest" style="color:#4D774E;">Location</p>
+              <p class="font-semibold text-sm mt-0.5" style="color:#164A41;">Victorias City, Negros Occidental</p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="reveal right">
-        <div class="rounded-2xl p-8" style="background:#f1f5f9; border:1px solid #e2e8f0;">
-          <h3 class="text-lg font-bold text-slate-900 mb-6">Send us a message</h3>
+        <div class="rounded-2xl p-8" style="background:#e0efe0; border:1px solid #b8d8b8;">
+          <h3 class="text-lg font-bold text-[#164A41] mb-6">Send us a message</h3>
           <form id="contact-form" novalidate class="space-y-4">
             <div>
-              <label for="name" class="block text-sm font-semibold text-slate-700 mb-1.5">Full Name</label>
+              <label for="name" class="block text-sm font-semibold text-[#164A41] mb-1.5">Full Name</label>
               <input id="name" type="text" placeholder="e.g. Maria Santos" class="form-input" required>
               <p class="form-error">Please enter your name</p>
             </div>
             <div>
-              <label for="email" class="block text-sm font-semibold text-slate-700 mb-1.5">Email Address</label>
+              <label for="email" class="block text-sm font-semibold text-[#164A41] mb-1.5">Email Address</label>
               <input id="email" type="email" placeholder="you@example.com" class="form-input" required>
               <p class="form-error">Please enter a valid email</p>
             </div>
             <div>
-              <label for="message" class="block text-sm font-semibold text-slate-700 mb-1.5">Message</label>
+              <label for="message" class="block text-sm font-semibold text-[#164A41] mb-1.5">Message</label>
               <textarea id="message" rows="4" placeholder="How can we help you?" class="form-input resize-none" required></textarea>
               <p class="form-error">Please write a message</p>
             </div>
@@ -251,13 +251,13 @@
 </section>
 
 <!-- ═══════ FOOTER ═══════ -->
-<footer style="background:#0f172a;">
+<footer style="background:#0d332d;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="reveal flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
       <div class="flex items-center gap-3">
         <div>
           <p class="text-white font-bold text-lg leading-none display-heading">CSAV</p>
-          <p class="text-xs mt-0.5" style="color:#64748b;">Future Educators Hub</p>
+          <p class="text-xs mt-0.5" style="color:#9DC88D;">Future Educators Hub</p>
         </div>
       </div>
       <nav class="flex flex-wrap gap-x-7 gap-y-2 text-sm">
@@ -265,11 +265,11 @@
         <a href="about.html" class="footer-link">About</a>
         <a href="events.html" class="footer-link">Events</a>
         <a href="achievements.html" class="footer-link">Career Opportunities</a>
-        <a href="contact.html" class="footer-link" style="color:#5eead4;">Contact</a>
+        <a href="contact.html" class="footer-link" style="color:#F1B24A;">Contact</a>
       </nav>
     </div>
-    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(13,148,136,.08);">
-      <p class="text-xs" style="color:#475569;">CSAV Future Educators Hub &copy; 2026 — Victorias City, Negros Occidental</p>
+    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(157,200,141,.08);">
+      <p class="text-xs" style="color:#4D774E;">CSAV Future Educators Hub &copy; 2026 — Victorias City, Negros Occidental</p>
     </div>
   </div>
 </footer>
@@ -309,7 +309,6 @@
     if (window.scrollY > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
   }, { passive: true });
 
-  /* ── Form validation ── */
   var form = document.getElementById('contact-form');
   var submitBtn = document.getElementById('submit-btn');
   var toast = document.getElementById('toast');
