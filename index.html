@@ -20,9 +20,10 @@
             sans: ['Inter', 'ui-sans-serif', 'system-ui'],
           },
           colors: {
-            teal: { 50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',300:'#5eead4',400:'#2dd4bf',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a' },
-            slate: { 50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1',400:'#94a3b8',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a' },
-            cream: '#faf6f0',
+            dgreen: '#164A41',
+            mgreen: '#4D774E',
+            sage: '#9DC88D',
+            gold: '#F1B24A',
           },
         },
       },
@@ -37,30 +38,28 @@
       margin: 0; padding: 0;
       -webkit-font-smoothing: antialiased;
     }
-
     ::selection {
-      background: rgba(13, 148, 136, 0.2);
-      color: #0f172a;
+      background: rgba(241, 178, 74, 0.25);
+      color: #164A41;
     }
-
     .display-heading { font-family: 'Playfair Display', Georgia, serif; }
 
     /* ── Navigation ── */
     #main-nav {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.92);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid transparent;
       transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
     #main-nav.scrolled {
       background: rgba(255,255,255,0.98) !important;
-      border-bottom-color: #e2e8f0;
-      box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+      border-bottom-color: rgba(157, 200, 141, 0.3);
+      box-shadow: 0 1px 12px rgba(22, 74, 65, 0.06);
     }
     .nav-link {
       position: relative;
       font-weight: 500;
-      color: #475569;
+      color: #4a5568;
       transition: color 0.2s ease;
     }
     .nav-link::after {
@@ -70,27 +69,101 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: #0d9488;
+      background: #F1B24A;
       transition: width 0.25s ease;
     }
-    .nav-link:hover { color: #0f172a; }
+    .nav-link:hover { color: #164A41; }
     .nav-link:hover::after { width: 100%; }
-    .nav-link.nav-active { color: #0d9488; }
-    .nav-link.nav-active::after { width: 100%; }
+    .nav-link.nav-active { color: #4D774E; }
+    .nav-link.nav-active::after { width: 100%; background: #4D774E; }
 
     /* ── Hero ── */
-    .hero-overlay {
-      background: linear-gradient(135deg, rgba(15,23,42,0.50), rgba(30,41,59,0.25), rgba(15,23,42,0.55));
+    .hero-bg {
+      background: linear-gradient(135deg, #164A41 0%, #1a5a4f 30%, #4D774E 70%, #164A41 100%);
+      position: relative;
+      overflow: hidden;
     }
-    .hero-vignette {
-      background: radial-gradient(ellipse at 50% 30%, transparent 25%, rgba(15,23,42,0.50) 100%);
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(157, 200, 141, 0.15), transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(241, 178, 74, 0.08), transparent 40%),
+        radial-gradient(ellipse at 60% 80%, rgba(157, 200, 141, 0.1), transparent 45%);
     }
-    .hero-bg-img {
-      object-position: center 30%;
+    .hero-shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.07;
+    }
+    .hero-shape-1 {
+      width: 600px; height: 600px;
+      background: #F1B24A;
+      top: -200px; right: -150px;
+    }
+    .hero-shape-2 {
+      width: 400px; height: 400px;
+      background: #9DC88D;
+      bottom: -100px; right: 10%;
+    }
+    .hero-shape-3 {
+      width: 250px; height: 250px;
+      background: #F1B24A;
+      top: 40%; left: 60%;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+    .hero-shape-4 {
+      width: 180px; height: 180px;
+      background: #9DC88D;
+      top: 20%; left: 5%;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    .hero-img-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-img-glow {
+      position: absolute;
+      width: 90%;
+      height: 90%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(241, 178, 74, 0.15), transparent 65%);
+      top: 5%;
+      left: 5%;
+      filter: blur(30px);
+    }
+    .hero-image {
+      position: relative;
+      width: 100%;
+      height: auto;
+      max-height: 580px;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(22, 74, 65, 0.3);
     }
 
-    .grad-text {
-      background: linear-gradient(135deg, #0d9488, #14b8a6, #2dd4bf, #0d9488);
+    .gold-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: rgba(241, 178, 74, 0.12);
+      border: 1px solid rgba(241, 178, 74, 0.2);
+      color: #F1B24A;
+    }
+    .gold-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #F1B24A;
+      flex-shrink: 0;
+    }
+
+    .gold-text {
+      background: linear-gradient(135deg, #F1B24A, #f7c45a, #f9d07a, #F1B24A);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -101,103 +174,92 @@
       to { background-position: 200% center; }
     }
 
-    .grad-text-gold {
-      background: linear-gradient(135deg, #c9a84c, #e8c45a, #f2d98f, #c9a84c);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* ── Scroll reveal ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal-left.visible {
-      opacity: 1;
-      transform: none;
-    }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(40px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal-right.visible {
-      opacity: 1;
-      transform: none;
-    }
-    .reveal-scale {
-      opacity: 0;
-      transform: scale(0.94);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-scale.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .d1 { transition-delay: 0.1s; }
-    .d2 { transition-delay: 0.2s; }
-    .d3 { transition-delay: 0.3s; }
-    .d4 { transition-delay: 0.4s; }
-
-    /* ── Buttons ── */
+    /* ── Button system ── */
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
+      display: inline-flex; align-items: center;
       gap: 0.5rem;
       padding: 0.875rem 2rem;
       border-radius: 0.75rem;
       font-weight: 600;
       font-size: 0.9375rem;
-      background: #0d9488;
-      color: #fff;
+      background: #F1B24A;
+      color: #164A41;
       border: none;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(13, 148, 136, 0.3);
-      background: #0f766e;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(241, 178, 74, 0.3);
     }
     .btn-primary:active {
       transform: translateY(0);
     }
+
     .btn-ghost {
-      display: inline-flex;
-      align-items: center;
+      display: inline-flex; align-items: center;
       gap: 0.5rem;
       padding: 0.875rem 2rem;
       border-radius: 0.75rem;
       font-weight: 600;
       font-size: 0.9375rem;
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      border: 2px solid rgba(255,255,255,0.25);
       color: #fff;
       background: transparent;
       cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
     }
     .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.5);
+      transform: translateY(-3px);
+    }
+
+    .btn-outline-green {
+      display: inline-flex; align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      border: 1.5px solid rgba(77, 119, 78, 0.3);
+      color: #4D774E;
+      background: transparent;
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+    .btn-outline-green:hover {
+      background: rgba(77, 119, 78, 0.05);
+      border-color: #4D774E;
       transform: translateY(-2px);
+    }
+
+    /* ── Glass card ── */
+    .glass-card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(157, 200, 141, 0.15);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(22, 74, 65, 0.06);
+    }
+    .glass-card .icon-circle {
+      width: 3rem; height: 3rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(157,200,141,0.2), rgba(241,178,74,0.1));
+      color: #4D774E;
+      margin-bottom: 1rem;
     }
 
     /* ── Cards ── */
     .feature-card {
       background: #fff;
-      border: 1px solid #e2e8f0;
+      border: 1px solid rgba(157, 200, 141, 0.2);
       border-radius: 1.25rem;
       padding: 2rem;
       display: flex;
@@ -206,25 +268,63 @@
     }
     .feature-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.05);
-      border-color: #99f6e4;
+      box-shadow: 0 12px 40px rgba(22, 74, 65, 0.05);
+      border-color: #9DC88D;
     }
     .feature-card .icon-box {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 0.875rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 3rem; height: 3rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
       margin-bottom: 1.25rem;
       flex-shrink: 0;
-      background: #ccfbf1;
-      color: #0d9488;
+      background: linear-gradient(135deg, rgba(157,200,141,0.2), rgba(241,178,74,0.08));
+      color: #4D774E;
     }
-    .feature-card .icon-box.navy {
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      color: #99f6e4;
+
+    .stat-number {
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 800;
+      color: #F1B24A;
+      line-height: 1.1;
+      font-family: 'Playfair Display', Georgia, serif;
     }
+
+    /* ── Section theming ── */
+    .section-light {
+      background: #fafbf8;
+    }
+    .section-cream {
+      background: #f6f7f4;
+    }
+    .section-dark {
+      background: linear-gradient(135deg, #164A41 0%, #1d5e52 50%, #164A41 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .section-dark::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(157, 200, 141, 0.08), transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(241, 178, 74, 0.05), transparent 40%);
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal { opacity:0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity:1; transform: none; }
+    .reveal-scale { opacity:0; transform: scale(0.94); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-scale.visible { opacity:1; transform: scale(1); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+
+    /* ── Footer ── */
+    .footer-link {
+      color: rgba(255,255,255,0.55);
+      transition: color 0.2s ease;
+    }
+    .footer-link:hover { color: #F1B24A; }
 
     .tag {
       display: inline-block;
@@ -232,67 +332,23 @@
       border-radius: 999px;
       font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
     }
-    .tag-teal {
-      background: rgba(13, 148, 136, 0.1);
-      color: #0f766e;
-    }
-    .tag-teal-light {
-      background: rgba(13, 148, 136, 0.12);
-      color: #ccfbf1;
-      border: 1px solid rgba(13, 148, 136, 0.2);
-    }
-
-    .stat-number {
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      font-weight: 800;
-      color: #0d9488;
-      line-height: 1.1;
-      font-family: 'Playfair Display', Georgia, serif;
-    }
-
-    .pill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      background: rgba(13, 148, 136, 0.08);
-      color: rgba(204, 251, 241, 0.7);
-      border: 1px solid rgba(13, 148, 136, 0.15);
-    }
-
-    /* ── Stats section ── */
-    .stats-section {
-      background: #f1f5f9;
-    }
-
-    /* ── Footer ── */
-    .footer-link {
-      color: #94a3b8;
-      transition: color 0.2s ease;
-    }
-    .footer-link:hover {
-      color: #5eead4;
+    .tag-gold {
+      background: rgba(241, 178, 74, 0.1);
+      color: #a67c2e;
     }
 
     /* ── Toast ── */
     .toast {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
+      position: fixed; bottom: 2rem; left: 50%;
       transform: translateX(-50%) translateY(100px);
       z-index: 999;
       padding: 0.875rem 1.75rem;
       border-radius: 0.875rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      background: rgba(15, 23, 42, 0.94);
+      font-size: 0.875rem; font-weight: 600;
+      background: rgba(22, 74, 65, 0.94);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(13, 148, 136, 0.2);
+      border: 1px solid rgba(241, 178, 74, 0.15);
       color: #fff;
       opacity: 0;
       transition: all 0.4s ease;
@@ -303,12 +359,11 @@
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
-    .toast.success { border-color: rgba(74, 222, 128, 0.3); color: #86efac; }
 
     /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #0d9488; border-radius: 99px; }
+    ::-webkit-scrollbar-thumb { background: #9DC88D; border-radius: 99px; }
 
     /* ── Mobile menu ── */
     #mobile-menu {
@@ -318,9 +373,17 @@
       background: rgba(255,255,255,0.98);
     }
     #mobile-menu.open { max-height: 320px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero-split { grid-template-columns: 1fr !important; text-align: center; }
+      .hero-split-content { order: 2; }
+      .hero-split-image { order: 1; }
+      .hero-image { max-height: 320px; }
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body class="bg-[#fafbf8] text-[#164A41] antialiased">
 
 <div id="toast" class="toast"></div>
 
@@ -329,10 +392,10 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
-        <img src="beedportal-logo.png" alt="CSAV" class="w-8 h-8 rounded-lg object-cover" style="background:rgba(13,148,136,.08);" />
+        <img src="beedportal-logo.png" alt="CSAV" class="w-8 h-8 rounded-lg object-cover" style="background:rgba(77,119,78,.1);" />
         <div>
-          <span class="font-bold text-sm leading-none tracking-tight display-heading" style="color:#0f172a;">CSAV</span>
-          <span class="text-xs leading-none block mt-0.5" style="color:#64748b;">Future Educators Hub</span>
+          <span class="font-bold text-sm leading-none tracking-tight display-heading" style="color:#164A41;">CSAV</span>
+          <span class="text-xs leading-none block mt-0.5" style="color:#9DC88D;">Future Educators Hub</span>
         </div>
       </a>
       <div class="hidden md:flex items-center gap-6 text-sm">
@@ -342,87 +405,157 @@
         <a href="achievements.html" class="nav-link">Career Opportunities</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
-      <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
-        class="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">
-        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      </button>
+      <div class="flex items-center gap-2">
+        <button id="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false"
+          class="md:hidden p-2 rounded-lg text-[#4D774E] hover:text-[#164A41] hover:bg-[#f6f7f4] transition-colors">
+          <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
-  <div id="mobile-menu" class="md:hidden border-t border-slate-200">
-    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-slate-600">
-      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50" style="color:#0d9488;">Home</a>
-      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">About</a>
-      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Events</a>
-      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Career Opportunities</a>
-      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-teal-600 hover:bg-teal-50">Contact</a>
+  <div id="mobile-menu" class="md:hidden border-t" style="border-color:rgba(157,200,141,.15);">
+    <div class="px-4 py-3 flex flex-col gap-1 text-sm font-medium text-[#4D774E]">
+      <a href="index.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]" style="color:#164A41;">Home</a>
+      <a href="about.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">About</a>
+      <a href="events.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">Events</a>
+      <a href="achievements.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">Career Opportunities</a>
+      <a href="contact.html" onclick="closeMenu()" class="rounded-lg px-3 py-2.5 transition-colors hover:text-[#164A41] hover:bg-[#f6f7f4]">Contact</a>
     </div>
   </div>
 </nav>
 
 <!-- ═══════ HERO ═══════ -->
-<section class="relative min-h-screen flex items-center overflow-hidden">
-  <div class="absolute inset-0">
-    <img src="mpfgtaqk-image.png" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover hero-bg-img" loading="eager" />
-  </div>
-  <div class="absolute inset-0 hero-overlay"></div>
-  <div class="absolute inset-0 hero-vignette"></div>
+<section class="hero-bg relative min-h-screen flex items-center pt-16">
+  <div class="hero-shape hero-shape-1"></div>
+  <div class="hero-shape hero-shape-2"></div>
+  <div class="hero-shape hero-shape-3"></div>
+  <div class="hero-shape hero-shape-4"></div>
 
-  <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 text-center">
-    <div class="reveal visible d1 inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-8"
-         style="background:rgba(13,148,136,.15);border:1px solid rgba(13,148,136,.25);color:#5eead4;">
-      <span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>
-      CSAV Future Educators Hub
-    </div>
-    <h1 class="display-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] mb-6">
-      Future Teachers<br><span class="grad-text">Rise Here</span>
-    </h1>
-    <div class="reveal visible d3 flex flex-wrap justify-center gap-4 mt-8">
-      <a href="about.html" class="btn-primary">
-        Explore Our Program
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
-      <a href="events.html" class="btn-ghost">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-        See Events
-      </a>
+  <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center hero-split">
+      
+      <!-- Left content -->
+      <div class="hero-split-content">
+        <div class="reveal visible gold-badge mb-8">
+          <span class="gold-badge-dot"></span>
+          CSAV Future Educators Hub
+        </div>
+        <h1 class="display-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.05] mb-6">
+          Future Teachers<br><span class="gold-text">Rise Here</span>
+        </h1>
+        <p class="text-base sm:text-lg max-w-xl leading-relaxed mb-8" style="color:rgba(255,255,255,0.7);">
+          Empowering aspiring elementary educators with DepEd-aligned training, guided practicum support, and a community that believes in every future teacher.
+        </p>
+        <div class="reveal d2 flex flex-wrap gap-4">
+          <a href="about.html" class="btn-primary">
+            Explore Our Program
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+          <a href="events.html" class="btn-ghost">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            See Events
+          </a>
+        </div>
+      </div>
+
+      <!-- Right image -->
+      <div class="hero-split-image">
+        <div class="hero-img-wrap">
+          <div class="hero-img-glow"></div>
+          <img src="mpfgtaqk-image.png" alt="CSAV Future Educators Hub" class="hero-image" loading="eager" />
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ WAVE DIVIDER ═══════ -->
-<div style="background:#1e293b;">
-  <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path fill="#f8fafc" d="M0,48 C360,0 1080,64 1440,24 L1440,64 L0,64 Z"/>
-  </svg>
-</div>
-
 <!-- ═══════ WELCOME ═══════ -->
-<section class="py-24" style="background:#f8fafc;">
+<section class="py-24 section-light">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <div>
-      <p class="reveal-left d1 text-xs font-bold tracking-widest uppercase mb-3" style="color:#0d9488;">Welcome</p>
-      <h2 class="reveal d2 display-heading text-3xl sm:text-4xl font-bold text-slate-900 mb-6">Shaping the Next Generation of Educators</h2>
-      <p class="reveal-right d3 text-lg leading-relaxed max-w-3xl mx-auto" style="color:#64748b;">
-        The <strong style="color:#0f172a;">CSAV Future Educators Hub</strong> is dedicated to forming compassionate, competent, and creative teachers who will shape the minds of tomorrow. Through a rigorous BEED program grounded in DepEd standards, we prepare our students not just to teach — but to inspire.
+      <p class="reveal text-xs font-bold tracking-widest uppercase mb-3" style="color:#9DC88D;">Welcome</p>
+      <h2 class="reveal d2 display-heading text-3xl sm:text-4xl font-bold text-[#164A41] mb-6">Shaping the Next Generation of Educators</h2>
+      <p class="reveal d3 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto" style="color:#4a6b5a;">
+        The <strong style="color:#164A41;">CSAV Future Educators Hub</strong> is dedicated to forming compassionate, competent, and creative teachers who will shape the minds of tomorrow. Through a rigorous BEED program grounded in DepEd standards, we prepare our students not just to teach — but to inspire.
       </p>
     </div>
   </div>
 </section>
 
+<!-- ═══════ STATS ═══════ -->
+<section class="py-20" style="background:#f6f7f4;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="reveal">
+        <p class="stat-number">7</p>
+        <p class="text-sm font-semibold mt-2" style="color:#4D774E;">Core Subjects</p>
+        <p class="text-xs mt-1" style="color:#4a6b5a;">Comprehensive BEED curriculum</p>
+      </div>
+      <div class="reveal d2">
+        <p class="stat-number">4</p>
+        <p class="text-sm font-semibold mt-2" style="color:#4D774E;">Year Curriculum</p>
+        <p class="text-xs mt-1" style="color:#4a6b5a;">Full undergraduate journey</p>
+      </div>
+      <div class="reveal d3">
+        <p class="stat-number">2</p>
+        <p class="text-sm font-semibold mt-2" style="color:#4D774E;">Practicum Semesters</p>
+        <p class="text-xs mt-1" style="color:#4a6b5a;">Hands-on field study</p>
+      </div>
+      <div class="reveal d4">
+        <p class="stat-number">6</p>
+        <p class="text-sm font-semibold mt-2" style="color:#4D774E;">Grade Levels</p>
+        <p class="text-xs mt-1" style="color:#4a6b5a;">K–6 specialization</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FEATURES ═══════ -->
+<section class="py-24 section-light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center reveal mb-16">
+      <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#9DC88D;">Why Choose CSAV</p>
+      <h2 class="display-heading text-3xl sm:text-4xl font-bold text-[#164A41]">A Department That Supports You</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="reveal feature-card">
+        <div class="icon-box">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-[#164A41] mb-2">DepEd-Aligned Curriculum</h3>
+        <p class="text-sm leading-relaxed" style="color:#4a6b5a;">Our BEED program follows the official DepEd standards, ensuring every lesson plan and teaching demonstration meets real classroom requirements.</p>
+      </div>
+      <div class="reveal d2 feature-card">
+        <div class="icon-box">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-[#164A41] mb-2">Guided Practicum Support</h3>
+        <p class="text-sm leading-relaxed" style="color:#4a6b5a;">From field study to practice teaching, our structured support system helps you navigate every stage of your teaching journey with confidence.</p>
+      </div>
+      <div class="reveal d3 feature-card">
+        <div class="icon-box">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-[#164A41] mb-2">Holistic Teacher Formation</h3>
+        <p class="text-sm leading-relaxed" style="color:#4a6b5a;">Beyond academics, we develop character, empathy, and classroom leadership — qualities that define an effective elementary educator.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════ JOURNEY CTA ═══════ -->
-<section class="relative py-20 overflow-hidden" style="background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);">
-  <div class="absolute inset-0" style="opacity:.05;background-image:linear-gradient(rgba(13,148,136,.3) 1px, transparent 1px),linear-gradient(90deg, rgba(13,148,136,.3) 1px, transparent 1px);background-size:48px 48px;"></div>
+<section class="section-dark relative py-24">
   <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <div class="reveal-scale">
       <h2 class="display-heading text-3xl sm:text-4xl font-bold text-white mb-4">
-        Your Teaching Journey <span class="grad-text">Starts Here</span>
+        Your Teaching Journey <span class="gold-text">Starts Here</span>
       </h2>
-      <p class="mb-8 text-lg max-w-2xl mx-auto leading-relaxed" style="color:#94a3b8;">
+      <p class="mb-8 text-lg max-w-2xl mx-auto leading-relaxed" style="color:rgba(255,255,255,0.6);">
         Ready to become the teacher every child deserves? Explore our BEED program, meet the faculty, and take the first step toward a career that changes lives.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
@@ -434,25 +567,25 @@
 </section>
 
 <!-- ═══════ FOOTER ═══════ -->
-<footer style="background:#0f172a;">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<footer class="section-dark" style="border-top:1px solid rgba(241,178,74,0.06);">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="reveal flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
       <div class="flex items-center gap-3">
         <div>
           <p class="text-white font-bold text-lg leading-none display-heading">CSAV</p>
-          <p class="text-xs mt-0.5" style="color:#64748b;">Future Educators Hub</p>
+          <p class="text-xs mt-0.5" style="color:#9DC88D;">Future Educators Hub</p>
         </div>
       </div>
       <nav class="flex flex-wrap gap-x-7 gap-y-2 text-sm">
-        <a href="index.html" class="footer-link" style="color:#5eead4;">Home</a>
+        <a href="index.html" class="footer-link" style="color:#F1B24A;">Home</a>
         <a href="about.html" class="footer-link">About</a>
         <a href="events.html" class="footer-link">Events</a>
         <a href="achievements.html" class="footer-link">Career Opportunities</a>
         <a href="contact.html" class="footer-link">Contact</a>
       </nav>
     </div>
-    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(13,148,136,.08);">
-      <p class="text-xs" style="color:#475569;">CSAV Future Educators Hub &copy; 2026 — Victorias City, Negros Occidental</p>
+    <div class="reveal border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-color:rgba(241,178,74,0.06);">
+      <p class="text-xs" style="color:rgba(255,255,255,0.35);">CSAV Future Educators Hub &copy; 2026 — Victorias City, Negros Occidental</p>
     </div>
   </div>
 </footer>
@@ -461,7 +594,6 @@
 (function(){
   'use strict';
 
-  /* ── Shared utilities ── */
   window.toggleMenu = function() {
     var menu  = document.getElementById('mobile-menu');
     var btn   = document.getElementById('hamburger-btn');
@@ -486,7 +618,6 @@
     if (window.innerWidth >= 768) window.closeMenu();
   });
 
-  /* ── Scroll reveal ── */
   var revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
@@ -495,46 +626,15 @@
       }
     });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right').forEach(function(el) {
+  document.querySelectorAll('.reveal, .reveal-scale').forEach(function(el) {
     revealObserver.observe(el);
   });
 
-  /* ── CountUp ── */
-  var countObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      var target = parseInt(el.getAttribute('data-target'), 10);
-      if (isNaN(target)) return;
-      var current = 0;
-      var step = Math.max(1, Math.floor(target / 50));
-      var timer = setInterval(function() {
-        current += step;
-        if (current >= target) { current = target; clearInterval(timer); }
-        el.textContent = current;
-      }, 20);
-      countObserver.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-target]').forEach(function(el) {
-    countObserver.observe(el);
-  });
-
-  /* ── Nav glass on scroll ── */
   var nav = document.getElementById('main-nav');
   window.addEventListener('scroll', function() {
     if (window.scrollY > 40) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   }, { passive: true });
-
-  /* ── Hero parallax ── */
-  var heroBg = document.querySelector('.hero-bg-img');
-  if (heroBg) {
-    window.addEventListener('scroll', function() {
-      var scrolled = window.scrollY;
-      heroBg.style.transform = 'translateY(' + (scrolled * 0.15) + 'px)';
-    }, { passive: true });
-  }
 
 })();
 </script>
