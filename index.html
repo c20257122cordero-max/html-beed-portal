@@ -44,6 +44,18 @@
     }
     .display-heading { font-family: 'Playfair Display', Georgia, serif; }
 
+    #page-transition {
+      position: fixed; inset: 0; z-index: 99999;
+      pointer-events: none;
+      background: #164A41;
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+    #page-transition.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     /* ── Navigation ── */
     #main-nav {
       background: rgba(255,255,255,0.92);
@@ -756,6 +768,7 @@
   </div>
 </footer>
 
+<div id="page-transition"></div>
 <script>
 (function(){
   'use strict';
@@ -815,6 +828,30 @@
   }, { passive: true });
 
   setTimeout(function() { document.body.classList.add('loaded'); }, 100);
+
+  /* ── Page transitions ── */
+  var pt = document.getElementById('page-transition');
+  if (pt && sessionStorage.getItem('pt') === '1') {
+    sessionStorage.removeItem('pt');
+    pt.style.transition = 'none';
+    pt.style.opacity = '1';
+    requestAnimationFrame(function() {
+      pt.style.transition = 'opacity .35s ease';
+      pt.style.opacity = '0';
+      setTimeout(function() { pt.style.transition = ''; }, 350);
+    });
+  }
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+    var href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('//') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+    if (!pt) { window.location.href = href; return; }
+    e.preventDefault();
+    pt.classList.add('active');
+    sessionStorage.setItem('pt', '1');
+    setTimeout(function() { window.location.href = href; }, 350);
+  });
 
 })();
 </script>
