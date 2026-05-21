@@ -350,6 +350,42 @@
   </div>
 </section>
 
+<!-- ═══════ EVENT ALBUM CAROUSEL ═══════ -->
+<section class="py-20" style="background:#fff;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <div class="accent-line"></div>
+      <h2 class="display-heading text-2xl sm:text-3xl font-bold text-slate-900">Event Highlights</h2>
+      <p class="text-sm mt-2" style="color:#64748b;">Snapshots from BEED department activities</p>
+    </div>
+    <div class="flex justify-center">
+      <div class="relative w-full max-w-md" id="album-achievements">
+        <div class="relative overflow-hidden rounded-xl aspect-[16/9] bg-slate-100" style="box-shadow:0 4px 24px rgba(15,23,42,.06);">
+          <div class="flex transition-transform duration-500 ease-out h-full" id="album-achievements-track">
+            <div class="w-full h-full flex-shrink-0">
+              <img src="mpfnaq8f-image.png" alt="BEED event photo 1" class="w-full h-full object-cover">
+            </div>
+            <div class="w-full h-full flex-shrink-0">
+              <img src="mpfnasrn-image.png" alt="BEED event photo 2" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+        <button onclick="prevAlbumAchievements()" aria-label="Previous"
+          class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-200 hover:scale-110"
+          style="background:rgba(255,255,255,.9);color:#0f172a;box-shadow:0 2px 8px rgba(0,0,0,.1);">‹</button>
+        <button onclick="nextAlbumAchievements()" aria-label="Next"
+          class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-200 hover:scale-110"
+          style="background:rgba(255,255,255,.9);color:#0f172a;box-shadow:0 2px 8px rgba(0,0,0,.1);">›</button>
+        <div class="flex justify-center gap-2 mt-4">
+          <button onclick="goToAlbumAchievements(0)" class="album-achievements-dot w-2 h-2 rounded-full transition-all duration-300" style="background:#0d9488;width:24px;"></button>
+          <button onclick="goToAlbumAchievements(1)" class="album-achievements-dot w-2 h-2 rounded-full transition-all duration-300" style="background:#cbd5e1;"></button>
+        </div>
+        <p class="text-center text-xs font-medium mt-2" style="color:#94a3b8;" id="album-achievements-counter">1 / 2</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════ ACHIEVEMENTS — TWO FEATURED ═══════ -->
 <section class="py-24" style="background:#f1f5f9;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -547,6 +583,34 @@
   window.addEventListener('scroll', function() {
     if (window.scrollY > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
   }, { passive: true });
+
+  var albumAchievementsCurrent = 0;
+  var albumAchievementsTotal = 2;
+  var albumAchievementsTrack = document.getElementById('album-achievements-track');
+  var albumAchievementsDots = document.querySelectorAll('.album-achievements-dot');
+  var albumAchievementsCounter = document.getElementById('album-achievements-counter');
+  window.goToAlbumAchievements = function(index) {
+    albumAchievementsCurrent = index;
+    albumAchievementsTrack.style.transform = 'translateX(-' + (index * 100) + '%)';
+    albumAchievementsDots.forEach(function(dot, i) {
+      dot.style.background = i === index ? '#0d9488' : '#cbd5e1';
+      dot.style.width = i === index ? '24px' : '8px';
+    });
+    if (albumAchievementsCounter) albumAchievementsCounter.textContent = (index + 1) + ' / ' + albumAchievementsTotal;
+  };
+  window.prevAlbumAchievements = function() {
+    var idx = (albumAchievementsCurrent - 1 + albumAchievementsTotal) % albumAchievementsTotal;
+    window.goToAlbumAchievements(idx);
+  };
+  window.nextAlbumAchievements = function() {
+    var idx = (albumAchievementsCurrent + 1) % albumAchievementsTotal;
+    window.goToAlbumAchievements(idx);
+  };
+  var albumAchievementsTimer = setInterval(function() { window.nextAlbumAchievements(); }, 4500);
+  document.getElementById('album-achievements').addEventListener('mouseenter', function() { clearInterval(albumAchievementsTimer); });
+  document.getElementById('album-achievements').addEventListener('mouseleave', function() {
+    albumAchievementsTimer = setInterval(function() { window.nextAlbumAchievements(); }, 4500);
+  });
 })();
 </script>
 </body>
